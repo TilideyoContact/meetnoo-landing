@@ -1,0 +1,614 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>MeetNoo — Transcription &amp; Intelligence IA</title>
+<meta name="viewport" content="width=1728" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Figtree:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#141B34; --ink2:#213464; --ink3:#111165; --ink-soft:#2D2D2D; --ink-mute:#6B6B6B;
+    --p50:#EAEAFE; --p100:#BCBCFA; --p200:#9C9CF8; --p300:#6F6FF5; --p500:#2828F0; --p600:#2424DA; --p800:#161684; --p900:#111165;
+    --green-400:#3EB386; --green-500:#0EA068; --green-600:#0D925F; --green-800:#085839;
+    --y100:#FFE2B0; --y300:#FFC154; --y600:#E89300;
+    --pu50:#FBF3FE; --pu500:#D487F7; --pu700:#9760AF;
+    --line:#E9EBF1; --gray-light:#F2F2F2;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#0b0e1a}
+  body{font-family:'Sora',system-ui,sans-serif;color:var(--ink2)}
+  #stage-wrap{width:100vw;overflow-x:hidden;background:#0b0e1a;display:flex;justify-content:flex-start}
+  #stage{width:1728px;transform-origin:0 0;background:#fff}
+  #nav-fixed{position:fixed;left:0;top:0;width:100vw;height:140px;z-index:1000;pointer-events:none}
+  #nav-fixed .nav-stage{position:absolute;left:50%;top:0;width:1728px;height:140px;transform-origin:top center;pointer-events:none}
+  #nav-fixed .navbar{pointer-events:auto}
+
+  h2.title{font:800 32px/1.2 'Sora';color:var(--p900);text-align:center;letter-spacing:-.01em}
+  p.sub{font:400 24px/1.25 'Sora';color:var(--p900);text-align:center;max-width:840px;margin:18px auto 0}
+
+  /* navbar */
+  .navbar{
+    position:absolute;left:231px;top:55px;width:1265px;height:62px;border-radius:80px;
+    background:linear-gradient(120deg,rgba(163,166,250,.35),rgba(255,255,255,.4) 30%,rgba(246,246,246,.35) 55%,rgba(221,227,250,.45));
+    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    display:flex;align-items:center;justify-content:space-between;padding:10px 18px;
+    border:1px solid rgba(255,255,255,.6);box-shadow:0 8px 30px -16px rgba(33,52,100,.25);z-index:50;
+  }
+  .navbar .logo img{height:36px;display:block}
+  .navbar .links{display:flex;gap:40px;align-items:center;font:500 16px/1.2 'Figtree';color:var(--ink2)}
+  .navbar .links a{color:var(--ink2);text-decoration:none;cursor:pointer}
+  .navbar .links a:hover{color:var(--p500)}
+  .navbar .right{display:flex;align-items:center;gap:24px}
+  .caret{display:inline-block;width:0;height:0;border:5px solid transparent;border-top-color:var(--ink2);transform:translateY(2px);transition:transform .2s}
+  .nav-svc{position:relative}
+  .nav-svc > a{display:inline-flex;align-items:center;gap:6px;cursor:pointer}
+  .nav-svc-menu{
+    position:absolute;left:50%;top:calc(100% + 18px);transform:translateX(-50%) translateY(-6px);
+    min-width:300px;background:#fff;border-radius:14px;
+    box-shadow:0 24px 60px -12px rgba(20,27,52,.25), 0 0 0 1px rgba(33,52,100,.06);
+    padding:10px;opacity:0;pointer-events:none;transition:opacity .18s ease, transform .18s ease;z-index:60;
+  }
+  .nav-svc-menu::before{content:"";position:absolute;left:50%;top:-6px;width:12px;height:12px;background:#fff;transform:translateX(-50%) rotate(45deg);box-shadow:-1px -1px 0 rgba(33,52,100,.06)}
+  .nav-svc:hover .nav-svc-menu,.nav-svc:focus-within .nav-svc-menu{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+  .nav-svc:hover .caret{transform:translateY(2px) rotate(180deg)}
+  .nav-svc-menu a{display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:10px;color:var(--ink2);text-decoration:none;font:500 15px/1.3 'Inter';transition:background .15s ease,color .15s ease}
+  .nav-svc-menu a:hover, .nav-svc-menu a.active{background:var(--p50);color:var(--p500)}
+  .nav-svc-menu a .ico{width:34px;height:34px;border-radius:8px;background:var(--p50);color:var(--p500);display:grid;place-items:center;flex-shrink:0}
+  .nav-svc-menu a.active .ico{background:var(--p500);color:#fff}
+  .nav-svc-menu a .meta{display:flex;flex-direction:column;gap:2px}
+  .nav-svc-menu a .meta .t{font:600 14px/1.2 'Inter';color:var(--ink2)}
+  .nav-svc-menu a:hover .meta .t, .nav-svc-menu a.active .meta .t{color:var(--p500)}
+  .nav-svc-menu a .meta .s{font:400 12px/1.3 'Inter';color:var(--ink-mute)}
+  .nav-cta-svc{display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 16px;border-radius:9999px;background:rgba(40,40,240,.08);color:var(--p500);font:600 14px/1 'Inter';text-decoration:none;border:1px solid rgba(40,40,240,.18)}
+  .nav-cta-svc:hover{background:var(--p500);color:#fff}
+  .btn-dark{height:42px;padding:0 18px;border-radius:9999px;background:var(--ink2);color:#fff;font:500 16px/42px 'Roboto',sans-serif;border:0;cursor:pointer}
+
+  /* HERO */
+  .hero{position:relative;width:1728px;height:780px;background:#fff;overflow:hidden}
+  .hero h1{position:absolute;left:174px;top:280px;width:560px;font:800 32px/1.2 'Sora';color:var(--p900);letter-spacing:-.01em}
+  .hero p.lead{position:absolute;left:174px;top:380px;width:580px;font:400 24px/1.3 'Sora';color:var(--p900)}
+  .hero .cta{position:absolute;left:174px;top:560px;display:flex;gap:24px}
+  .btn-primary{height:54px;padding:0 28px;border-radius:9999px;background:var(--p500);color:#fff;font:700 16px/54px 'Inter';display:inline-flex;align-items:center;gap:10px;border:0;cursor:pointer;box-shadow:0 8px 22px -10px rgba(40,40,240,.55)}
+  .btn-primary:hover{background:#1d1dd6}
+  .btn-outline{height:54px;padding:0 28px;border-radius:9999px;background:#fff;color:var(--p500);font:700 16px/54px 'Inter';border:1px solid var(--p500);cursor:pointer;display:inline-flex;align-items:center;gap:10px}
+  .hero-deco{position:absolute;width:280px;height:240px;left:1266px;top:240px;opacity:.5;pointer-events:none}
+  .hero-deco::before{content:'';position:absolute;width:144px;height:144px;left:80px;top:0;background:#89BCFF;filter:blur(150px);border-radius:50%}
+  .hero-deco::after{content:'';position:absolute;width:212px;height:212px;left:30px;top:30px;background:#FF86E1;filter:blur(250px);border-radius:50%}
+
+  /* Hero preview — meeting card with Ask IA */
+  .hero-preview{position:absolute;left:923px;top:190px;width:855px;height:538px;background:var(--p50);border-radius:30px 0 0 0;padding:42px 0 0 0;overflow:hidden}
+  .meet-card{
+    position:absolute;left:60px;top:42px;width:760px;height:308px;background:linear-gradient(180deg,rgba(232,147,0,.05) -290%,#fff 39%);
+    border:.5px solid var(--y600);box-shadow:0 1px 10.4px rgba(0,0,0,.1);border-radius:14px;
+  }
+  .meet-card .title{position:absolute;left:45px;top:61px;font:700 16px/19px 'Figtree';color:var(--ink-soft)}
+  .meet-card .dot{position:absolute;left:24px;top:68px;width:11px;height:11px;border-radius:50%;background:var(--y600)}
+  .meet-card .pill-prog{position:absolute;left:567px;top:73px;width:88px;height:31px;border-radius:48px;border:1px solid rgba(188,188,250,.6);display:flex;align-items:center;justify-content:center;gap:6px;font:500 14px/17px 'Figtree';color:var(--p500);background:rgba(234,234,254,.3)}
+  .meet-card .pill-pct{position:absolute;left:670px;top:73px;width:50px;height:31px;border-radius:48px;background:rgba(255,226,176,.4);display:flex;align-items:center;justify-content:center;font:500 14px/17px 'Figtree';color:var(--y600)}
+  .meet-card .chev{position:absolute;left:738px;top:76px;width:32px;height:31px;background:rgba(234,234,254,.4);border-radius:5px;display:grid;place-items:center}
+  .meet-card .badge-tag{position:absolute;left:391px;top:96px;width:161px;height:31px;background:rgba(188,188,250,.3);border:1px solid var(--p300);border-radius:5px;display:flex;align-items:center;justify-content:center;gap:6px;font:500 14px/17px 'Figtree';color:var(--p300)}
+  .meet-card .meta-row{position:absolute;left:24px;top:102px;display:flex;gap:26px;font:500 14px/17px 'Figtree';color:var(--ink-soft)}
+  .meet-card .meta-row .it{display:flex;align-items:center;gap:6px}
+  .meet-card hr{position:absolute;left:1px;top:146px;width:758px;border:0;border-top:1px solid var(--y100)}
+  .meet-card .pills-bar{position:absolute;left:24px;top:165px;width:485px;height:47px;background:var(--gray-light);border-radius:8px;display:flex;align-items:center;padding:0 11px;gap:99px}
+  .meet-card .pills-bar .p{display:flex;align-items:center;gap:3px;font:500 14px/17px 'Figtree';color:var(--p200)}
+  .meet-card .pill-ask{display:inline-flex;align-items:center;gap:3px;padding:8px 19px;background:#fff;border:.5px solid var(--p100);box-shadow:0 1px 10.4px rgba(0,0,0,.1);border-radius:5px;font:500 14px/17px 'Figtree';color:var(--p500)}
+
+  /* IA input */
+  .ia-input{
+    position:absolute;left:60px;top:368px;width:760px;height:87px;background:#fff;
+    box-shadow:0 4px 10px rgba(51,51,51,.12);border-radius:16px;padding:18px 12px 12px;
+    display:flex;flex-direction:column;gap:10px;
+  }
+  .ia-input .ph{display:flex;align-items:center;gap:8px;font:300 12px/14px 'Figtree';color:#000}
+  .ia-input .row{display:flex;justify-content:space-between;align-items:center}
+  .ia-input .row .l,.ia-input .row .r{display:flex;gap:4px}
+  .ia-input .row button{width:32px;height:32px;background:#F1F5F9;border:0;border-radius:8px;display:grid;place-items:center;cursor:pointer}
+  .ia-input .row .send{background:#6163FE;box-shadow:inset 0 -2px 3px rgba(48,48,48,.12)}
+  .ia-input .row .send svg{stroke:#fff}
+  .ia-input .row .pages{display:flex;align-items:center;gap:6px;background:#F1F5F9;border-radius:8px;padding:0 10px;height:32px;font:700 10px/12px 'Figtree';color:#000}
+
+  /* SECTION COUT IMPRECISION */
+  .sec-cost{position:relative;width:1728px;background:#fff;padding:40px 0 60px}
+  .cost-hd{text-align:center;margin-bottom:60px}
+  .cost-hd h2{font:800 32px/1.2 'Sora';color:var(--p900)}
+  .cost-hd p{font:400 24px/1.25 'Sora';color:var(--p900);margin-top:24px;max-width:780px;margin-left:auto;margin-right:auto}
+  .cost-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;width:1380px;margin:0 auto}
+  .cost-cell{text-align:center;padding:0 20px;border-right:1px solid var(--p50)}
+  .cost-cell:last-child{border-right:0}
+  .cost-cell .num{font:800 56px/1 'Sora';color:var(--p500);margin-bottom:18px}
+  .cost-cell .lbl{font:500 18px/1.3 'Figtree';color:var(--p900);margin-bottom:8px}
+  .cost-cell .desc{font:400 14px/1.5 'Figtree';color:var(--ink-mute)}
+
+  /* SECTION De l'audio brut au livrable validé */
+  .sec-flow{position:relative;width:1728px;height:920px;background:var(--pu50);padding-top:80px;overflow:hidden}
+  .sec-flow .hd{text-align:center}
+  .sec-flow .hd h2{font:800 32px/1.2 'Sora';color:var(--p900)}
+  .sec-flow .hd p{font:400 24px/1.25 'Sora';color:var(--p900);margin-top:18px;max-width:840px;margin:18px auto 0}
+  .flow-stage{position:relative;width:1380px;height:600px;margin:60px auto 0}
+  /* Card 1 — Ajouter projet */
+  .card-add{
+    position:absolute;left:0;top:0;width:515px;height:643px;border-radius:14px;background:linear-gradient(180deg,#C2C7FF 0%,#fff 14.67%);
+    border:1px solid var(--p100);box-shadow:0 1px 10.4px rgba(0,0,0,.1);padding:28px 38px;
+  }
+  .card-add .h{display:flex;justify-content:space-between;align-items:center;padding-bottom:18px;border-bottom:1px solid var(--p100);margin-bottom:24px}
+  .card-add .h .t{font:700 18px/22px 'Figtree';color:var(--ink-soft)}
+  .card-add .x{width:31px;height:28px;background:var(--p50);border:1px solid var(--p100);border-radius:7px;display:grid;place-items:center}
+  .card-add label{font:700 16px/19px 'Figtree';color:#212B36;display:block;margin-bottom:4px}
+  .card-add .help{font:500 14px/17px 'Figtree';color:#919EAB;margin-bottom:10px}
+  .card-add .drop{border:1px dashed #C4CDD5;border-radius:12px;background:#FAFBFB;padding:20px 16px;text-align:center}
+  .card-add .drop .ic{width:52px;height:52px;border-radius:50%;background:#EAEAFE;display:grid;place-items:center;margin:0 auto 10px;color:var(--p500)}
+  .card-add .drop .tt{font:700 16px/19px 'Figtree';color:#212B36;margin-bottom:8px}
+  .card-add .drop .ts{font:500 14px/17px 'Figtree';color:#637381}
+  .card-add .field{margin-top:18px}
+  .card-add .input{display:flex;align-items:center;gap:8px;border:1px solid #DFE3E8;border-radius:8px;padding:8px;font:500 14px/17px 'Figtree';color:#808080}
+  .card-add .input .pill{background:#FFEDEC;border-radius:6px;padding:2px 6px}
+  .card-add .footer{position:absolute;left:38px;right:38px;bottom:24px;display:flex;justify-content:flex-end;gap:8px}
+  .card-add .footer .ghost{padding:8px 14px;background:#EEF2FF;border-radius:8px;font:500 14px/21px 'Figtree';color:var(--p600);border:0;cursor:pointer}
+  .card-add .footer .prim{padding:8px 14px;background:#C7D2FE;border-radius:8px;font:500 14px/21px 'Figtree';color:#fff;border:0;cursor:pointer}
+
+  /* Card 2 — IA Analyse en cours */
+  .card-ia{
+    position:absolute;left:540px;top:86px;width:425px;height:234px;border-radius:25px;
+    background:linear-gradient(180deg,rgba(242,242,242,0) 1.85%,#FFFFFF 26.25%);
+    filter:drop-shadow(0 4px 23px rgba(0,0,0,.25));overflow:hidden;
+  }
+  .card-ia::before{content:'';position:absolute;left:0;top:0;width:100%;height:80px;background:linear-gradient(90deg,#B9FBFF 5.39%,#D6BFFF 92.77%);border-radius:25px 25px 0 0}
+  .card-ia .x{position:absolute;right:14px;top:18px;width:31px;height:28px;background:var(--p50);border:1px solid var(--p100);border-radius:7px;display:grid;place-items:center;font:700 16px/1 'Inter';color:var(--p600)}
+  .card-ia .ttl{position:absolute;left:24px;top:24px;font:700 18px/22px 'Figtree';color:var(--ink-soft)}
+  .card-ia .step{position:absolute;left:24px;display:flex;align-items:center;gap:12px;font:500 16px/19px 'Figtree'}
+  .card-ia .step .b{width:14px;height:14px;border-radius:50%;flex-shrink:0;display:grid;place-items:center;color:#fff}
+  .card-ia .s1{top:74px;color:var(--green-400)}
+  .card-ia .s1 .b{background:var(--green-400)}
+  .card-ia .s2{top:106px;color:var(--pu700)}
+  .card-ia .s2 .b{background:var(--pu700)}
+  .card-ia .s3{top:140px;color:#D8D8D8}
+  .card-ia .s3 .b{background:#D8D8D8}
+  .card-ia .pb{position:absolute;left:24px;right:42px;bottom:18px;height:10px;background:var(--p50);border-radius:20px}
+  .card-ia .pb i{display:block;height:100%;width:40%;background:linear-gradient(90deg,#1F0569,#D4C7FE);border-radius:20px}
+
+  /* Card 3 — IA résultats */
+  .card-result{
+    position:absolute;left:822px;top:154px;width:461px;height:365px;border-radius:25px;
+    background:linear-gradient(180deg,rgba(242,242,242,0) 1.85%,#FFFAFA 26.25%);
+    filter:drop-shadow(0 4px 23px rgba(0,0,0,.25));overflow:hidden;
+  }
+  .card-result::before{content:'';position:absolute;left:0;top:0;width:100%;height:128px;background:linear-gradient(90deg,#B9FBFF 5.39%,#D6BFFF 92.77%);border-radius:25px 25px 0 0}
+  .card-result .x{position:absolute;right:14px;top:18px;width:31px;height:28px;background:var(--p50);border:1px solid var(--p100);border-radius:7px;display:grid;place-items:center;color:var(--p600);font:700 16px/1 'Inter'}
+  .card-result .ttl{position:absolute;left:24px;top:32px;font:700 18px/22px 'Figtree';color:var(--ink-soft)}
+  .card-result .step1{position:absolute;left:24px;top:67px;display:flex;align-items:center;gap:12px;font:500 16px/19px 'Figtree';color:var(--green-400)}
+  .card-result .step1 .b{width:14px;height:14px;border-radius:50%;background:var(--green-400)}
+  .card-result .row{position:absolute;left:48px;right:24px;height:34px;border-radius:5px;border:.5px solid;display:flex;align-items:center;padding:0 14px;gap:8px;font:500 16px/19px 'Figtree'}
+  .card-result .r1{top:112px;background:var(--p50);border-color:var(--pu500);color:var(--pu700)}
+  .card-result .r2{top:164px;background:#FFF6E6;border-color:var(--y300);color:var(--y600)}
+  .card-result .r3{top:216px;background:#E7F6F0;border-color:#90D3BA;color:var(--green-800)}
+  .card-result .ai{width:17px;height:17px;display:grid;place-items:center;color:currentColor;flex-shrink:0}
+  .card-result .actions{position:absolute;right:24px;bottom:18px;display:flex;gap:12px}
+  .card-result .actions .prim{padding:8px 14px;background:var(--p600);border-radius:8px;color:#fff;font:500 14px/21px 'Figtree';border:0;cursor:pointer}
+  .card-result .actions .ghost{padding:8px 14px;background:#EEF2FF;border-radius:8px;color:var(--p600);font:500 14px/21px 'Figtree';border:0;cursor:pointer}
+
+  /* SECTION 9 templates */
+  .sec-templates{position:relative;background:#fff;width:1728px;padding:90px 0 80px;text-align:center}
+  .sec-templates .hd p{font:400 24px/1.25 'Sora';color:var(--p900);max-width:840px;margin:18px auto 0}
+  .tpl-grid{display:grid;grid-template-columns:repeat(3,420px);gap:24px;width:1300px;margin:50px auto 0}
+  .tpl{
+    background:#fff;border:1px solid var(--p50);border-radius:18px;padding:30px;text-align:left;
+    transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+    display:flex;flex-direction:column;gap:14px;
+  }
+  .tpl:hover{transform:translateY(-3px);box-shadow:0 18px 40px -16px rgba(40,40,240,.12);border-color:var(--p200)}
+  .tpl .ic{width:46px;height:46px;border-radius:12px;background:var(--p50);color:var(--p500);display:grid;place-items:center}
+  .tpl.tpl-emerald .ic{background:#E7F6F0;color:var(--green-600)}
+  .tpl.tpl-amber .ic{background:#FFF6E6;color:var(--y600)}
+  .tpl.tpl-purple .ic{background:var(--pu50);color:var(--pu700)}
+  .tpl h3{font:700 18px/1.3 'Sora';color:var(--p900)}
+  .tpl p{font:400 15px/1.5 'Figtree';color:var(--ink-soft)}
+  .tpl .pill{align-self:flex-start;font:600 11px/1 'Inter';padding:5px 10px;border-radius:99px;background:var(--p50);color:var(--p500);text-transform:uppercase;letter-spacing:.04em}
+
+  /* SECTION transcription tableau */
+  .sec-table{position:relative;width:1728px;background:#fff;padding:50px 0 90px}
+  .table-wrap{margin:0 auto;width:1300px}
+  .terminee-card{
+    background:linear-gradient(183deg,rgba(127,197,169,.05) -244%,#fff 36%);
+    border:.5px solid var(--green-600);box-shadow:0 1px 10.4px rgba(0,0,0,.1);border-radius:14px;padding:24px 30px;
+  }
+  .terminee-card .top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+  .terminee-card .top .l{display:flex;align-items:center;gap:10px;font:700 16px/19px 'Figtree';color:var(--ink-soft)}
+  .terminee-card .top .l .d{width:11px;height:11px;border-radius:50%;background:var(--green-600)}
+  .terminee-card .top .r{display:flex;gap:10px;align-items:center}
+  .terminee-card .pill-status{padding:5px 18px;background:#E7F6F0;border:1px solid var(--green-600);border-radius:48px;font:500 14px/17px 'Figtree';color:var(--green-800)}
+  .terminee-card .pill-pct{padding:5px 10px;background:var(--green-400);border-radius:48px;font:500 14px/17px 'Figtree';color:var(--green-800)}
+  .terminee-card .chev{width:32px;height:31px;background:rgba(234,234,254,.4);border-radius:5px;display:grid;place-items:center}
+  .terminee-card .meta{display:flex;gap:26px;font:500 14px/17px 'Figtree';color:var(--ink-soft);margin-bottom:18px}
+  .terminee-card .meta .it{display:flex;align-items:center;gap:6px}
+  .terminee-card .pills{display:flex;align-items:center;gap:14px;background:var(--gray-light);border-radius:8px;padding:5px 11px;margin-bottom:24px}
+  .terminee-card .pills .p{display:flex;align-items:center;gap:4px;font:500 14px/17px 'Figtree';color:var(--p200)}
+  .terminee-card .pills .pill-ask{margin-left:auto;display:inline-flex;align-items:center;gap:4px;padding:8px 19px;background:#fff;border:.5px solid var(--p100);box-shadow:0 1px 10.4px rgba(0,0,0,.1);border-radius:5px;color:var(--p500)}
+  .terminee-card hr{border:0;border-top:1px solid #B4E2D0;margin:18px 0}
+  .terminee-card .extract-h{font:700 16px/19px 'Figtree';color:var(--ink-soft);margin-bottom:14px}
+  .terminee-card .extract{display:flex;gap:12px;margin-bottom:14px}
+  .terminee-card .extract .av{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#A0AEC0,#4A5568);border:2px solid #fff;flex-shrink:0;background-size:cover}
+  .terminee-card .extract .body .name{font:500 14px/17px 'Figtree';color:var(--ink-soft);margin-bottom:4px}
+  .terminee-card .extract .body .quote{font:500 16px/19px 'Figtree';color:#4D4D4D}
+  .terminee-card .open{display:inline-flex;align-items:center;gap:4px;font:500 14px/17px 'Figtree';color:var(--p600);text-decoration:underline}
+
+  /* SECTION Ask IA convo */
+  .sec-ask{position:relative;width:1728px;background:#fff;padding:90px 0 90px}
+  .ask-wrap{margin:0 auto;width:1300px;display:grid;grid-template-columns:520px 1fr;gap:80px;align-items:flex-start}
+  .ask-left h2{font:800 32px/1.2 'Sora';color:var(--p900);margin-bottom:24px;max-width:480px}
+  .ask-left p{font:400 18px/1.5 'Figtree';color:var(--ink-soft);margin-bottom:28px;max-width:480px}
+  .ask-left .feature{display:flex;gap:16px;margin-bottom:18px}
+  .ask-left .feature .ic{width:46px;height:46px;border-radius:12px;background:var(--p50);color:var(--p500);display:grid;place-items:center;flex-shrink:0}
+  .ask-left .feature .text h4{font:700 16px/1.3 'Sora';color:var(--p900);margin-bottom:4px}
+  .ask-left .feature .text p{font:400 14px/1.45 'Figtree';color:var(--ink-mute);margin:0}
+  .chat{background:var(--p50);border-radius:18px;padding:28px;display:flex;flex-direction:column;gap:14px}
+  .chat .me, .chat .ai{padding:14px 18px;border-radius:14px;font:500 15px/1.45 'Figtree';max-width:80%}
+  .chat .me{align-self:flex-end;background:var(--p500);color:#fff;border-bottom-right-radius:4px}
+  .chat .ai{align-self:flex-start;background:#fff;color:var(--ink-soft);border-bottom-left-radius:4px;box-shadow:0 1px 10.4px rgba(0,0,0,.06)}
+  .chat .ai b{color:var(--p500)}
+  .chat .input{margin-top:8px;background:#fff;border-radius:14px;padding:14px 18px;display:flex;align-items:center;gap:10px;font:300 14px/1.3 'Figtree';color:#888;border:.5px solid var(--p100)}
+  .chat .input .send{margin-left:auto;width:34px;height:34px;border-radius:8px;background:var(--p500);display:grid;place-items:center;color:#fff}
+
+  /* SECTION 4 mini cards (Ce que ça change) */
+  .sec-changes{position:relative;width:1728px;background:#fff;padding:80px 0 100px;text-align:center}
+  .changes-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;width:1380px;margin:60px auto 0}
+  .change-card{background:var(--p50);border-radius:14px;padding:30px 24px;text-align:center;display:flex;flex-direction:column;gap:14px;align-items:center}
+  .change-card .ic{width:64px;height:64px;border-radius:14px;background:#fff;color:var(--p900);display:grid;place-items:center}
+  .change-card h4{font:700 17px/1.3 'Sora';color:var(--p900)}
+  .change-card p{font:400 14px/1.45 'Figtree';color:var(--ink-soft)}
+
+  /* CTA finale */
+  .sec-cta{background:#fff;padding:60px 0 80px;width:1728px;text-align:center}
+  .sec-cta h2{font:800 32px/1.2 'Sora';color:var(--p900);max-width:680px;margin:0 auto}
+  .sec-cta p{font:400 24px/1.25 'Sora';color:var(--p900);margin-top:18px;max-width:840px;margin-left:auto;margin-right:auto}
+  .sec-cta .btns{display:flex;gap:24px;justify-content:center;margin-top:36px}
+
+  /* Advisor */
+  .advisor-sec{background:#fff;padding:30px 0 100px;width:1728px}
+  .advisor-card{margin:0 auto;width:1240px;border-radius:24px;background:#0E1023;color:#fff;display:grid;grid-template-columns:1fr 320px;align-items:center;gap:40px;padding:40px 56px;overflow:hidden;position:relative}
+  .advisor-card::before{content:'';position:absolute;inset:0;background:radial-gradient(600px 280px at 90% 50%, rgba(40,40,240,.35), transparent 60%);pointer-events:none}
+  .advisor-card .l{position:relative;z-index:1}
+  .advisor-card h3{font:700 28px/1.2 'Sora';color:#fff}
+  .advisor-card p{font:400 16px/1.45 'Figtree';color:#c9cce0;margin-top:12px;max-width:560px}
+  .advisor-card .btn-primary{margin-top:20px;background:var(--p500)}
+  .advisor-card .r{position:relative;z-index:1;display:grid;place-items:center}
+  .advisor-card .r .photo{width:180px;height:180px;border-radius:50%;background:linear-gradient(135deg,#FFD3A5,#FD6585);border:4px solid rgba(255,255,255,.1)}
+
+  /* Footer */
+  .footer{background:#0E1023;color:#cfd2e6;padding:80px 0 30px;width:1728px}
+  .footer .top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:60px;max-width:1380px;margin:0 auto}
+  .footer .brand p{font:400 14px/1.5 'Figtree';color:#9aa0bf;max-width:320px;margin-top:16px}
+  .footer .brand .socials{display:flex;gap:14px;margin-top:20px}
+  .footer .brand .socials a{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.07);display:grid;place-items:center;color:#fff;cursor:pointer}
+  .footer .col h4{font:700 14px/1 'Figtree';color:#fff;margin-bottom:18px;letter-spacing:.04em;text-transform:uppercase}
+  .footer .col ul{list-style:none}
+  .footer .col li{margin:10px 0;font:400 14px/1.5 'Figtree'}
+  .footer .col a{color:#9aa0bf;text-decoration:none;cursor:pointer}
+  .footer .col a:hover{color:#fff}
+  .footer .div{height:1px;background:rgba(255,255,255,.07);margin:50px auto 30px;max-width:1380px}
+  .footer .row{display:flex;justify-content:space-between;align-items:center;max-width:1380px;margin:0 auto;font:400 13px/1.5 'Figtree';color:#9aa0bf}
+</style>
+</head>
+<body>
+<div id="nav-fixed">
+  <div class="nav-stage" id="navStage">
+    <nav class="navbar">
+    <div class="logo"><a href="Landing Page.html"><img src="assets/meetnoo-logo.png" alt="MeetNoo" /></a></div>
+    <div class="links">
+      <a href="Landing Page.html">Accueil</a>
+      <div class="nav-svc">
+        <a style="color:var(--p500)">Nos services <i class="caret" style="border-top-color:var(--p500)"></i></a>
+        <div class="nav-svc-menu">
+          <a href="Meetnoo Events.html">
+            <span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M16 2v4M8 2v4M3 10h18"/><circle cx="12" cy="15" r="2"/></svg></span>
+            <span class="meta"><span class="t">MeetNoo Events</span><span class="s">Événements hybrides clé en main</span></span>
+          </a>
+          <a href="Gestion Salles Zoom.html">
+            <span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="m16 10 6-3v10l-6-3z"/></svg></span>
+            <span class="meta"><span class="t">Gestion des salles</span><span class="s">Pilotez votre flotte Zoom</span></span>
+          </a>
+          <a href="Transcription IA.html" class="active">
+            <span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg></span>
+            <span class="meta"><span class="t">Transcription &amp; Intelligence IA</span><span class="s">Audio → livrables exploitables</span></span>
+          </a>
+        </div>
+      </div>
+      <a>Blog</a>
+      <a>Pricing</a>
+    </div>
+    <div class="right">
+      <a class="links" style="cursor:pointer">Espaces client</a>
+      <a class="btn-dark" href="Contact.html" style="text-decoration:none">Contactez nous</a>
+    </div>
+  </nav>
+  </div>
+</div>
+<div id="stage-wrap">
+<div id="stage" data-screen-label="Transcription &amp; Intelligence IA">
+
+<!-- HERO -->
+<section class="hero" data-screen-label="Hero — Transcription IA">
+  
+
+  <div class="hero-deco"></div>
+
+  <h1>MeetNoo transcrit, corrige, synthétise et indexe chaque échange.</h1>
+  <p class="lead">Vos équipes posent leurs questions à l'IA. Vos décisions ne se perdent plus jamais.</p>
+  <div class="cta">
+    <a class="btn-primary" href="Contact.html" style="text-decoration:none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><rect x="3" y="6" width="14" height="12" rx="2"/><path d="M17 10l4-2v8l-4-2"/></svg>Démarrer une transcription</a>
+    <a class="btn-outline" href="Contact.html" style="text-decoration:none">Voir la démo<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+
+  <div class="hero-preview">
+    <div class="meet-card">
+      <div class="dot"></div>
+      <div class="title">Stand-up Technique Hebdo</div>
+      <div class="badge-tag"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9 3.5L21 9 12 5 3 9z"/><path d="M3 12.5L12 16l9-3.5"/></svg>Migration Infra</div>
+      <div class="meta-row">
+        <span class="it"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#141B34" stroke-width="1.5"><rect x="4" y="6" width="16" height="14" rx="2"/><path d="M8 4v4M16 4v4M4 12h16"/></svg>5 Fév. 2026</span>
+        <span class="it"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#141B34" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>20min</span>
+        <span class="it"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#141B34" stroke-width="1.5"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 19c.6-3 3-5 6-5s5.4 2 6 5M14 17c.5-2 2-3 4-3s3.5 1 4 3"/></svg>3 participants</span>
+      </div>
+      <div class="pill-prog"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>En cours</div>
+      <div class="pill-pct">72%</div>
+      <div class="chev"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--p900)" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg></div>
+      <hr/>
+      <div class="pills-bar">
+        <span class="p"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="m12 13 1 2 2 .5-1.5 1.4.4 2.1L12 18l-1.9 1 .4-2.1L9 15.5l2-.5z"/></svg>Résumé</span>
+        <span class="p"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg>Transcription</span>
+        <span class="pill-ask"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m12 13 1 2 2 .5-1.5 1.4.4 2.1L12 18l-1.9 1 .4-2.1L9 15.5l2-.5z"/></svg>Ask IA</span>
+      </div>
+    </div>
+    <div class="ia-input">
+      <div class="ph">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="#8787AA"><path d="m12 2 1.5 4.5L18 8l-4.5 1.5L12 14l-1.5-4.5L6 8l4.5-1.5L12 2z"/></svg>
+        Poser une question à Noo IA…
+      </div>
+      <div class="row">
+        <div class="l">
+          <button><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button>
+          <div class="pages"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2"><path d="m9 6 6 6-6 6" transform="rotate(180 12 12)"/></svg>1/4<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg></div>
+        </div>
+        <div class="r">
+          <button><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></button>
+          <button class="send"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION COÛT IMPRECISION -->
+<section class="sec-cost" data-screen-label="Coût imprécision">
+  <div class="cost-hd">
+    <h2>Le coût de l'imprécision.</h2>
+    <p>Chaque réunion est censée créer de la valeur. Pourtant, entre la discussion et l'action, une grande partie se perd.</p>
+  </div>
+  <div class="cost-grid">
+    <div class="cost-cell"><div class="num">42%</div><div class="lbl">Décisions mal comprises</div><div class="desc">Versions divergentes en sortie de réunion.</div></div>
+    <div class="cost-cell"><div class="num">35%</div><div class="lbl">Engagements oubliés</div><div class="desc">Actions jamais formalisées ni assignées.</div></div>
+    <div class="cost-cell"><div class="num">28%</div><div class="lbl">Responsabilités diluées</div><div class="desc">Pas de propriétaire clair sur les sujets.</div></div>
+    <div class="cost-cell"><div class="num">21h</div><div class="lbl">Temps perdu à répéter</div><div class="desc">Heures/mois consacrées à reformuler le déjà-dit.</div></div>
+  </div>
+</section>
+
+<!-- SECTION FLOW -->
+<section class="sec-flow" data-screen-label="De l'audio au livrable">
+  <div class="hd">
+    <h2>De l'audio brut au livrable validé.</h2>
+    <p>Chaque module s'enchaîne automatiquement. Vous récupérez un livrable exploitable — pas un brouillon à retravailler.</p>
+  </div>
+  <div class="flow-stage">
+    <div class="card-add">
+      <div class="h"><div class="t">Ajouter un projet</div><div class="x">×</div></div>
+      <label>Fichier audio / Vidéo *</label>
+      <p class="help">Importer votre fichier audio ou vidéo</p>
+      <div class="drop">
+        <div class="ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 4v12M6 10l6-6 6 6M4 20h16"/></svg></div>
+        <div class="tt">Glisser-déposer ou parcourir</div>
+        <div class="ts">MP3, MP4, WAV, M4A — jusqu'à 2&nbsp;Go</div>
+      </div>
+      <div class="field">
+        <label>Nom de la transcription (optionnel)</label>
+        <p class="help">Par défaut, le nom du fichier audio sera utilisé</p>
+        <div class="input">Comité Direction Mensuel</div>
+      </div>
+      <div class="field">
+        <label>Fichiers contextuels (optionnel)</label>
+        <p class="help">Ordre du jour, compte-rendu précédent, liste participants…</p>
+        <div class="input"><span class="pill">PDF</span><span style="color:#637381">3 fichiers ajoutés</span></div>
+      </div>
+      <div class="footer"><button class="ghost">Annuler</button><button class="prim">Lancer l'analyse</button></div>
+    </div>
+
+    <div class="card-ia">
+      <div class="x">×</div>
+      <div class="ttl">Noo IA — Analyse</div>
+      <div class="step s1"><span class="b"><svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg></span>Analyse des transcriptions</div>
+      <div class="step s2"><span class="b"></span>Extraction des insights</div>
+      <div class="step s3"><span class="b"></span>Génération du rapport</div>
+      <div class="pb"><i></i></div>
+    </div>
+
+    <div class="card-result">
+      <div class="x">×</div>
+      <div class="ttl">Noo IA — Analyse</div>
+      <div class="step1"><span class="b"></span>Analyse des transcriptions</div>
+      <div class="row r1"><span class="ai"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3 1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5L12 3z"/></svg></span>3 points d'action identifiés</div>
+      <div class="row r2"><span class="ai"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3 1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5L12 3z"/></svg></span>2 décisions en attente</div>
+      <div class="row r3"><span class="ai"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3 1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5L12 3z"/></svg></span>Score moyen : 88%</div>
+      <div class="actions"><button class="prim">Voir le rapport</button><button class="ghost">Plus tard</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 9 templates -->
+<section class="sec-templates" data-screen-label="9 templates">
+  <div class="hd">
+    <h2 class="title">Vos nouveaux outils de pilotage. Générés en secondes.</h2>
+    <p>Pas un simple compte rendu — de véritables outils de pilotage. 9 templates métier calibrés pour chaque cas d'usage.</p>
+  </div>
+  <div class="tpl-grid">
+    <div class="tpl"><span class="pill">Comité</span><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v5M16 4v5"/></svg></div><h3>Comité Direction</h3><p>Décisions stratégiques, votes, axes d'arbitrage. Synthèse formelle pour membres absents.</p></div>
+    <div class="tpl tpl-emerald"><span class="pill" style="background:#E7F6F0;color:var(--green-600)">Stand-up</span><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div><h3>Stand-up Tech</h3><p>Hier / Aujourd'hui / Bloqueurs par participant. Format daily prêt à coller dans Jira.</p></div>
+    <div class="tpl tpl-amber"><span class="pill" style="background:#FFF6E6;color:var(--y600)">Vente</span><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21V8l9-5 9 5v13"/><path d="M9 21v-7h6v7"/></svg></div><h3>RDV Commercial</h3><p>Pain points, objections, prochaine étape, score de closing. Push CRM en un clic.</p></div>
+    <div class="tpl tpl-purple"><span class="pill" style="background:var(--pu50);color:var(--pu700)">Recherche</span><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.5V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6.5"/><path d="m16 3 5 5-9 9H7v-5z"/></svg></div><h3>User Interview</h3><p>Verbatims, signaux faibles, frictions UX. Tagging automatique par thème.</p></div>
+    <div class="tpl"><span class="pill">RH</span><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></div><h3>Entretien Annuel</h3><p>Compétences, objectifs, plan de développement. Conforme RGPD, archive sécurisée.</p></div>
+    <div class="tpl tpl-emerald"><span class="pill" style="background:#E7F6F0;color:var(--green-600)">Public</span><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18M5 21V11l7-4 7 4v10M9 11h6"/></svg></div><h3>Conseil Municipal</h3><p>Délibérations, votes nominaux, PV verbatim. Formats CGCT et publication officielle.</p></div>
+    <div class="tpl tpl-amber"><span class="pill" style="background:#FFF6E6;color:var(--y600)">Project</span><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7h18l-2 13H5z"/><path d="M8 7V4h8v3"/></svg></div><h3>Sprint Review</h3><p>Vélocité, démos, retro, blocants. Synchro automatique Jira/Linear.</p></div>
+    <div class="tpl tpl-purple"><span class="pill" style="background:var(--pu50);color:var(--pu700)">Académique</span><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 7l10-4 10 4-10 4z"/><path d="M6 9v6c0 2 3 3 6 3s6-1 6-3V9"/></svg></div><h3>Conseil de Classe</h3><p>Bilan par élève, observations, décisions d'orientation. PV nominatif chiffré.</p></div>
+    <div class="tpl"><span class="pill">Workshop</span><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m12 3 9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/></svg></div><h3>Atelier Stratégie</h3><p>Idéation, clusters, votes pondérés, plan d'action priorisé. Export Miro.</p></div>
+  </div>
+</section>
+
+<!-- TABLEAU TRANSCRIPTION TERMINEE -->
+<section class="sec-table" data-screen-label="Transcription Terminée">
+  <div class="table-wrap">
+    <div class="terminee-card">
+      <div class="top">
+        <div class="l"><span class="d"></span>RÉUNION EXTRA ORDINAIRE DU 09 JANV 130819_001</div>
+        <div class="r">
+          <span class="pill-status">Terminé</span>
+          <span class="pill-pct">72%</span>
+          <span class="chev"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--p900)" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg></span>
+        </div>
+      </div>
+      <div class="meta">
+        <span class="it"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="6" width="16" height="14" rx="2"/><path d="M8 4v4M16 4v4M4 12h16"/></svg>5 Fév. 2026</span>
+        <span class="it"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>20min</span>
+        <span class="it"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 19c.6-3 3-5 6-5s5.4 2 6 5"/></svg>3 participants</span>
+        <span class="it" style="background:var(--p50);border:1px solid var(--p300);color:var(--p300);padding:5px 10px;border-radius:5px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7h6l2 2h10v10a2 2 0 0 1-2 2H3z"/></svg>Affilier à un projet</span>
+      </div>
+      <div class="pills">
+        <span class="p"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg>Résumé</span>
+        <span class="p" style="color:var(--p500)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg>Transcription</span>
+        <span class="pill-ask" style="margin-left:auto"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m12 3 1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5L12 3z"/></svg>Ask IA</span>
+      </div>
+      <hr/>
+      <div class="extract-h">Extrait de transcription</div>
+      <div class="extract">
+        <div class="av"></div>
+        <div class="body"><div class="name">Gabriel — 00:15</div><div class="quote">« … les points importants ont été discutés. La réunion a débuté avec une revue des actions précédentes… »</div></div>
+      </div>
+      <div class="extract">
+        <div class="av" style="background:linear-gradient(135deg,#F6AD55,#ED8936)"></div>
+        <div class="body"><div class="name">Désirée — 00:48</div><div class="quote">« Concernant le point suivant, nous avons convenu de prioriser la migration sur Q2… »</div></div>
+      </div>
+      <a class="open">Ouvrir la transcription complète <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 3h7v7M21 3l-9 9M5 5h6M5 5v6"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION ASK IA conversation -->
+<section class="sec-ask" data-screen-label="Ask IA conversation">
+  <div class="ask-wrap">
+    <div class="ask-left">
+      <h2>Noo IA — Posez vos questions. Elle vous répond.</h2>
+      <p>Interrogez n'importe quelle réunion en langage naturel. Noo IA explore le verbatim et cite ses sources horodatées.</p>
+      <div class="feature">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div>
+        <div class="text"><h4>Recherche transversale</h4><p>Croise toutes vos transcriptions, projets et fichiers contextuels.</p></div>
+      </div>
+      <div class="feature">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6h18M3 12h18M3 18h12"/></svg></div>
+        <div class="text"><h4>Sources horodatées</h4><p>Chaque réponse renvoie au passage exact de l'audio.</p></div>
+      </div>
+      <div class="feature">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7h6l2 2h10v10a2 2 0 0 1-2 2H3z"/></svg></div>
+        <div class="text"><h4>Mémoire de projet</h4><p>L'IA retient le contexte de vos comités sur la durée.</p></div>
+      </div>
+      <div class="feature">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="6" width="18" height="14" rx="2"/><path d="M8 2v4M16 2v4"/></svg></div>
+        <div class="text"><h4>Export instantané</h4><p>Réponses et synthèses exportables en PDF, DOCX ou Markdown.</p></div>
+      </div>
+    </div>
+    <div class="chat">
+      <div class="me">Quelles décisions ont été prises au comité du 9 janvier ?</div>
+      <div class="ai"><b>3 décisions</b> identifiées :<br/>• Validation du budget infra Q2<br/>• Recrutement de 2 lead devs<br/>• Migration vers Postgres 16 (échéance : <b>15 mars</b>)<br/><span style="color:var(--p500);font-size:12px">Sources : 04:12, 17:38, 22:05</span></div>
+      <div class="me">Qui est responsable de la migration ?</div>
+      <div class="ai">D'après la transcription : <b>Désirée Camille</b> (Lead Infra), avec validation hebdo en stand-up. <span style="color:var(--p500);font-size:12px">Source : 23:14</span></div>
+      <div class="input">Poser une question à Noo IA…<span class="send"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CE QUE ÇA CHANGE -->
+<section class="sec-changes" data-screen-label="Ce que ça change">
+  <h2 class="title">Ce que ça change concrètement.</h2>
+  <p class="sub">Gagnez du temps. Gagnez en gouvernance.</p>
+  <div class="changes-grid">
+    <div class="change-card"><div class="ic"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div><h4>Réunions deux fois plus efficaces</h4><p>Préparation, déroulé, livrable : tout est cadré.</p></div>
+    <div class="change-card"><div class="ic"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0z"/><path d="M9 12l2 2 4-4"/></svg></div><h4>Décisions sans ambiguïté</h4><p>Une seule version de la vérité, partagée à tous.</p></div>
+    <div class="change-card"><div class="ic"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M2 12h20"/></svg></div><h4>Mémoire collective renforcée</h4><p>Vos archives répondent. Vos équipes apprennent.</p></div>
+    <div class="change-card"><div class="ic"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7h18M3 12h18M3 17h12"/></svg></div><h4>Reporting sans effort</h4><p>Un PV propre, signé, archivé. Conforme RGPD.</p></div>
+  </div>
+</section>
+
+<!-- CTA FINALE -->
+<section class="sec-cta" data-screen-label="CTA finale">
+  <h2>Prêt à transformer vos réunions en intelligence actionnable ?</h2>
+  <p>Découvrez comment MeetNoo renforce votre gouvernance et accélère votre performance. Notre équipe vous accompagne de A à Z.</p>
+  <div class="btns">
+    <a class="btn-primary" href="Contact.html" style="text-decoration:none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Démarrer maintenant</a>
+    <a class="btn-outline" href="Contact.html" style="text-decoration:none">Demander une démo</a>
+  </div>
+</section>
+
+<!-- ADVISOR -->
+<section class="advisor-sec" data-screen-label="Conseiller">
+  <div class="advisor-card">
+    <div class="l">
+      <h3>Un conseiller MeetNoo vous répond.</h3>
+      <p>Discutons de votre cas d'usage : gouvernance, sécurité, intégrations, déploiement. Une démo personnalisée en 30 minutes.</p>
+      <a class="btn-primary" href="Contact.html" style="text-decoration:none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M3 5h4l3 7-2 1a11 11 0 0 0 5 5l1-2 7 3v4a2 2 0 0 1-2 2A18 18 0 0 1 3 7a2 2 0 0 1 0-2z"/></svg>Réserver un appel</a>
+    </div>
+    <div class="r"><div class="photo"></div></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="top">
+    <div class="brand">
+      <img src="assets/meetnoo-logo.png" alt="MeetNoo" style="height:36px;filter:brightness(0) invert(1)" />
+      <p>MeetNoo transcrit, corrige, synthétise et indexe vos échanges. Pour des décisions claires, des équipes alignées et une gouvernance renforcée.</p>
+      <div class="socials"><a>𝕏</a><a>in</a><a>fb</a><a>yt</a></div>
+    </div>
+    <div class="col"><h4>Produit</h4><ul><li><a>Transcription IA</a></li><li><a href="Gestion Salles Zoom.html">Gestion des salles</a></li><li><a>Émargement</a></li><li><a>Pricing</a></li></ul></div>
+    <div class="col"><h4>Ressources</h4><ul><li><a>Blog</a></li><li><a>Guides</a></li><li><a>API</a></li><li><a>Statut</a></li></ul></div>
+    <div class="col"><h4>Société</h4><ul><li><a>À propos</a></li><li><a>Carrières</a></li><li><a>Mentions légales</a></li><li><a>RGPD</a></li></ul></div>
+  </div>
+  <div class="div"></div>
+  <div class="row">
+    <span>© 2026 MeetNoo — Conçu à Station F · Ancré en Martinique</span>
+    <div class="il"><span>Français · FR</span><span>v 2.4.1</span></div>
+  </div>
+</footer>
+
+</div>
+</div>
+
+<script>
+(function(){
+  const stage = document.getElementById('stage');
+  const wrap = document.getElementById('stage-wrap');
+  const DESIGN_W = 1728;
+  function fit(){
+    const vw = window.innerWidth;
+    const s = vw / DESIGN_W;
+    stage.style.transform = 'scale(' + s + ')';
+    const __navStage = document.getElementById('navStage');
+    const __navFix = document.getElementById('nav-fixed');
+    if (__navStage){ __navStage.style.transform = 'translateX(-50%) scale(' + s + ')'; __navFix.style.height = (140 * s) + 'px'; }
+    const dh = stage.scrollHeight;
+    wrap.style.height = (dh * s) + 'px';
+  }
+  window.addEventListener('resize', fit);
+  window.addEventListener('load', () => { fit(); setTimeout(fit, 100); setTimeout(fit, 500); });
+  fit();
+})();
+</script>
+</body>
+</html>
