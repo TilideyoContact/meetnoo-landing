@@ -47,7 +47,7 @@
     overflow-x:hidden;
     background:#0b0e1a;
     display:flex;
-    justify-content:center;
+    justify-content:flex-start;
   }
   #stage{
     width:1728px;
@@ -206,7 +206,7 @@
     position:relative;
   }
   /* chat motion overlay sitting on top of the dashboard chat bar */
-  .chat-motion{position:absolute;left:285px;top:258px;width:805px;height:135px;pointer-events:none;overflow:hidden;font-family:'Figtree',sans-serif;color:#1a1a3a}
+  .chat-motion{position:absolute;left:325px;top:258px;width:765px;height:165px;pointer-events:none;overflow:hidden;font-family:'Figtree',sans-serif;color:#1a1a3a}
   .chat-motion .typed{position:absolute;left:0;top:0;right:0;font-size:13px;line-height:1.35;letter-spacing:-.005em;color:#1a1a3a;font-weight:500;white-space:nowrap;overflow:hidden}
   .chat-motion .typed .caret{display:inline-block;width:1.2px;height:13px;background:#2424da;margin-left:2px;vertical-align:-2px;animation:cm-blink .9s steps(1) infinite}
   @keyframes cm-blink{50%{opacity:0}}
@@ -1865,9 +1865,9 @@ France/DOM</div>
     if(!text || !reply || !bubble) return;
 
     const sequences = [
-      { q:"Quels sont les action items de ma réunion d'hier ?", a:"3 actions identifiées : valider le devis Adapei avant vendredi, relancer Marc sur le PV du comité de pilotage, et planifier la revue Q1 avec l'équipe produit pour la semaine prochaine." },
-      { q:"Résume les décisions prises cette semaine.", a:"5 décisions clés : budget 2026 validé à 1,2M€, embauche d'un PM senior confirmée pour mars, migration cloud reportée au T2, refonte de l'onboarding lancée, partenariat Adapei prolongé de 18 mois." },
-      { q:"Qui a le plus parlé en réunion comité de direction ?", a:"Sur 1h12 de discussion : Sophie (32%) a porté les sujets stratégiques, Marc (24%) sur la roadmap produit, Léa (18%) sur les RH, et 26% partagés entre les autres participants." }
+      { q:"Quels sont les action items de ma réunion d'hier ?", a:"5 actions identifiées avec leurs responsables : valider le devis Adapei avant vendredi (Marc), relancer le client Crédit Mutuel sur le PV du comité de pilotage (Sophie), planifier la revue Q1 avec l'équipe produit pour la semaine prochaine, mettre à jour la roadmap 2026 sur Notion (Léa), et préparer la présentation board pour le 14 mars." },
+      { q:"Résume les décisions prises cette semaine.", a:"7 décisions clés validées en comité : budget 2026 acté à 1,2M€, embauche d'un PM senior confirmée pour mars, migration cloud reportée au T2 pour stabilisation, refonte complète de l'onboarding lancée avec 4 sprints, partenariat Adapei prolongé de 18 mois, lancement du programme ambassadeurs en avril, et arrêt de la fonctionnalité legacy au 30 juin." },
+      { q:"Qui a le plus parlé en réunion comité de direction ?", a:"Sur 1h12 de discussion analysée : Sophie a porté 32% du temps de parole sur les sujets stratégiques et la vision produit, Marc 24% concentré sur la roadmap technique et l'architecture, Léa 18% sur les RH et la culture d'entreprise, Thomas 14% sur les finances et le pricing, et 12% partagés entre les 3 autres participants." }
     ];
 
     const dotsHTML = '<span class="dots"><span></span><span></span><span></span></span>';
