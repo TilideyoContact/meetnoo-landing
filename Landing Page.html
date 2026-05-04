@@ -557,6 +557,44 @@
   .pricing .toggle button{height:42px;padding:0 22px;border:0;background:transparent;font:600 14px/42px 'Figtree';color:var(--ink2);cursor:pointer;border-radius:9999px}
   .pricing .toggle button.active{background:var(--indigo-500);color:#fff}
   .pricing .grid{margin:48px auto 0;display:grid;grid-template-columns:repeat(3,380px);gap:24px;justify-content:center}
+  /* Extras grid: 2 large showcased cards */
+  .pricing .extras-grid{
+    margin:56px auto 0;display:grid;grid-template-columns:repeat(2,540px);gap:32px;justify-content:center;
+  }
+  .pricing .extras-grid .plan{
+    padding:40px 36px 36px;border-radius:24px;
+    position:relative;overflow:hidden;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .pricing .extras-grid .plan:hover{transform:translateY(-4px)}
+  .pricing .extras-grid .plan .badge-plan{
+    display:inline-block;font:600 11px/1 'Figtree';letter-spacing:.16em;text-transform:uppercase;
+    padding:7px 12px;border-radius:9999px;margin-bottom:18px;
+  }
+  .pricing .extras-grid .plan .lbl{font:700 20px/1.2 'Sora';margin-bottom:10px}
+  .pricing .extras-grid .plan .lbl .d{width:14px;height:14px}
+  .pricing .extras-grid .plan .desc{font:400 15px/1.5 'Figtree';color:var(--ink3);min-height:48px;margin-bottom:18px}
+  .pricing .extras-grid .plan .price{font:700 32px/1 'Sora';margin-bottom:18px}
+  .pricing .extras-grid .plan .cta{height:50px;line-height:50px;font:600 15px/50px 'Figtree';margin-bottom:24px}
+  .pricing .extras-grid .plan ul{column-count:2;column-gap:24px;padding-top:18px;border-top:1px solid rgba(20,16,60,.08);display:block;margin:0;list-style:none}
+  .pricing .extras-grid .plan ul li{break-inside:avoid;font:400 14px/1.5 'Figtree';color:var(--ink2);margin-bottom:12px;padding-left:28px;position:relative;display:block}
+  .pricing .extras-grid .plan ul li::before{position:absolute;left:0;top:2px;flex:initial;margin:0}
+  /* My MeetNoo Zoom — bleu marqué */
+  .pricing .extras-grid .extra-zoom{
+    background:linear-gradient(155deg,#FFFFFF 0%,#F1F8FF 100%);
+    box-shadow:0 0 0 2.5px #2D8CFF, 0 30px 70px -25px rgba(45,140,255,.40);
+  }
+  .pricing .extras-grid .extra-zoom .badge-plan{background:#2D8CFF;color:#fff}
+  .pricing .extras-grid .extra-zoom .cta{background:#2D8CFF;color:#fff;box-shadow:0 8px 22px -10px rgba(45,140,255,.55)}
+  .pricing .extras-grid .extra-zoom .cta:hover{background:#1a7ae8}
+  /* My MeetNoo Events — violet/lilas */
+  .pricing .extras-grid .extra-events{
+    background:linear-gradient(155deg,#FFFFFF 0%,#F4F1FF 100%);
+    box-shadow:0 0 0 2.5px #7C6BE8, 0 30px 70px -25px rgba(124,107,232,.40);
+  }
+  .pricing .extras-grid .extra-events .badge-plan{background:#7C6BE8;color:#fff}
+  .pricing .extras-grid .extra-events .cta{background:#7C6BE8;color:#fff;box-shadow:0 8px 22px -10px rgba(124,107,232,.55)}
+  .pricing .extras-grid .extra-events .cta:hover{background:#6a59d6}
   .plan{
     background:linear-gradient(155deg,#FFFFFF 0%,#FAFAFE 100%);border-radius:18px;padding:30px 28px;text-align:left;position:relative;
     box-shadow:0 0 0 1px rgba(228,229,233,.6),0 30px 60px -30px rgba(20,27,52,.16);
@@ -1637,69 +1675,40 @@ France/DOM</div>
 
   <!-- ==================== PRICING ==================== -->
   <section class="pricing" id="pricing">
-    <h2 class="section-title">Une tarification simple,<br/>au plus juste de vos besoins.</h2>
-    <p class="section-sub" style="max-width:900px">Démarrez gratuitement. Évoluez vers Pro quand vous êtes prêt. Souverain, RGPD, hébergé en France.</p>
-    <div class="toggle">
-      <button class="active">Facturation mensuelle</button>
-      <button>Facturation annuelle <span style="font-size:12px;background:var(--green);color:#fff;padding:2px 8px;border-radius:9px;margin-left:8px">-20%</span></button>
-    </div>
+    <h2 class="section-title">Choisissez la solution<br/>adaptée à vos enjeux.</h2>
+    <p class="section-sub" style="max-width:900px">Deux offres conçues sur mesure. Souverain, RGPD, hébergé en France.</p>
 
-    <div class="grid">
-      <div class="plan">
-        <div class="lbl"><span class="d"></span> My MeetNoo Freemium</div>
-        <div class="desc">Pour démarrer sans engagement</div>
-        <div class="price">Gratuit</div>
-        <a class="cta" href="Contact.html" style="text-decoration:none">Commencer gratuitement</a>
-        <ul>
-          <li>Portail My MeetNoo</li>
-          <li>Correction des segments
-(confiance faible)</li>
-          <li>RAG cross-projet (projet unique)</li>
-          <li>Transcription IA souveraine
-(crédits à la minute 0,75€/min)</li>
-          <li>9 templates de livrables métier
-(crédits par génération)</li>
-          <li>Alia — Chat IA (crédits par message)</li>
-          <li>Upload de documents de contexte</li>
-          <li>Diarisation par locuteur</li>
-          <li>Export DOCX, XLSX, PDF</li>
-          <li>Hébergement souverain France / RGPD</li>
-          <li>Support email</li>
-          <li>(avec licence Zoom existante)</li>
-        </ul>
-      </div>
-      <div class="plan featured">
-        <div class="lbl"><span class="d"></span> MeetNoo Pro <span style="font-size:12px;color:#fff;background:var(--indigo-500);padding:3px 10px;border-radius:9px;margin-left:auto">Recommandé</span></div>
-        <div class="desc">Pour les équipes qui transforment leurs réunions en actifs</div>
-        <div class="price">39€<small> / utilisateur / mois</small></div>
-        <a class="cta" href="Contact.html" style="text-decoration:none">Démarrer l'essai 14 jours</a>
-        <ul>
-          <li>Tout du plan Freemium, plus :</li>
-          <li>RAG cross-projet illimité</li>
-          <li>Crédits IA inclus (1 200 min / mois)</li>
-          <li>Alia — illimité</li>
-          <li>Templates personnalisés</li>
-          <li>Empreinte vocale par interlocuteur</li>
-          <li>Workspace partagé d'équipe</li>
-          <li>Connecteurs Zoom / Teams / Meet</li>
-          <li>SSO &amp; rôles avancés</li>
-          <li>Support prioritaire</li>
-        </ul>
-      </div>
-      <div class="plan">
-        <div class="lbl"><span class="d" style="background:var(--ink2)"></span> MeetNoo Entreprise</div>
-        <div class="desc">Pour les organisations qui structurent la donnée</div>
+    <div class="extras-grid">
+      <div class="plan extra-zoom">
+        <div class="badge-plan">Solution complète</div>
+        <div class="lbl"><span class="d" style="background:#2D8CFF"></span> My MeetNoo Zoom</div>
+        <div class="desc">Gestion des salles Zoom + transcription IA souveraine, dans une seule interface.</div>
         <div class="price">Sur devis</div>
-        <a class="cta" href="Contact.html" style="text-decoration:none">Contacter l'équipe</a>
+        <a class="cta" href="Contact.html" style="text-decoration:none">Demander une démo</a>
         <ul>
-          <li>Tout du plan Pro, plus :</li>
-          <li>Hébergement dédié (France/DOM)</li>
-          <li>Volumes illimités</li>
-          <li>Connecteurs SI sur mesure</li>
-          <li>Audit RGPD / DPO</li>
-          <li>SLA 99.9%</li>
-          <li>Customer Success dédié</li>
-          <li>Onboarding équipe</li>
+          <li>Console centralisée multi-comptes Zoom</li>
+          <li>Provisioning utilisateurs &amp; salles</li>
+          <li>Transcription IA souveraine intégrée</li>
+          <li>RAG cross-projet inclus</li>
+          <li>Audit log &amp; permissions granulaires</li>
+          <li>Hébergement souverain France / RGPD</li>
+          <li>Onboarding &amp; formation équipe</li>
+        </ul>
+      </div>
+      <div class="plan extra-events">
+        <div class="badge-plan">Événementiel hybride</div>
+        <div class="lbl"><span class="d" style="background:#7C6BE8"></span> My MeetNoo Events</div>
+        <div class="desc">L'événementiel hybride clé en main : AG, CA, formations, ateliers.</div>
+        <div class="price">Sur devis</div>
+        <a class="cta" href="Contact.html" style="text-decoration:none">Demander une démo</a>
+        <ul>
+          <li>Streaming live multi-régies</li>
+          <li>Émargement &amp; quorum dématérialisés</li>
+          <li>Sondages &amp; votes en direct</li>
+          <li>Réseau d'ingénieurs régie sur site</li>
+          <li>Rapports post-événement automatisés</li>
+          <li>Hébergement souverain France / RGPD</li>
+          <li>Chef de projet dédié</li>
         </ul>
       </div>
     </div>

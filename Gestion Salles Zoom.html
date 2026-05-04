@@ -36,11 +36,12 @@
   body{font-family:'Sora',system-ui,sans-serif;color:var(--ink)}
 
   /* Stage */
-  #stage-wrap{width:100vw;overflow-x:hidden;background:#0b0e1a;display:flex;justify-content:center}
+  #stage-wrap{width:100vw;overflow-x:hidden;background:#0b0e1a;display:flex;justify-content:flex-start}
   #stage{width:1728px;transform-origin:top left;background:#fff}
   #nav-fixed{position:fixed;left:0;top:0;width:100vw;height:140px;z-index:1000;pointer-events:none}
   #nav-fixed .nav-stage{position:absolute;left:50%;top:0;width:1728px;height:140px;transform-origin:top center;pointer-events:none}
   #nav-fixed .navbar{pointer-events:auto}
+  #nav-fixed .nav-svc-menu{pointer-events:auto}
 
   /* Helpers */
   .figtree{font-family:'Figtree',sans-serif}
@@ -103,7 +104,7 @@
     position:absolute;left:50%;top:calc(100% + 18px);transform:translateX(-50%) translateY(-6px);
     min-width:280px;background:#fff;border-radius:14px;
     box-shadow:0 24px 60px -12px rgba(20,27,52,.25), 0 0 0 1px rgba(33,52,100,.06);
-    padding:10px;opacity:0;pointer-events:none;transition:opacity .18s ease, transform .18s ease;z-index:60;
+    padding:10px;opacity:0;pointer-events:none;transition:opacity .18s ease, transform .18s ease;z-index:1200;
   }
   .nav-svc-menu::before{
     content:"";position:absolute;left:50%;top:-6px;width:12px;height:12px;background:#fff;
