@@ -335,18 +335,28 @@
   .keys-mock .c2{left:160px;top:60px;transform:rotate(1deg)}
   .keys-mock .c3{left:50px;top:200px;transform:rotate(-.5deg)}
 
-  /* Trois facons de demarrer */
+  /* Trois facons de demarrer — Zoom blue pastel gradient cards */
   .three-ways{position:relative;background:#fff;padding:80px 0 100px;width:1728px;text-align:center}
-  .three-ways .grid{display:grid;grid-template-columns:repeat(3,360px);gap:40px;margin:60px auto 0;width:1180px}
+  .three-ways .grid{display:grid;grid-template-columns:repeat(3,360px);gap:32px;margin:60px auto 0;width:1180px}
   .way-card{
-    background:#fff;border:1px solid var(--line);border-radius:18px;padding:34px;
-    text-align:left;display:flex;flex-direction:column;gap:16px;
-    transition:transform .15s ease, box-shadow .15s ease;
+    position:relative;border-radius:20px;padding:34px;
+    text-align:left;display:flex;flex-direction:column;gap:18px;
+    background:
+      linear-gradient(#fff,#fff) padding-box,
+      linear-gradient(135deg,#DCE7FF 0%,#B6CCFF 50%,#8AAEFF 100%) border-box;
+    border:1.5px solid transparent;
+    box-shadow:0 4px 18px -10px rgba(45,140,240,.18);
+    transition:transform .2s ease, box-shadow .2s ease;
   }
-  .way-card:hover{transform:translateY(-4px);box-shadow:0 20px 40px -20px rgba(40,40,240,.18)}
-  .way-card .ico{width:52px;height:52px;border-radius:12px;display:grid;place-items:center;background:var(--indigo-50);color:var(--indigo-500)}
+  .way-card:hover{transform:translateY(-4px);box-shadow:0 22px 44px -18px rgba(45,140,240,.32)}
+  .way-card .ico{
+    width:54px;height:54px;border-radius:14px;display:grid;place-items:center;
+    background:linear-gradient(135deg,#E5EEFF,#C6D8FF);
+    color:#2D8CF0;
+  }
+  .way-card .ico svg{width:26px;height:26px}
   .way-card h3{font:700 22px/1.25 'Sora';color:var(--indigo-900)}
-  .way-card p{font:400 17px/1.5 'Figtree';color:var(--ink3)}
+  .way-card p{font:400 16.5px/1.55 'Figtree';color:var(--ink3)}
 
   /* Cinq profils — soft band */
   .roles-sec{background:#EAEAFE;width:1728px;padding:120px 0;position:relative}
@@ -413,6 +423,16 @@
   .footer .row{display:flex;justify-content:space-between;align-items:center;max-width:1380px;margin:0 auto;font:400 13px/1.5 'Figtree';color:#9aa0bf}
   .footer .row .il{display:flex;gap:48px}
   .footer .row .il span{display:inline-flex;align-items:center;gap:8px}
+
+  /* Navbar scroll-driven frosted glass intensification */
+  .navbar{transition:background .35s ease, backdrop-filter .35s ease, box-shadow .35s ease, border-color .35s ease;}
+  .navbar.scrolled{
+    background:linear-gradient(120deg,rgba(255,255,255,.78),rgba(248,247,255,.85) 50%,rgba(238,238,255,.82));
+    backdrop-filter:blur(22px) saturate(1.4);-webkit-backdrop-filter:blur(22px) saturate(1.4);
+    border-color:rgba(255,255,255,.85);
+    box-shadow:0 14px 44px -18px rgba(33,52,100,.32);
+  }
+
 </style>
 </head>
 <body>
@@ -439,15 +459,15 @@
               </a>
             </div>
           </div>
-          <a>Blog</a>
-          <a>Pricing</a>
+          <a href="Landing Page.html#blog">Blog</a>
+          <a href="Landing Page.html#pricing">Pricing</a>
         </div>
         <div class="right">
           <a href="Gestion Salles Zoom.html" class="nav-cta-svc active">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="m16 10 6-3v10l-6-3z"/></svg>
             Gestion des salles
           </a>
-          <a class="links" style="cursor:pointer">Espaces client</a>
+          <a class="links" href="https://beta.meetnoo.com/" target="_blank" rel="noopener" style="cursor:pointer;text-decoration:none">Espaces client</a>
           <a class="btn-dark" href="Contact.html" style="text-decoration:none">Contactez nous</a>
         </div>
       </nav>
@@ -500,27 +520,52 @@
     <!-- ==================== 3 SECTIONS SCROLL-DRIVEN ==================== -->
     <section class="trois-sections" data-screen-label="3 sections produit">
       <div class="ts-header">
-        <h2>Trois espaces, un seul tableau de bord.</h2>
-        <p>Vos salles, votre planning et vos archives — tout reste connecté. Faites défiler pour découvrir chaque vue.</p>
+        <h2>Quatre espaces, un seul tableau de bord.</h2>
+        <p>Vos salles, vos réunions à venir, vos archives et votre calendrier — tout reste connecté.</p>
       </div>
 
       <div class="ts-stage">
         <div class="ts-copy">
-          <div class="ts-step is-active" data-step="0">
-            <span class="ts-num">01</span>
-            <h3>Salles</h3>
-            <p>Toutes vos salles Zoom regroupées dans une seule vue. Visualisez en un coup d'œil le code, le propriétaire, le nombre de réunions et la durée moyenne. Ajoutez ou retirez une salle en un clic, sans toucher à la console Zoom.</p>
-          </div>
-          <div class="ts-step" data-step="1">
-            <span class="ts-num">02</span>
-            <h3>À venir</h3>
-            <p>Votre planning unifié, fusion temps réel de Google Calendar, Outlook et CalDAV. Chaque réunion affiche l'horaire, la salle, les participants et la plateforme — Zoom ou Meet. Rejoignez sans copier-coller de lien.</p>
-          </div>
-          <div class="ts-step" data-step="2">
-            <span class="ts-num">03</span>
-            <h3>Passées</h3>
-            <p>Toutes vos réunions archivées avec leurs livrables : vidéo, audio, chat, transcription. Relisez, partagez ou lancez une transcription IA a posteriori sur n'importe quelle réunion enregistrée.</p>
-          </div>
+          <a class="ts-step ix-lilac is-active" data-step="0">
+            <div class="ix">
+              <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 4v16"/></svg>
+            </div>
+            <div class="ts-step-body">
+              <h4><span class="ts-num">01</span> Salles <span class="trx-arrow">→</span></h4>
+              <p>Toutes vos salles Zoom regroupées dans une seule vue. Visualisez en un coup d'œil le code, le propriétaire, le nombre de réunions et la durée moyenne. Ajoutez ou retirez une salle en un clic, sans toucher à la console Zoom.</p>
+            </div>
+            <div class="ts-chev"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+          </a>
+          <a class="ts-step ix-peach" data-step="1">
+            <div class="ix">
+              <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 3v4"/><path d="M16 3v4"/></svg>
+            </div>
+            <div class="ts-step-body">
+              <h4><span class="ts-num">02</span> À venir <span class="trx-arrow">→</span></h4>
+              <p>Votre planning unifié, fusion temps réel de Google Calendar, Outlook et CalDAV. Chaque réunion affiche l'horaire, la salle, les participants et la plateforme — Zoom ou Meet. Rejoignez sans copier-coller de lien.</p>
+            </div>
+            <div class="ts-chev"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+          </a>
+          <a class="ts-step ix-mint" data-step="2">
+            <div class="ix">
+              <svg viewBox="0 0 24 24"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg>
+            </div>
+            <div class="ts-step-body">
+              <h4><span class="ts-num">03</span> Passées <span class="trx-arrow">→</span></h4>
+              <p>Toutes vos réunions archivées avec leurs livrables : vidéo, audio, chat, transcription. Relisez, partagez ou lancez une transcription IA a posteriori sur n'importe quelle réunion enregistrée.</p>
+            </div>
+            <div class="ts-chev"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+          </a>
+          <a class="ts-step ix-sky" data-step="3">
+            <div class="ix">
+              <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 11h18"/><path d="M8 3v4"/><path d="M16 3v4"/><rect x="6" y="13" width="6" height="3" rx="1"/></svg>
+            </div>
+            <div class="ts-step-body">
+              <h4><span class="ts-num">04</span> Calendrier <span class="trx-arrow">→</span></h4>
+              <p>Une vue calendrier complète, mois / semaine / jour, qui agrège toutes vos réunions sur une seule timeline. Code couleur par statut, rejoindre la réunion en un clic, créez ou planifiez une réunion instantanée depuis la grille.</p>
+            </div>
+            <div class="ts-chev"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+          </a>
         </div>
 
         <div class="ts-visual-wrap">
@@ -533,9 +578,28 @@
           <div class="ts-visual" data-visual="2">
             <img src="assets/section-passees.png" alt="Réunions passées" />
           </div>
+          <div class="ts-visual" data-visual="3">
+            <img src="assets/section-calendrier.png" alt="Calendrier des réunions" />
+          </div>
         </div>
       </div>
     </section>
+
+    <script>
+      (function(){
+        const steps = document.querySelectorAll('.trois-sections .ts-step');
+        const visuals = document.querySelectorAll('.trois-sections .ts-visual');
+        if(!steps.length) return;
+        function activate(idx){
+          steps.forEach(s => s.classList.toggle('is-active', s.dataset.step == idx));
+          visuals.forEach(v => v.classList.toggle('is-active', v.dataset.visual == idx));
+        }
+        steps.forEach(s => {
+          s.addEventListener('mouseenter', () => activate(s.dataset.step));
+          s.addEventListener('click', (e) => { e.preventDefault(); activate(s.dataset.step); });
+        });
+      })();
+    </script>
 
     <style>
       .trois-sections{
@@ -556,96 +620,100 @@
         display:grid;grid-template-columns:minmax(400px, 520px) 1fr;gap:80px;align-items:flex-start;
       }
       .trois-sections .ts-copy{
-        position:sticky;top:120px;
-        display:flex;flex-direction:column;gap:18px;
+        display:flex;flex-direction:column;gap:14px;
         padding:40px 0;
       }
+      /* per-step palettes — match homepage trx-feat */
+      .trois-sections .ts-step.ix-lilac{--feat-tint:rgba(201,194,247,.18);--feat-glow:rgba(150,135,240,.55);--feat-border:rgba(150,135,240,.32);--feat-border-on:rgba(124,107,232,.55);--feat-shadow:rgba(124,107,232,.22);--feat-arrow:#5B4BD6}
+      .trois-sections .ts-step.ix-peach{--feat-tint:rgba(255,201,161,.16);--feat-glow:rgba(255,170,110,.55);--feat-border:rgba(255,170,110,.32);--feat-border-on:rgba(255,150,80,.55);--feat-shadow:rgba(255,150,80,.22);--feat-arrow:#B45309}
+      .trois-sections .ts-step.ix-mint{--feat-tint:rgba(166,229,200,.20);--feat-glow:rgba(80,200,140,.50);--feat-border:rgba(80,200,140,.32);--feat-border-on:rgba(52,180,124,.55);--feat-shadow:rgba(52,180,124,.22);--feat-arrow:#0F8A5F}
+      .trois-sections .ts-step.ix-sky{--feat-tint:rgba(181,202,247,.20);--feat-glow:rgba(105,150,235,.55);--feat-border:rgba(105,150,235,.32);--feat-border-on:rgba(60,110,230,.55);--feat-shadow:rgba(60,110,230,.22);--feat-arrow:#1E47C7}
       .trois-sections .ts-step{
-        padding:24px 28px;border-radius:18px;
-        background:rgba(255,255,255,.6);
-        border:1.5px solid rgba(20,16,60,.08);
-        box-shadow:0 4px 12px -6px rgba(20,16,60,.05);
-        cursor:pointer;
-        transition:all .4s cubic-bezier(.2,.8,.2,1);
-        opacity:.55;
+        display:flex;gap:18px;padding:22px 24px;border-radius:18px;
+        border:1.5px solid var(--feat-border);background:rgba(255,255,255,.55);
+        text-decoration:none;color:inherit;cursor:pointer;
+        transition:all .35s cubic-bezier(.2,.8,.2,1);
+        position:relative;overflow:hidden;isolation:isolate;
       }
-      .trois-sections .ts-step:hover{opacity:.85}
+      .trois-sections .ts-step::after{
+        content:"";position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;
+        background:var(--feat-glow);filter:blur(50px);opacity:0;z-index:-1;pointer-events:none;
+        transition:opacity .35s ease, transform .35s ease;
+      }
+      .trois-sections .ts-step:hover,
       .trois-sections .ts-step.is-active{
-        opacity:1;
-        background:#fff;
-        border-color:rgba(124,107,232,.4);
-        box-shadow:0 16px 40px -10px rgba(124,107,232,.22), inset 0 0 0 1px rgba(124,107,232,.3);
+        background:#fff;border-color:var(--feat-border-on);
+        box-shadow:0 16px 40px -8px var(--feat-shadow), inset 0 0 0 1px var(--feat-border-on);
         transform:translateX(4px);
       }
+      .trois-sections .ts-step:hover::after,
+      .trois-sections .ts-step.is-active::after{opacity:.85;transform:scale(1.05)}
+
+      .trois-sections .ts-step .ix{
+        flex-shrink:0;width:52px;height:52px;border-radius:14px;display:grid;place-items:center;
+        position:relative;transition:all .35s;
+        box-shadow:inset 0 1px 0 rgba(255,255,255,.75),0 12px 24px -10px rgba(40,40,240,.25),0 0 0 1px rgba(255,255,255,.6);
+      }
+      .trois-sections .ts-step .ix svg{position:relative;z-index:1;width:26px;height:26px;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;fill:none;stroke:currentColor;transition:transform .35s ease}
+      .trois-sections .ts-step .ix::after{content:"";position:absolute;inset:5px;border-radius:11px;background:linear-gradient(160deg,rgba(255,255,255,.55),rgba(255,255,255,0) 55%);pointer-events:none}
+      .trois-sections .ts-step:hover .ix svg,
+      .trois-sections .ts-step.is-active .ix svg{transform:scale(1.06)}
+      .trois-sections .ts-step.ix-lilac .ix{background:linear-gradient(135deg,#E9E5FF 0%,#C9C2F7 100%);color:#5B4BD6}
+      .trois-sections .ts-step.ix-peach .ix{background:linear-gradient(135deg,#FFE9D6 0%,#FFC9A1 100%);color:#B45309}
+      .trois-sections .ts-step.ix-mint  .ix{background:linear-gradient(135deg,#D9F5E8 0%,#A6E5C8 100%);color:#0E7A52}
+      .trois-sections .ts-step.ix-sky   .ix{background:linear-gradient(135deg,#DCE7FF 0%,#9BB7F2 100%);color:#2A4DBF}
+
+      .trois-sections .ts-step .ts-step-body{flex:1;min-width:0}
+      .trois-sections .ts-step h4{
+        font:700 18px/1.3 'Figtree';color:rgb(14,14,84);margin:0;display:flex;align-items:center;gap:10px;
+      }
       .trois-sections .ts-step .ts-num{
-        display:inline-block;font:700 12px/1 'Figtree';color:#7C6BE8;letter-spacing:.12em;
-        padding:6px 10px;border-radius:99px;background:rgba(124,107,232,.1);
-        margin-bottom:14px;
+        font:700 11px/1 'Figtree';color:var(--feat-arrow);letter-spacing:.14em;
+        padding:5px 9px;border-radius:99px;background:rgba(0,0,0,.04);
       }
-      .trois-sections .ts-step.is-active[data-step="1"] .ts-num{color:#FF8A47;background:rgba(255,138,71,.1)}
-      .trois-sections .ts-step.is-active[data-step="2"] .ts-num{color:#0E7A52;background:rgba(14,122,82,.1)}
-      .trois-sections .ts-step h3{
-        font:700 26px/1.2 'Sora';color:rgb(14,14,84);margin:0 0 10px;
+      .trois-sections .ts-step .trx-arrow{
+        display:inline-block;font-size:16px;color:var(--feat-arrow);opacity:0;transform:translateX(-6px);transition:all .35s;margin-left:auto;
       }
+      .trois-sections .ts-step:hover .trx-arrow,
+      .trois-sections .ts-step.is-active .trx-arrow{opacity:1;transform:translateX(0)}
       .trois-sections .ts-step p{
-        font:400 15px/1.6 'Figtree';color:#4a4f78;margin:0;text-wrap:pretty;
+        font:400 14.5px/1.6 'Figtree';color:#5a607a;margin:0;text-wrap:pretty;
+        max-height:0;opacity:0;overflow:hidden;
+        transition:max-height .35s ease, opacity .25s ease, margin-top .35s ease;
       }
+      .trois-sections .ts-step:hover p,
+      .trois-sections .ts-step.is-active p{max-height:200px;opacity:1;margin-top:8px}
+      .trois-sections .ts-step .ts-chev{
+        flex-shrink:0;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;
+        color:#8a8eb0;background:rgba(20,16,60,.04);transition:all .35s ease;align-self:center;
+      }
+      .trois-sections .ts-step .ts-chev svg{width:14px;height:14px;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;fill:none;stroke:currentColor}
+      .trois-sections .ts-step:hover .ts-chev,
+      .trois-sections .ts-step.is-active .ts-chev{transform:rotate(180deg);color:rgb(14,14,84);background:rgba(20,16,60,.08)}
 
       .trois-sections .ts-visual-wrap{
-        position:relative;
-        min-height:1500px;
+        position:sticky;top:120px;
+        width:100%;height:540px;
       }
       .trois-sections .ts-visual{
-        position:sticky;top:120px;
-        width:100%;
+        position:absolute;inset:0;
         border-radius:18px;overflow:hidden;
         box-shadow:0 40px 80px -30px rgba(40,30,120,.28), 0 16px 32px -16px rgba(40,30,120,.14), inset 0 0 0 1px rgba(20,16,60,.05);
         background:linear-gradient(155deg,#FBFAFF 0%,#F4F1FF 100%);
         opacity:0;transform:translateY(20px) scale(.98);
         transition:opacity .5s ease, transform .5s cubic-bezier(.2,.8,.2,1);
         pointer-events:none;
+        display:flex;align-items:center;justify-content:center;padding:24px;
       }
       .trois-sections .ts-visual.is-active{
         opacity:1;transform:translateY(0) scale(1);pointer-events:auto;
       }
-      /* stack: only the active one's height drives layout */
-      .trois-sections .ts-visual:not(:first-child){margin-top:-100%}
       .trois-sections .ts-visual img{
-        display:block;width:100%;height:auto;
+        display:block;max-width:100%;max-height:100%;width:auto;height:auto;border-radius:10px;
       }
     </style>
 
-    <script>
-      (function(){
-        const steps = document.querySelectorAll('.trois-sections .ts-step');
-        const visuals = document.querySelectorAll('.trois-sections .ts-visual');
-        const wrap = document.querySelector('.trois-sections .ts-visual-wrap');
-        if(!steps.length || !wrap) return;
 
-        function activate(idx){
-          steps.forEach(s => s.classList.toggle('is-active', s.dataset.step == idx));
-          visuals.forEach(v => v.classList.toggle('is-active', v.dataset.visual == idx));
-        }
-
-        // Click activates
-        steps.forEach(s => s.addEventListener('click', () => activate(s.dataset.step)));
-
-        // Scroll-driven: split the wrap's scroll range into 3 thirds
-        function onScroll(){
-          const rect = wrap.getBoundingClientRect();
-          const vh = window.innerHeight;
-          const total = rect.height - vh;
-          const passed = Math.max(0, Math.min(total, -rect.top + vh*0.3));
-          const ratio = total > 0 ? passed / total : 0;
-          let idx = 0;
-          if(ratio > 0.66) idx = 2;
-          else if(ratio > 0.33) idx = 1;
-          activate(idx);
-        }
-        window.addEventListener('scroll', onScroll, {passive:true});
-        onScroll();
-      })();
-    </script>
 
     <!-- ==================== FEATURES 2x3 ==================== -->
     <section class="sec-light" data-screen-label="Features 6">
@@ -761,35 +829,6 @@
     </section>
 
     <!-- ==================== TROIS FACONS DE DEMARRER ==================== -->
-    <section class="three-ways" data-screen-label="Trois façons">
-      <h2 class="section-title">Trois façons de démarrer.</h2>
-      <p class="section-sub">Quelle que soit votre situation, MeetNoo s'adapte à votre infrastructure existante.</p>
-
-      <div class="grid">
-        <div class="way-card">
-          <div class="ico">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 9h6v6H9z"/></svg>
-          </div>
-          <h3>Avec votre compte Zoom</h3>
-          <p>Connectez votre compte Zoom Pro / Business / Enterprise existant. MeetNoo se branche dessus en 1 clic : aucune migration, vos salles sont synchronisées immédiatement.</p>
-        </div>
-        <div class="way-card">
-          <div class="ico">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>
-          </div>
-          <h3>Avec une salle Zoom éphémère</h3>
-          <p>Pas de compte Zoom ? MeetNoo génère une salle éphémère à la volée, sans inscription. Idéale pour les visios ponctuelles ou les invités externes.</p>
-        </div>
-        <div class="way-card">
-          <div class="ico">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7l9 6 9-6M3 7v10a2 2 0 002 2h14a2 2 0 002-2V7M3 7l9-4 9 4"/></svg>
-          </div>
-          <h3>Avec un compte fourni</h3>
-          <p>MeetNoo vous met à disposition une licence Zoom incluse dans nos forfaits Pro et Business. Activation en moins de 24h, support inclus.</p>
-        </div>
-      </div>
-    </section>
-
     <!-- ==================== CINQ PROFILS ==================== -->
     <section class="roles-sec" data-screen-label="Cinq profils">
       <div class="roles-wrap">
@@ -826,52 +865,46 @@
       </div>
     </section>
 
-    <!-- ==================== CONCIERGERIE PREMIUM ==================== -->
-    <section class="concierge-sec" data-screen-label="Conciergerie premium">
-      <h2 class="section-title">Une conciergerie premium conçue<br/>pour toutes les situations.</h2>
-      <p class="section-sub">Que vous soyez une PME, une institution publique, ou un grand groupe, notre équipe de conciergerie vous accompagne pas à pas.</p>
+    <!-- ==================== TROIS FACONS DE DEMARRER ==================== -->
+    <section class="three-ways" data-screen-label="Trois façons">
+      <h2 class="section-title">Trois façons de démarrer.</h2>
+      <p class="section-sub">Quelle que soit votre situation, MeetNoo s'adapte à votre infrastructure existante.</p>
 
-      <div class="concierge-grid">
-        <div class="concierge-card">
-          <h3>Conciergerie de mise en service</h3>
-          <p>Activation, configuration, paramétrage de vos salles et utilisateurs. Mise en route clé en main en moins de 48h.</p>
+      <div class="grid">
+        <div class="way-card">
+          <div class="ico">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 9h6v6H9z"/></svg>
+          </div>
+          <h3>Avec votre compte Zoom</h3>
+          <p>Connectez votre compte Zoom Pro / Business / Enterprise existant. MeetNoo se branche dessus en 1 clic : aucune migration, vos salles sont synchronisées immédiatement.</p>
         </div>
-        <div class="concierge-card">
-          <h3>Conciergerie d'événement</h3>
-          <p>Notre équipe assiste vos sessions live, gère la modération, l'admission, l'enregistrement, le streaming.</p>
+        <div class="way-card">
+          <div class="ico">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>
+          </div>
+          <h3>Avec une salle Zoom éphémère</h3>
+          <p>Pas de compte Zoom ? MeetNoo génère une salle éphémère à la volée, sans inscription. Idéale pour les visios ponctuelles ou les invités externes.</p>
         </div>
-        <div class="concierge-card">
-          <h3>Conciergerie de fonctionnement</h3>
-          <p>Maintenance proactive, mises à jour, support 7/7. Notre équipe veille pour que votre plateforme tourne sans accroc.</p>
+        <div class="way-card">
+          <div class="ico">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7l9 6 9-6M3 7v10a2 2 0 002 2h14a2 2 0 002-2V7M3 7l9-4 9 4"/></svg>
+          </div>
+          <h3>Avec un compte fourni</h3>
+          <p>MeetNoo vous met à disposition une licence Zoom incluse dans nos forfaits Pro et Business. Activation en moins de 24h, support inclus.</p>
         </div>
       </div>
     </section>
 
-    <!-- ==================== CTA Commencez gratuitement ==================== -->
-    <section class="free-sec" data-screen-label="CTA gratuit">
-      <h2>Commencez gratuitement<br/>avec My MeetNoo.</h2>
-      <p>Inscription en 30 secondes, sans carte bancaire. Testez toutes les fonctionnalités<br/>de la plateforme en mode freemium.</p>
-      <div class="btns">
-        <a class="btn-primary" href="Contact.html" style="text-decoration:none">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          Démarrer gratuitement
-        </a>
-        <a class="btn-outline-primary" href="Contact.html" style="text-decoration:none">Demander une démo</a>
-      </div>
-    </section>
-
-    <!-- ==================== ADVISOR DARK CARD ==================== -->
-    <section class="advisor-sec" data-screen-label="Conseiller">
-      <div class="advisor-card">
-        <div class="l">
-          <h3>Un conseiller MeetNoo<br/>vous répond.</h3>
-          <p>Un échange de 15 minutes pour cerner vos besoins, vos contraintes et identifier la formule MeetNoo idéale pour votre organisation.</p>
-          <a class="btn-primary" href="Contact.html" style="text-decoration:none">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-            Réserver mon créneau
-          </a>
+    <!-- ==================== FINAL CTA ==================== -->
+    <section style="position:relative;width:1728px;padding:60px 0 120px;background:#fff" data-screen-label="CTA finale">
+      <div style="margin:0 auto;width:1240px;height:483px;border-radius:40px;background:radial-gradient(700px 320px at 88% -10%, rgba(255,170,110,.45), transparent 60%), radial-gradient(640px 280px at 6% 110%, rgba(124,107,232,.42), transparent 60%), linear-gradient(155deg,#FBFAFF 0%, #F4F1FF 100%);color:rgb(14,14,84);position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 40px;box-shadow:0 30px 70px -30px rgba(40,40,140,.18), inset 0 0 0 1px rgba(255,255,255,.6)">
+        <div style="position:absolute;inset:0;opacity:.55;background:radial-gradient(circle at 50% 0%, rgba(255,255,255,.55), transparent 70%);pointer-events:none"></div>
+        <h2 style="position:relative;font:700 36px/1.15 'Sora';color:rgb(14,14,84);margin-bottom:14px">Prêt à transformer vos réunions<br/>en actifs stratégiques ?</h2>
+        <p style="position:relative;font:400 16px/1.5 'Sora';color:#5a607a;max-width:760px;margin-bottom:30px">Démarrez en moins de 5 minutes. Souverain, RGPD, hébergé en France.</p>
+        <div style="position:relative;display:flex;gap:18px">
+          <a class="btn-primary" href="Contact.html" style="text-decoration:none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="5" width="18" height="12" rx="2"/></svg>Tester gratuitement</a>
+          <a href="Contact.html" style="height:54px;padding:0 28px;border-radius:9999px;background:rgba(255,255,255,.7);color:rgb(14,14,84);font:500 16px/54px 'Roboto';border:1px solid rgba(20,16,60,.12);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:10px;backdrop-filter:blur(6px)">Prendre RDV avec un expert</a>
         </div>
-        <div class="r"><div class="photo"></div></div>
       </div>
     </section>
 
@@ -893,7 +926,7 @@
           <h4>Produit</h4>
           <ul>
             <li><a>Fonctionnalités</a></li>
-            <li><a>Pricing</a></li>
+            <li><a href="Landing Page.html#pricing">Pricing</a></li>
             <li><a>My MeetNoo</a></li>
             <li><a>Palabre Noo</a></li>
             <li><a>Intégrations</a></li>
@@ -903,7 +936,7 @@
           <h4>Entreprise</h4>
           <ul>
             <li><a>À propos</a></li>
-            <li><a>Blog</a></li>
+            <li><a href="Landing Page.html#blog">Blog</a></li>
             <li><a>Partenaires</a></li>
             <li><a>Carrières</a></li>
             <li><a>Presse / RGPD</a></li>
@@ -957,6 +990,16 @@
     window.addEventListener('resize', fit);
     window.addEventListener('load', () => { fit(); setTimeout(fit, 100); setTimeout(fit, 500); });
     fit();
+  })();
+</script>
+<script>
+  /* navbar scroll effect */
+  (function(){
+    const nav = document.querySelector('.navbar');
+    if (!nav) return;
+    const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 30);
+    window.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
   })();
 </script>
 </body>

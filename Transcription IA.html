@@ -289,6 +289,16 @@
   .footer .col a:hover{color:#fff}
   .footer .div{height:1px;background:rgba(255,255,255,.07);margin:50px auto 30px;max-width:1380px}
   .footer .row{display:flex;justify-content:space-between;align-items:center;max-width:1380px;margin:0 auto;font:400 13px/1.5 'Figtree';color:#9aa0bf}
+
+  /* Navbar scroll-driven frosted glass intensification */
+  .navbar{transition:background .35s ease, backdrop-filter .35s ease, box-shadow .35s ease, border-color .35s ease;}
+  .navbar.scrolled{
+    background:linear-gradient(120deg,rgba(255,255,255,.78),rgba(248,247,255,.85) 50%,rgba(238,238,255,.82));
+    backdrop-filter:blur(22px) saturate(1.4);-webkit-backdrop-filter:blur(22px) saturate(1.4);
+    border-color:rgba(255,255,255,.85);
+    box-shadow:0 14px 44px -18px rgba(33,52,100,.32);
+  }
+
 </style>
 </head>
 <body>
@@ -315,11 +325,11 @@
           </a>
         </div>
       </div>
-      <a>Blog</a>
-      <a>Pricing</a>
+      <a href="Landing Page.html#blog">Blog</a>
+      <a href="Landing Page.html#pricing">Pricing</a>
     </div>
     <div class="right">
-      <a class="links" style="cursor:pointer">Espaces client</a>
+      <a class="links" href="https://beta.meetnoo.com/" target="_blank" rel="noopener" style="cursor:pointer;text-decoration:none">Espaces client</a>
       <a class="btn-dark" href="Contact.html" style="text-decoration:none">Contactez nous</a>
     </div>
   </nav>
@@ -576,8 +586,8 @@
       <p>MeetNoo transcrit, corrige, synthétise et indexe vos échanges. Pour des décisions claires, des équipes alignées et une gouvernance renforcée.</p>
       <div class="socials"><a>𝕏</a><a>in</a><a>fb</a><a>yt</a></div>
     </div>
-    <div class="col"><h4>Produit</h4><ul><li><a>Transcription IA</a></li><li><a href="Gestion Salles Zoom.html">Gestion des salles</a></li><li><a>Émargement</a></li><li><a>Pricing</a></li></ul></div>
-    <div class="col"><h4>Ressources</h4><ul><li><a>Blog</a></li><li><a>Guides</a></li><li><a>API</a></li><li><a>Statut</a></li></ul></div>
+    <div class="col"><h4>Produit</h4><ul><li><a>Transcription IA</a></li><li><a href="Gestion Salles Zoom.html">Gestion des salles</a></li><li><a>Émargement</a></li><li><a href="Landing Page.html#pricing">Pricing</a></li></ul></div>
+    <div class="col"><h4>Ressources</h4><ul><li><a href="Landing Page.html#blog">Blog</a></li><li><a>Guides</a></li><li><a>API</a></li><li><a>Statut</a></li></ul></div>
     <div class="col"><h4>Société</h4><ul><li><a>À propos</a></li><li><a>Carrières</a></li><li><a>Mentions légales</a></li><li><a>RGPD</a></li></ul></div>
   </div>
   <div class="div"></div>
@@ -609,6 +619,16 @@
   window.addEventListener('load', () => { fit(); setTimeout(fit, 100); setTimeout(fit, 500); });
   fit();
 })();
+</script>
+<script>
+  /* navbar scroll effect */
+  (function(){
+    const nav = document.querySelector('.navbar');
+    if (!nav) return;
+    const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 30);
+    window.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+  })();
 </script>
 </body>
 </html>

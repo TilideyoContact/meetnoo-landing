@@ -374,6 +374,16 @@
   .footer .row{max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;font:400 16px/1.4 'DM Sans'}
   .footer .row .il{display:flex;gap:60px}
   .footer .row .il span{display:inline-flex;gap:8px;align-items:center}
+
+  /* Navbar scroll-driven frosted glass intensification */
+  .navbar{transition:background .35s ease, backdrop-filter .35s ease, box-shadow .35s ease, border-color .35s ease;}
+  .navbar.scrolled{
+    background:linear-gradient(120deg,rgba(255,255,255,.78),rgba(248,247,255,.85) 50%,rgba(238,238,255,.82));
+    backdrop-filter:blur(22px) saturate(1.4);-webkit-backdrop-filter:blur(22px) saturate(1.4);
+    border-color:rgba(255,255,255,.85);
+    box-shadow:0 14px 44px -18px rgba(33,52,100,.32);
+  }
+
 </style>
 </head>
 <body>
@@ -400,11 +410,11 @@
             </a>
           </div>
         </div>
-        <a>Blog</a>
-        <a>Pricing</a>
+        <a href="Landing Page.html#blog">Blog</a>
+        <a href="Landing Page.html#pricing">Pricing</a>
       </div>
       <div class="right">
-        <a class="links" style="cursor:pointer">Espaces client</a>
+        <a class="links" href="https://beta.meetnoo.com/" target="_blank" rel="noopener" style="cursor:pointer;text-decoration:none">Espaces client</a>
         <a class="btn-dark" href="Contact.html" style="text-decoration:none">Contactez nous</a>
       </div>
     </nav>
@@ -739,7 +749,7 @@
           <h4>Produit</h4>
           <ul>
             <li><a>Fonctionnalités</a></li>
-            <li><a>Pricing</a></li>
+            <li><a href="Landing Page.html#pricing">Pricing</a></li>
             <li><a>My MeetNoo</a></li>
             <li><a>Palabre Noo</a></li>
             <li><a>Intégrations</a></li>
@@ -749,7 +759,7 @@
           <h4>Entreprise</h4>
           <ul>
             <li><a>À propos</a></li>
-            <li><a>Blog</a></li>
+            <li><a href="Landing Page.html#blog">Blog</a></li>
             <li><a>Partenaires</a></li>
             <li><a>Carrières</a></li>
             <li><a>Presse / RGPD</a></li>
@@ -917,6 +927,16 @@
     window.addEventListener('scroll', rafScroll, { passive: true });
     window.addEventListener('load', () => { fit(); setTimeout(fit, 100); setTimeout(fit, 500); });
     fit();
+  })();
+</script>
+<script>
+  /* navbar scroll effect */
+  (function(){
+    const nav = document.querySelector('.navbar');
+    if (!nav) return;
+    const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 30);
+    window.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
   })();
 </script>
 </body>
