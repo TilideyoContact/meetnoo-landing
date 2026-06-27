@@ -3,8 +3,31 @@
 <head>
     <link rel="icon" type="image/png" href="/favicon.png" />
 <meta charset="utf-8" />
-<title>MeetNoo — Prendre rendez-vous</title>
-<meta name="viewport" content="width=1728" />
+<meta name="description" content="Contactez l'équipe MeetNoo. Démo personnalisée, devis sur mesure, accompagnement à la mise en place.">
+<meta name="theme-color" content="#2828F0">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MeetNoo">
+<meta property="og:title" content="MeetNoo — Contact, démo & devis personnalisé">
+<meta property="og:description" content="Contactez l'équipe MeetNoo. Démo personnalisée, devis sur mesure, accompagnement à la mise en place.">
+<meta property="og:url" content="https://meetnoo-landing-hd38.vercel.app/Contact.html">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:image" content="https://meetnoo-landing-hd38.vercel.app/favicon.png">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="MeetNoo — Contact, démo & devis personnalisé">
+<meta name="twitter:description" content="Contactez l'équipe MeetNoo. Démo personnalisée, devis sur mesure, accompagnement à la mise en place.">
+<meta name="twitter:image" content="https://meetnoo-landing-hd38.vercel.app/favicon.png">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://meetnoo-landing-hd38.vercel.app/Contact.html">
+
+<title>MeetNoo — Contact, démo & devis personnalisé</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Figtree:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
@@ -304,12 +327,26 @@
   }
 
 </style>
+<style>
+  /* Responsive safety net — préserve l'apparence desktop en scalant sur écrans < 1728px */
+  @media (max-width: 1727px) {
+    html { font-size: calc(100vw / 17.28); }
+  }
+  @media (max-width: 1024px) {
+    html { font-size: calc(100vw / 19); }
+  }
+  @media (max-width: 640px) {
+    html { font-size: calc(100vw / 22); }
+  }
+  body { min-width: 0 !important; overflow-x: hidden; }
+  img { max-width: 100%; height: auto; }
+</style>
 </head>
 <body>
 <div id="nav-fixed">
   <div class="nav-stage" id="navStage">
     <nav class="navbar">
-      <div class="logo"><a href="Landing Page.html"><img src="assets/meetnoo-logo.png" alt="MeetNoo" /></a></div>
+      <div class="logo"><a href="Landing Page.html"><img src="assets/meetnoo-logo.png" alt="MeetNoo" loading="eager" fetchpriority="high" decoding="async" /></a></div>
       <div class="links">
         <a href="Landing Page.html">Accueil</a>
         <div class="nav-svc">
@@ -528,7 +565,7 @@
   <footer class="footer">
     <div class="top">
       <div class="brand">
-        <h3 style="display:block"><img src="assets/meetnoo-logo.png" alt="MeetNoo" style="height:36px;width:auto;display:block;filter:brightness(0) invert(1)"/></h3>
+        <h3 style="display:block"><img src="assets/meetnoo-logo.png" alt="MeetNoo" loading="lazy" decoding="async" style="height:36px;width:auto;display:block;filter:brightness(0) invert(1)"/></h3>
         <p>Chaque réunion devient un actif stratégique. Une solution Labnoo Technologies.</p>
         <div class="socials">
           <a><svg width="14" height="14" viewBox="0 0 18 18" fill="currentColor"><path d="M11 18v-7h2.5l.5-3H11V6c0-1 .3-1.5 1.5-1.5H14V2c-.3 0-1.3-.1-2.5-.1C8.7 1.9 7 3.4 7 6v2H4v3h3v7h4z"/></svg></a>
