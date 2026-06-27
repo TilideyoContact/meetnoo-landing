@@ -27,7 +27,7 @@
 <link rel="canonical" href="https://meetnoo-landing-hd38.vercel.app/Meetnoo%20Events.html">
 
 <title>MeetNoo Events — Vos événements hybrides en livrables</title>
-<meta name="viewport" content="width=1728" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Figtree:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
@@ -406,6 +406,366 @@
     backdrop-filter:blur(22px) saturate(1.4);-webkit-backdrop-filter:blur(22px) saturate(1.4);
     border-color:rgba(255,255,255,.85);
     box-shadow:0 14px 44px -18px rgba(33,52,100,.32);
+  }
+
+  /* ============================================================
+     RESPONSIVE MOBILE QUICK-WIN — sprint 1 (Meetnoo Events)
+     Ne touche pas au desktop, ajoute juste les overrides mobile/tablette
+     ============================================================ */
+  @media (max-width: 1024px) {
+    /* Tablette : laisser respirer le stage scalé, mais empêcher l'overflow */
+    html, body { overflow-x: hidden !important; }
+    img, svg { max-width: 100%; height: auto; }
+  }
+
+  @media (max-width: 768px) {
+    /* 1. Désactive le scale JS — layout fluide */
+    html, body { overflow-x: hidden !important; background: #fff !important; }
+    #stage-wrap {
+      width: 100% !important;
+      height: auto !important;
+      overflow-x: hidden !important;
+    }
+    #stage {
+      width: 100% !important;
+      max-width: 100vw !important;
+      transform: none !important;
+      overflow-x: hidden !important;
+    }
+
+    /* 2. Navbar : shrink à l'écran et centrer */
+    #nav-fixed { height: 64px !important; }
+    #nav-fixed .nav-stage {
+      width: 100% !important;
+      transform: none !important;
+      left: 0 !important;
+      height: 64px !important;
+    }
+    .navbar {
+      position: relative !important;
+      left: 0 !important;
+      top: 8px !important;
+      width: calc(100% - 16px) !important;
+      margin: 0 8px !important;
+      height: 56px !important;
+      padding: 8px 12px !important;
+      border-radius: 28px !important;
+    }
+    .navbar .links { display: none !important; }
+    .navbar .right .links { display: none !important; }
+    .navbar .logo img { height: 28px !important; }
+    .nav-svc-menu { display: none !important; }
+    .navbar .right .btn-primary {
+      height: 36px !important;
+      padding: 0 14px !important;
+      font-size: 13px !important;
+      line-height: 36px !important;
+      width: auto !important;
+      max-width: none !important;
+    }
+
+    /* 3. Reset universel des containers 1728px → 100% */
+    .hero, .types, .steps-track, .bento, .faq-sec, .cta-sec, .advisor-sec, .footer {
+      width: 100% !important;
+      max-width: 100% !important;
+      min-height: auto !important;
+      height: auto !important;
+      padding: 32px 16px !important;
+      overflow: visible !important;
+    }
+
+    /* 4. HERO */
+    .hero {
+      padding: 96px 16px 32px !important;
+    }
+    .hero .deco,
+    .hero .deco .b1,
+    .hero .deco .b2 {
+      display: none !important;
+    }
+    .hero .left {
+      position: static !important;
+      left: auto !important;
+      top: auto !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      z-index: 1 !important;
+    }
+    .hero .eyebrow { margin-bottom: 16px !important; }
+    .hero h1 {
+      font-size: clamp(28px, 7vw, 36px) !important;
+      line-height: 1.15 !important;
+      width: 100% !important;
+      text-align: center !important;
+    }
+    .hero .lead {
+      margin-top: 16px !important;
+      font-size: 15px !important;
+      line-height: 1.5 !important;
+      max-width: 100% !important;
+      text-align: center !important;
+    }
+    .hero .cta {
+      margin-top: 24px !important;
+      flex-direction: column !important;
+      align-items: stretch !important;
+      gap: 10px !important;
+      width: 100% !important;
+    }
+    .hero .cta .btn-primary,
+    .hero .cta .btn-link {
+      width: 100% !important;
+      max-width: 320px !important;
+      margin: 0 auto !important;
+      height: 48px !important;
+      line-height: 48px !important;
+      font-size: 14px !important;
+      padding: 0 20px !important;
+      justify-content: center !important;
+    }
+
+    /* Calendar image — passe au flux statique */
+    .cal-img {
+      position: static !important;
+      right: auto !important;
+      top: auto !important;
+      width: 100% !important;
+      height: auto !important;
+      margin: 24px auto 0 !important;
+      display: block !important;
+      border-radius: 12px !important;
+    }
+    /* Mockup interne dupliqué — caché pour éviter doublon */
+    .cal {
+      display: none !important;
+    }
+
+    /* 5. TYPES D'ÉVÉNEMENTS */
+    .types .hd { margin-bottom: 24px !important; }
+    .types .grid {
+      width: 100% !important;
+      max-width: 100% !important;
+      display: flex !important;
+      flex-direction: column !important;
+      grid-template-columns: 1fr !important;
+      gap: 16px !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    .type-card {
+      width: 100% !important;
+      height: auto !important;
+      min-height: auto !important;
+      padding: 24px !important;
+    }
+    .type-card h3 {
+      margin-top: 60px !important;
+      font-size: 20px !important;
+    }
+    .type-card p {
+      font-size: 14px !important;
+    }
+    .type-card .more {
+      position: static !important;
+      margin-top: 16px !important;
+      display: inline-flex !important;
+    }
+    .type-card .glow {
+      top: 64px !important;
+    }
+
+    /* 6. STEPS TIMELINE (scroll-pinned timeline) */
+    .steps-track {
+      height: auto !important;
+    }
+    .steps-pin {
+      position: static !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: auto !important;
+      padding: 32px 16px !important;
+      transform: none !important;
+    }
+    .steps-pin .hd { margin-bottom: 32px !important; }
+    .steps-row {
+      width: 100% !important;
+      flex-direction: column !important;
+      gap: 32px !important;
+      align-items: center !important;
+    }
+    .conn-track,
+    .conn-fill {
+      display: none !important;
+    }
+    .step {
+      width: 100% !important;
+      max-width: 320px !important;
+    }
+    .step .num {
+      width: 72px !important;
+      height: 72px !important;
+    }
+    .step .num svg {
+      width: 34px !important;
+      height: 34px !important;
+    }
+    .step h4 {
+      max-width: 100% !important;
+      font-size: 15px !important;
+    }
+
+    /* 7. BENTO */
+    .bento .hd { margin-bottom: 24px !important; }
+    .bento .grid,
+    .bento .row2 {
+      width: 100% !important;
+      max-width: 100% !important;
+      display: flex !important;
+      flex-direction: column !important;
+      grid-template-columns: 1fr !important;
+      gap: 16px !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    .bento-card {
+      width: 100% !important;
+      height: auto !important;
+      min-height: 220px !important;
+      padding: 24px !important;
+    }
+    .bento .row2 .bento-card {
+      height: auto !important;
+      min-height: 200px !important;
+    }
+    .bento-card h3 {
+      font-size: 20px !important;
+      max-width: 100% !important;
+    }
+    .bento-card p {
+      font-size: 14px !important;
+      max-width: 100% !important;
+    }
+    .bento-card .glyph,
+    .bento-card .hex,
+    .bento-card .glow {
+      display: none !important;
+    }
+
+    /* 8. FAQ */
+    .faq-sec .hd { margin-bottom: 24px !important; }
+    .faq {
+      width: 100% !important;
+      max-width: 100% !important;
+      gap: 10px !important;
+    }
+    .faq summary {
+      padding: 16px 18px !important;
+      font-size: 14px !important;
+    }
+    .faq .ans {
+      padding: 0 18px 16px !important;
+      font-size: 13px !important;
+      max-width: 100% !important;
+    }
+
+    /* 9. CTA + ADVISOR */
+    .cta-sec h2 {
+      font-size: clamp(22px, 5vw, 28px) !important;
+      max-width: 100% !important;
+    }
+    .cta-sec p {
+      font-size: 14px !important;
+      max-width: 100% !important;
+    }
+    .advisor-card {
+      width: 100% !important;
+      max-width: 100% !important;
+      display: flex !important;
+      flex-direction: column !important;
+      grid-template-columns: 1fr !important;
+      gap: 24px !important;
+      padding: 24px !important;
+      text-align: center !important;
+    }
+    .advisor-card .deco-circle {
+      display: none !important;
+    }
+    .advisor-card h3 {
+      font-size: 22px !important;
+    }
+    .advisor-card p {
+      font-size: 14px !important;
+      max-width: 100% !important;
+    }
+    .advisor-card .btn-primary {
+      width: 100% !important;
+      max-width: 320px !important;
+      margin: 16px auto 0 !important;
+      height: 48px !important;
+      line-height: 48px !important;
+      font-size: 14px !important;
+      justify-content: center !important;
+    }
+    .advisor-card .r .photo {
+      width: 160px !important;
+      height: 200px !important;
+      margin: 0 auto !important;
+    }
+
+    /* 10. FOOTER */
+    .footer {
+      padding: 32px 16px !important;
+    }
+    .footer .top {
+      width: 100% !important;
+      max-width: 100% !important;
+      display: flex !important;
+      flex-direction: column !important;
+      grid-template-columns: 1fr !important;
+      gap: 24px !important;
+      padding: 0 !important;
+    }
+    .footer .div {
+      margin: 24px auto 16px !important;
+      max-width: 100% !important;
+    }
+    .footer .row {
+      flex-direction: column !important;
+      gap: 12px !important;
+      text-align: center !important;
+      max-width: 100% !important;
+    }
+    .footer .row .il {
+      flex-direction: column !important;
+      gap: 8px !important;
+    }
+    .footer .brand h3 { font-size: 22px !important; }
+    .footer .brand p { font-size: 14px !important; }
+    .footer .col h4 { font-size: 14px !important; margin-bottom: 12px !important; }
+    .footer .col a { font-size: 14px !important; }
+
+    /* 11. Titres et textes globaux */
+    h2.section-title {
+      font-size: clamp(22px, 5vw, 28px) !important;
+      line-height: 1.2 !important;
+    }
+    p.section-sub {
+      font-size: 14px !important;
+      line-height: 1.5 !important;
+      padding: 0 8px !important;
+      max-width: 100% !important;
+    }
+
+    /* 12. Images responsive globales */
+    img { max-width: 100% !important; height: auto !important; }
+  }
+
+  @media (max-width: 480px) {
+    .hero { padding: 88px 12px 24px !important; }
+    .hero h1 { font-size: 26px !important; }
+    .types, .bento, .faq-sec, .cta-sec, .advisor-sec, .footer { padding: 24px 12px !important; }
+    .steps-pin { padding: 24px 12px !important; }
   }
 
 </style>
@@ -840,6 +1200,30 @@
     function fit(){
       const vw = window.innerWidth;
       const vh = window.innerHeight;
+
+      // ----- Mobile guard: désactive le scale stage, le CSS @media prend le relais -----
+      if (vw <= 768) {
+        scale = 1;
+        stage.style.transform = 'none';
+        stage.style.width = '100%';
+        wrap.style.height = 'auto';
+        const navStageEl = document.getElementById('navStage');
+        const navFixEl = document.getElementById('nav-fixed');
+        if (navStageEl){
+          navStageEl.style.transform = 'none';
+          navStageEl.style.width = '100%';
+          navStageEl.style.left = '0';
+        }
+        if (navFixEl) navFixEl.style.height = '64px';
+        // Neutralise le pinning de la timeline sur mobile
+        if (stepsTrack) stepsTrack.style.height = 'auto';
+        if (stepsPin){
+          stepsPin.style.height = 'auto';
+          stepsPin.style.top = '0px';
+        }
+        return;
+      }
+
       const s = vw / DESIGN_W;
       scale = s;
       stage.style.transform = 'scale(' + s + ')';

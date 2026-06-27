@@ -11,7 +11,7 @@
 <meta property="og:site_name" content="MeetNoo">
 <meta property="og:title" content="MeetNoo — Vos réunions en livrables. Transcription IA souveraine.">
 <meta property="og:description" content="MeetNoo — la plateforme française qui transforme vos réunions en livrables exploitables. Transcription IA, comptes-rendus, recherche sémantique. RGPD natif.">
-<meta property="og:url" content="https://meetnoo-landing-hd38.vercel.app/Landing%20Page.html">
+<meta property="og:url" content="https://meetnoo-landing-hd38.vercel.app/">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:image" content="https://meetnoo-landing-hd38.vercel.app/favicon.png">
 <meta property="og:image:width" content="512">
@@ -24,10 +24,10 @@
 <meta name="twitter:image" content="https://meetnoo-landing-hd38.vercel.app/favicon.png">
 
 <!-- Canonical -->
-<link rel="canonical" href="https://meetnoo-landing-hd38.vercel.app/Landing%20Page.html">
+<link rel="canonical" href="https://meetnoo-landing-hd38.vercel.app/">
 
 <title>MeetNoo — Vos réunions en livrables. Transcription IA souveraine.</title>
-<meta name="viewport" content="width=1728" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Figtree:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
@@ -715,6 +715,220 @@
     box-shadow:0 14px 44px -18px rgba(33,52,100,.32);
   }
 
+  /* =========================================================
+     === RESPONSIVE MOBILE QUICK-WIN — sprint 1 (index.html) ===
+     Ne touche pas au desktop, ajoute juste les overrides
+     mobile/tablette via @media + !important.
+     ========================================================= */
+  @media (max-width: 1024px) {
+    /* Tablette : on désactive déjà le scale figé */
+    html, body { overflow-x: hidden !important; }
+    img, svg { max-width: 100% !important; height: auto !important; }
+  }
+
+  @media (max-width: 768px) {
+    /* --- 1. Désactive le scale JS du stage figé 1728px --- */
+    html, body { overflow-x: hidden !important; }
+    body { font-size: 14px; }
+    #stage-wrap { width: 100% !important; height: auto !important; }
+    #stage {
+      width: 100% !important;
+      max-width: 100vw !important;
+      transform: none !important;
+      overflow-x: hidden !important;
+    }
+
+    /* --- 2. Navbar fixe : recadrée sur l'écran --- */
+    #nav-fixed { height: 64px !important; }
+    #nav-fixed .nav-stage, #navStage {
+      width: 100% !important;
+      transform: none !important;
+      left: 0 !important;
+    }
+    .navbar {
+      position: relative !important;
+      left: 0 !important; top: 8px !important;
+      width: calc(100% - 16px) !important;
+      margin: 0 8px !important;
+      height: 56px !important;
+      padding: 8px 12px !important;
+      border-radius: 28px !important;
+    }
+    .navbar .links { display: none !important; }
+    .navbar .right .links { display: none !important; }
+    .navbar .logo img { height: 28px !important; }
+    .nav-svc-menu { display: none !important; }
+
+    /* --- 3. Reset universel des containers 1728px → 100% --- */
+    .hero, .sec, .platform, .transcription, .ctxmem, .mymeet, .mymeet-banner,
+    .bowtie, .connect, .projects, .rag, .uses, .pricing,
+    .testimonials, .blog, .footer, .logos {
+      width: 100% !important;
+      max-width: 100% !important;
+      min-height: auto !important;
+      height: auto !important;
+      padding: 48px 16px !important;
+      overflow: visible !important;
+    }
+    .hero { padding: 96px 16px 32px !important; }
+
+    /* --- 4. Toutes les grilles principales passent en colonne --- */
+    .platform .cards, .platform .pf-row,
+    .transcription .row,
+    .ctxmem-grid,
+    .mymeet .panel,
+    .rag .grid,
+    .uses .row,
+    .pricing .grid, .pricing .extras-grid,
+    .testimonials .grid,
+    .blog .row, .blog .row2,
+    .footer .top {
+      display: flex !important;
+      flex-direction: column !important;
+      grid-template-columns: 1fr !important;
+      gap: 20px !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    /* --- 5. Cards/cells passent en width auto --- */
+    .feature-card, .plan, .t-card, .ctxmem-card, .article {
+      width: 100% !important;
+      min-height: auto !important;
+      height: auto !important;
+      padding: 24px !important;
+    }
+    .t-card.dark { grid-row: auto !important; }
+    .ctxmem-card { padding: 24px !important; }
+    .pricing .extras-grid .plan ul { column-count: 1 !important; }
+
+    /* --- 6. Annule TOUS les position:absolute du hero et des floats --- */
+    .hero h1, .hero p.lead, .hero .lead, .hero .cta,
+    .hero .preview, .preview,
+    .hero .left, .hero-copy, .hero-deco,
+    .float-card, .stat-row, .hero .float-card,
+    .chat-motion,
+    .mymeet .panel .copy, .mymeet .panel .shot, .mymeet .panel .badge,
+    .connect .panel .pic, .connect .panel .quote-band,
+    .connect-overlay {
+      position: static !important;
+      left: auto !important; right: auto !important;
+      top: auto !important; bottom: auto !important;
+      transform: none !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      margin: 16px 0 !important;
+      height: auto !important;
+    }
+    .stat { width: 100% !important; }
+    .stat-row {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 16px !important;
+      justify-content: flex-start !important;
+    }
+
+    /* --- 7. Hero font-sizes adaptés au mobile --- */
+    .hero h1, h1 {
+      font-size: clamp(28px, 7vw, 36px) !important;
+      line-height: 1.15 !important;
+      width: 100% !important;
+      text-align: center !important;
+    }
+    .hero .lead, .hero p.lead {
+      font-size: 15px !important;
+      line-height: 1.5 !important;
+      width: 100% !important;
+      text-align: center !important;
+    }
+    h2, h2.section-title, h2.title {
+      font-size: clamp(22px, 5vw, 28px) !important;
+      line-height: 1.2 !important;
+    }
+    h3 { font-size: clamp(18px, 5vw, 22px) !important; line-height: 1.25 !important; }
+    p, li { font-size: 15px !important; line-height: 1.5 !important; }
+    p.section-sub, p.sub { font-size: 14px !important; padding: 0 8px !important; }
+    .ctxmem-text h3 { font-size: 22px !important; }
+
+    /* --- 8. CTA buttons → tap-targets corrects --- */
+    .btn-primary, .btn-link, .btn-dark, .btn-outline, .btn-outline-primary,
+    .nav-cta-svc, .submit-btn, a.cta, .cta a {
+      height: 48px !important;
+      line-height: 48px !important;
+      font-size: 14px !important;
+      padding: 0 20px !important;
+      width: 100% !important;
+      max-width: 320px !important;
+      justify-content: center !important;
+      display: inline-flex !important;
+      align-items: center !important;
+    }
+    .hero .cta, .cta {
+      flex-direction: column !important;
+      align-items: center !important;
+      gap: 10px !important;
+      width: 100% !important;
+    }
+
+    /* --- 9. Images responsives --- */
+    img, svg { max-width: 100% !important; height: auto !important; }
+    .preview, .preview .img,
+    .mymeet .panel .shot,
+    .rag .grid .right .pic,
+    .uses .pic,
+    .connect .panel .pic,
+    .article .img {
+      width: 100% !important;
+      height: auto !important;
+      aspect-ratio: 16/10 !important;
+      background-size: cover !important;
+      background-position: center !important;
+      transform: none !important;
+    }
+
+    /* --- 10. Cache les décorations cassantes en mobile --- */
+    .hero-deco, .hero::before, .hero::after,
+    .bowtie, .bowtie .arch,
+    .float-card,
+    .chat-motion,
+    .squiggle,
+    .connect-overlay,
+    .dual-pic, .triple-stack .img-float-1, .triple-stack .img-float-2,
+    .ctxmem-imgframe.dual-stack, .ctxmem-imgframe.triple-stack {
+      display: none !important;
+    }
+
+    /* --- 11. Scroll-snap OFF (sinon sauts horribles sur mobile) --- */
+    html { scroll-snap-type: none !important; }
+    .snap, .platform.snap, .transcription.snap {
+      min-height: auto !important;
+      scroll-snap-align: none !important;
+    }
+
+    /* --- 12. Footer mobile --- */
+    .footer { padding: 32px 16px !important; }
+    .footer .top {
+      grid-template-columns: 1fr !important;
+      gap: 24px !important;
+    }
+    .footer .row {
+      flex-direction: column !important;
+      gap: 12px !important;
+      text-align: center !important;
+    }
+    .footer .row .il { flex-direction: column !important; gap: 8px !important; }
+  }
+
+  @media (max-width: 480px) {
+    /* Petit mobile : ajustements supplémentaires */
+    .hero h1, h1 { font-size: 28px !important; }
+    .hero, .sec, .platform, .transcription, .ctxmem, .mymeet, .mymeet-banner,
+    .bowtie, .connect, .projects, .rag, .uses, .pricing,
+    .testimonials, .blog, .logos { padding: 32px 12px !important; }
+    .hero { padding: 88px 12px 24px !important; }
+  }
 </style>
 </head>
 <body>
@@ -1868,6 +2082,22 @@ France/DOM</div>
     const DESIGN_W = 1728;
     function fit(){
       const vw = window.innerWidth;
+      // Mobile guard : on laisse le CSS @media gérer le layout fluide
+      if (vw <= 768) {
+        stage.style.transform = 'none';
+        stage.style.width = '100%';
+        stage.style.removeProperty('--snap-h');
+        wrap.style.height = 'auto';
+        const navStageM = document.getElementById('navStage');
+        const navFixM = document.getElementById('nav-fixed');
+        if (navStageM) {
+          navStageM.style.transform = 'none';
+          navStageM.style.width = '100%';
+          navStageM.style.left = '0';
+        }
+        if (navFixM) navFixM.style.height = '64px';
+        return;
+      }
       const s = vw / DESIGN_W;
       stage.style.transform = 'scale(' + s + ')';
       // Publish design-px equivalent of viewport height for scroll-snap sections
