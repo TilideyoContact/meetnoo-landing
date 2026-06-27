@@ -1,1027 +1,704 @@
 <!doctype html>
 <html lang="fr">
 <head>
-    <link rel="icon" type="image/png" href="/favicon.png" />
-<meta charset="utf-8" />
-<meta name="description" content="Centralisez la gestion de vos salles Zoom dans MeetNoo. Réservation, partage, suivi des participants.">
-<meta name="theme-color" content="#2828F0">
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <meta charset="utf-8" />
+  <meta name="description" content="Centralisez la gestion de vos salles Zoom dans MeetNoo. Réservation, partage, suivi des participants.">
+  <meta name="theme-color" content="#2828F0">
 
-<!-- Open Graph -->
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="MeetNoo">
-<meta property="og:title" content="MeetNoo — Gestion centralisée de vos salles Zoom">
-<meta property="og:description" content="Centralisez la gestion de vos salles Zoom dans MeetNoo. Réservation, partage, suivi des participants.">
-<meta property="og:url" content="https://meetnoo-landing-hd38.vercel.app/Gestion%20Salles%20Zoom.html">
-<meta property="og:locale" content="fr_FR">
-<meta property="og:image" content="https://meetnoo-landing-hd38.vercel.app/favicon.png">
-<meta property="og:image:width" content="512">
-<meta property="og:image:height" content="512">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MeetNoo">
+  <meta property="og:title" content="MeetNoo — Gestion centralisée de vos salles Zoom">
+  <meta property="og:description" content="Centralisez la gestion de vos salles Zoom dans MeetNoo. Réservation, partage, suivi des participants.">
+  <meta property="og:url" content="https://meetnoo-landing-hd38.vercel.app/Gestion%20Salles%20Zoom.html">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:image" content="https://meetnoo-landing-hd38.vercel.app/favicon.png">
+  <meta property="og:image:width" content="512">
+  <meta property="og:image:height" content="512">
 
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="MeetNoo — Gestion centralisée de vos salles Zoom">
-<meta name="twitter:description" content="Centralisez la gestion de vos salles Zoom dans MeetNoo. Réservation, partage, suivi des participants.">
-<meta name="twitter:image" content="https://meetnoo-landing-hd38.vercel.app/favicon.png">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="MeetNoo — Gestion centralisée de vos salles Zoom">
+  <meta name="twitter:description" content="Centralisez la gestion de vos salles Zoom dans MeetNoo. Réservation, partage, suivi des participants.">
+  <meta name="twitter:image" content="https://meetnoo-landing-hd38.vercel.app/favicon.png">
 
-<!-- Canonical -->
-<link rel="canonical" href="https://meetnoo-landing-hd38.vercel.app/Gestion%20Salles%20Zoom.html">
+  <!-- Canonical -->
+  <link rel="canonical" href="https://meetnoo-landing-hd38.vercel.app/Gestion%20Salles%20Zoom.html">
 
-<title>MeetNoo — Gestion centralisée de vos salles Zoom</title>
-<meta name="viewport" content="width=1728" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Figtree:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
-<style>
-  :root{
-    --ink:        rgb(20,27,52);
-    --ink2:       rgb(33,52,100);
-    --ink3:       rgb(14,14,84);
-    --ink-soft:   rgb(58,58,58);
-    --ink-mute:   rgb(107,107,107);
-    --indigo-50:  rgb(234,234,254);
-    --indigo-100: rgb(238,242,255);
-    --indigo-200: rgb(188,188,250);
-    --indigo-400: rgb(83,83,243);
-    --indigo-500: rgb(40,40,240);
-    --indigo-600: rgb(36,36,218);
-    --indigo-700: rgb(45,45,150);
-    --indigo-900: rgb(17,17,101);
-    --line:       rgb(233,235,241);
-    --line-2:     rgb(222,229,237);
-    --line-3:     rgb(234,234,254);
-    --soft-lila:  rgb(247,247,253);
-    --soft-band:  rgb(229,229,250);
-    --gray-100:   rgb(241,241,241);
-    --green-700:  rgb(10,114,74);
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html,body{background:#0b0e1a}
-  body{font-family:'Sora',system-ui,sans-serif;color:var(--ink)}
+  <title>MeetNoo — Gestion centralisée de vos salles Zoom</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  /* Stage */
-  #stage-wrap{width:100vw;overflow-x:hidden;background:#0b0e1a;display:flex;justify-content:flex-start}
-  #stage{width:1728px;transform-origin:top left;background:#fff}
-  #nav-fixed{position:fixed;left:0;top:0;width:100vw;height:140px;z-index:1000;pointer-events:none}
-  #nav-fixed .nav-stage{position:absolute;left:50%;top:0;width:1728px;height:140px;transform-origin:top center;pointer-events:none}
-  #nav-fixed .navbar{pointer-events:auto}
-  #nav-fixed .nav-svc-menu{pointer-events:auto}
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Figtree:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
 
-  /* Helpers */
-  .figtree{font-family:'Figtree',sans-serif}
-  .sora{font-family:'Sora',sans-serif}
-  .inter{font-family:'Inter',sans-serif}
+  <!-- Tailwind CSS (généré via npm run build) -->
+  <link rel="stylesheet" href="assets/tailwind.css" />
 
-  /* Common buttons (matched with Landing) */
-  .btn-primary{
-    height:54px;padding:0 28px;border-radius:9999px;
-    background:var(--indigo-500);color:#fff;
-    font:500 16px/54px 'Roboto',sans-serif;
-    display:inline-flex;align-items:center;gap:10px;border:0;cursor:pointer;
-    box-shadow:0 8px 22px -10px rgba(40,40,240,.55);
-    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
-  }
-  .btn-primary:hover{transform:translateY(-1px);background:#1d1dd6}
-  .btn-link{
-    height:54px;padding:0 28px;border-radius:9999px;
-    background:transparent;color:var(--ink2);
-    font:500 16px/54px 'Roboto',sans-serif;
-    display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line-2);cursor:pointer;
-  }
-  .btn-link:hover{background:#f6f7fb}
-  .btn-dark{
-    height:42px;padding:0 18px;border-radius:9999px;background:var(--ink2);color:#fff;
-    font:500 16px/42px 'Roboto',sans-serif;border:0;cursor:pointer;
-  }
-  .btn-dark:hover{background:var(--indigo-900)}
-  .btn-outline-primary{
-    height:54px;padding:0 28px;border-radius:9999px;
-    background:#fff;color:var(--indigo-500);
-    font:500 16px/54px 'Roboto',sans-serif;
-    border:1px solid var(--indigo-500);cursor:pointer;display:inline-flex;align-items:center;gap:10px;
-  }
+  <!-- Styles irremplaçables : gradients hero + interactif 4 sections (custom properties par étape) -->
+  <style>
+    /* Gradient hero + radial floating dots */
+    .hero-bg{
+      background:
+        radial-gradient(ellipse 700px 500px at 8% -10%, rgba(255,180,130,.55) 0%, transparent 65%),
+        radial-gradient(ellipse 800px 600px at 105% 20%, rgba(124,107,232,.42) 0%, transparent 60%),
+        radial-gradient(ellipse 900px 500px at 50% 110%, rgba(150,200,255,.45) 0%, transparent 65%),
+        linear-gradient(155deg,#FBFAFF 0%, #F4F1FF 45%, #FFF7EE 100%);
+    }
+    .hero-bg::after{
+      content:"";position:absolute;inset:0;pointer-events:none;
+      background:
+        radial-gradient(circle 6px at 14% 18%, rgba(124,107,232,.55), transparent 70%),
+        radial-gradient(circle 8px at 88% 62%, rgba(255,150,80,.55), transparent 70%),
+        radial-gradient(circle 5px at 6% 72%, rgba(60,180,124,.55), transparent 70%),
+        radial-gradient(circle 4px at 92% 18%, rgba(60,110,230,.55), transparent 70%);
+      opacity:.7;
+    }
+    .text-gradient-warm{
+      background:linear-gradient(135deg,#7C6BE8 0%, #FF8A47 100%);
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+    }
+    .hero-preview-tilt{
+      transform:perspective(1600px) rotateY(-6deg) rotateX(2deg);
+      transform-origin:left center;
+      box-shadow:
+        0 50px 100px -30px rgba(40,30,120,.32),
+        0 20px 40px -20px rgba(40,30,120,.18),
+        inset 0 0 0 1px rgba(255,255,255,.8);
+    }
+    .cta-final-bg{
+      background:
+        radial-gradient(700px 320px at 88% -10%, rgba(255,170,110,.45), transparent 60%),
+        radial-gradient(640px 280px at 6% 110%, rgba(124,107,232,.42), transparent 60%),
+        linear-gradient(155deg,#FBFAFF 0%, #F4F1FF 100%);
+    }
+    .advisor-radial::before{
+      content:"";position:absolute;inset:0;pointer-events:none;
+      background:radial-gradient(600px 280px at 90% 50%, rgba(40,40,240,.35), transparent 60%);
+    }
+    .navbar-glass{
+      background:linear-gradient(120deg,rgba(163,166,250,.35),rgba(255,255,255,.4) 30%,rgba(246,246,246,.35) 55%,rgba(221,227,250,.45));
+      backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+      transition:background .35s ease, box-shadow .35s ease, border-color .35s ease;
+    }
+    .navbar-glass.scrolled{
+      background:linear-gradient(120deg,rgba(255,255,255,.78),rgba(248,247,255,.85) 50%,rgba(238,238,255,.82));
+      backdrop-filter:blur(22px) saturate(1.4);-webkit-backdrop-filter:blur(22px) saturate(1.4);
+      border-color:rgba(255,255,255,.85);
+      box-shadow:0 14px 44px -18px rgba(33,52,100,.32);
+    }
 
-  h2.section-title{font:700 44px/1.2 'Sora';color:var(--ink2);text-align:center;letter-spacing:-.01em}
-  p.section-sub{font:400 22px/1.4 'Sora';color:var(--ink3);text-align:center;max-width:1100px;margin:18px auto 0}
+    /* Services dropdown menu */
+    .nav-svc:hover .nav-svc-menu,
+    .nav-svc:focus-within .nav-svc-menu{
+      opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0);
+    }
+    .nav-svc:hover .caret{transform:rotate(180deg)}
+    .nav-svc-menu{
+      transform:translateX(-50%) translateY(-6px);
+      transition:opacity .18s ease, transform .18s ease;
+    }
+    .nav-svc-menu::before{
+      content:"";position:absolute;left:50%;top:-6px;width:12px;height:12px;background:#fff;
+      transform:translateX(-50%) rotate(45deg);box-shadow:-1px -1px 0 rgba(33,52,100,.06);
+    }
 
-  /* Navbar (identical to Landing) */
-  .navbar{
-    position:absolute;left:231px;top:55px;width:1265px;height:62px;border-radius:80px;
-    background:linear-gradient(120deg,rgba(163,166,250,.35),rgba(255,255,255,.4) 30%,rgba(246,246,246,.35) 55%,rgba(221,227,250,.45));
-    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-    display:flex;align-items:center;justify-content:space-between;padding:10px 18px;
-    border:1px solid rgba(255,255,255,.6);
-    box-shadow:0 8px 30px -16px rgba(33,52,100,.25);
-    z-index:50;
-  }
-  .navbar .logo{display:flex;align-items:center;height:40px}
-  .navbar .logo img{height:36px;width:auto;display:block}
-  .navbar .links{display:flex;gap:40px;align-items:center;font:400 16px/1.2 'Inter';color:var(--ink2)}
-  .navbar .links a{color:var(--ink2);text-decoration:none;cursor:pointer}
-  .navbar .links a:hover{color:var(--indigo-500)}
-  .navbar .right{display:flex;align-items:center;gap:24px}
-  .caret{display:inline-block;width:0;height:0;border:5px solid transparent;border-top-color:var(--ink2);transform:translateY(2px);transition:transform .2s}
-  /* Services dropdown */
-  .nav-svc{position:relative}
-  .nav-svc > a{display:inline-flex;align-items:center;gap:6px;cursor:pointer}
-  .nav-svc-menu{
-    position:absolute;left:50%;top:calc(100% + 18px);transform:translateX(-50%) translateY(-6px);
-    min-width:280px;background:#fff;border-radius:14px;
-    box-shadow:0 24px 60px -12px rgba(20,27,52,.25), 0 0 0 1px rgba(33,52,100,.06);
-    padding:10px;opacity:0;pointer-events:none;transition:opacity .18s ease, transform .18s ease;z-index:1200;
-  }
-  .nav-svc-menu::before{
-    content:"";position:absolute;left:50%;top:-6px;width:12px;height:12px;background:#fff;
-    transform:translateX(-50%) rotate(45deg);box-shadow:-1px -1px 0 rgba(33,52,100,.06);
-  }
-  .nav-svc:hover .nav-svc-menu,
-  .nav-svc:focus-within .nav-svc-menu{
-    opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0);
-  }
-  .nav-svc:hover .caret{transform:translateY(2px) rotate(180deg)}
-  .nav-svc-menu a{
-    display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:10px;
-    color:var(--ink2);text-decoration:none;font:500 15px/1.3 'Inter';
-    transition:background .15s ease,color .15s ease;
-  }
-  .nav-svc-menu a:hover, .nav-svc-menu a.active{background:var(--indigo-100);color:var(--indigo-500)}
-  .nav-svc-menu a .ico{
-    width:34px;height:34px;border-radius:8px;background:var(--indigo-100);
-    color:var(--indigo-500);display:grid;place-items:center;flex-shrink:0;
-  }
-  .nav-svc-menu a.active .ico{background:var(--indigo-500);color:#fff}
-  .nav-svc-menu a .meta{display:flex;flex-direction:column;gap:2px}
-  .nav-svc-menu a .meta .t{font:600 14px/1.2 'Inter';color:var(--ink2)}
-  .nav-svc-menu a:hover .meta .t, .nav-svc-menu a.active .meta .t{color:var(--indigo-500)}
-  .nav-svc-menu a .meta .s{font:400 12px/1.2 'Inter';color:var(--ink-mute)}
-  /* Services CTA pill in navbar */
-  .nav-cta-svc{
-    display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 16px;
-    border-radius:9999px;background:rgba(40,40,240,.08);color:var(--indigo-500);
-    font:600 14px/1 'Inter';text-decoration:none;border:1px solid rgba(40,40,240,.18);
-    transition:background .15s ease, transform .15s ease, color .15s ease;
-  }
-  .nav-cta-svc:hover{background:var(--indigo-500);color:#fff;transform:translateY(-1px)}
-  .nav-cta-svc.active{background:var(--indigo-500);color:#fff;border-color:var(--indigo-500)}
+    /* Interactive 4 sections — palettes par étape */
+    .ts-step.ix-lilac{--feat-tint:rgba(201,194,247,.18);--feat-glow:rgba(150,135,240,.55);--feat-border:rgba(150,135,240,.32);--feat-border-on:rgba(124,107,232,.55);--feat-shadow:rgba(124,107,232,.22);--feat-arrow:#5B4BD6;--ix-bg:linear-gradient(135deg,#E9E5FF 0%,#C9C2F7 100%);--ix-color:#5B4BD6}
+    .ts-step.ix-peach{--feat-tint:rgba(255,201,161,.16);--feat-glow:rgba(255,170,110,.55);--feat-border:rgba(255,170,110,.32);--feat-border-on:rgba(255,150,80,.55);--feat-shadow:rgba(255,150,80,.22);--feat-arrow:#B45309;--ix-bg:linear-gradient(135deg,#FFE9D6 0%,#FFC9A1 100%);--ix-color:#B45309}
+    .ts-step.ix-mint{--feat-tint:rgba(166,229,200,.20);--feat-glow:rgba(80,200,140,.50);--feat-border:rgba(80,200,140,.32);--feat-border-on:rgba(52,180,124,.55);--feat-shadow:rgba(52,180,124,.22);--feat-arrow:#0F8A5F;--ix-bg:linear-gradient(135deg,#D9F5E8 0%,#A6E5C8 100%);--ix-color:#0E7A52}
+    .ts-step.ix-sky{--feat-tint:rgba(181,202,247,.20);--feat-glow:rgba(105,150,235,.55);--feat-border:rgba(105,150,235,.32);--feat-border-on:rgba(60,110,230,.55);--feat-shadow:rgba(60,110,230,.22);--feat-arrow:#1E47C7;--ix-bg:linear-gradient(135deg,#DCE7FF 0%,#9BB7F2 100%);--ix-color:#2A4DBF}
+    .ts-step{
+      border:1.5px solid var(--feat-border);background:rgba(255,255,255,.55);
+      transition:all .35s cubic-bezier(.2,.8,.2,1);position:relative;overflow:hidden;isolation:isolate;
+    }
+    .ts-step::after{
+      content:"";position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;
+      background:var(--feat-glow);filter:blur(50px);opacity:0;z-index:-1;pointer-events:none;
+      transition:opacity .35s ease, transform .35s ease;
+    }
+    .ts-step:hover, .ts-step.is-active{
+      background:#fff;border-color:var(--feat-border-on);
+      box-shadow:0 16px 40px -8px var(--feat-shadow), inset 0 0 0 1px var(--feat-border-on);
+      transform:translateX(4px);
+    }
+    .ts-step:hover::after, .ts-step.is-active::after{opacity:.85;transform:scale(1.05)}
+    .ts-step .ix{background:var(--ix-bg);color:var(--ix-color);box-shadow:inset 0 1px 0 rgba(255,255,255,.75),0 12px 24px -10px rgba(40,40,240,.25),0 0 0 1px rgba(255,255,255,.6)}
+    .ts-step .trx-arrow{color:var(--feat-arrow);opacity:0;transform:translateX(-6px);transition:all .35s}
+    .ts-step:hover .trx-arrow, .ts-step.is-active .trx-arrow{opacity:1;transform:translateX(0)}
+    .ts-step .ts-num{color:var(--feat-arrow)}
+    .ts-step p.ts-desc{max-height:0;opacity:0;overflow:hidden;transition:max-height .35s ease, opacity .25s ease, margin-top .35s ease}
+    .ts-step:hover p.ts-desc, .ts-step.is-active p.ts-desc{max-height:200px;opacity:1;margin-top:.5rem}
+    .ts-step:hover .ts-chev, .ts-step.is-active .ts-chev{transform:rotate(180deg);color:rgb(14,14,84);background:rgba(20,16,60,.08)}
+    .ts-chev{transition:all .35s ease}
+    .ts-visual{opacity:0;transform:translateY(20px) scale(.98);transition:opacity .5s ease, transform .5s cubic-bezier(.2,.8,.2,1);pointer-events:none}
+    .ts-visual.is-active{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}
 
-  /* HERO */
-  .hero{
-    position:relative;width:1728px;min-height:820px;overflow:hidden;
-    background:
-      radial-gradient(ellipse 700px 500px at 8% -10%, rgba(255,180,130,.55) 0%, transparent 65%),
-      radial-gradient(ellipse 800px 600px at 105% 20%, rgba(124,107,232,.42) 0%, transparent 60%),
-      radial-gradient(ellipse 900px 500px at 50% 110%, rgba(150,200,255,.45) 0%, transparent 65%),
-      linear-gradient(155deg,#FBFAFF 0%, #F4F1FF 45%, #FFF7EE 100%);
-    display:grid;grid-template-columns:1fr 1fr;align-items:center;
-    padding:160px 0 100px;
-  }
-  /* soft floating shapes for depth */
-  .hero::before{
-    content:"";position:absolute;left:50%;top:-180px;transform:translateX(-50%);
-    width:1400px;height:560px;border-radius:50%;
-    background:radial-gradient(closest-side, rgba(255,255,255,.55), transparent 70%);
-    pointer-events:none;
-  }
-  .hero::after{
-    content:"";position:absolute;inset:0;pointer-events:none;
-    background:
-      radial-gradient(circle 6px at 14% 18%, rgba(124,107,232,.55), transparent 70%),
-      radial-gradient(circle 8px at 88% 62%, rgba(255,150,80,.55), transparent 70%),
-      radial-gradient(circle 5px at 6% 72%, rgba(60,180,124,.55), transparent 70%),
-      radial-gradient(circle 4px at 92% 18%, rgba(60,110,230,.55), transparent 70%);
-    opacity:.7;
-  }
+    /* Way cards — border gradient */
+    .way-card{
+      background:linear-gradient(#fff,#fff) padding-box,linear-gradient(135deg,#DCE7FF 0%,#B6CCFF 50%,#8AAEFF 100%) border-box;
+      border:1.5px solid transparent;
+    }
 
-  .hero-copy{
-    position:relative;z-index:2;
-    padding-left:174px;padding-right:40px;max-width:780px;
-    display:flex;flex-direction:column;gap:28px;
-  }
-
-  /* eyebrow chip above the headline */
-  .hero-eyebrow{
-    align-self:flex-start;
-    display:inline-flex;align-items:center;gap:10px;
-    padding:8px 16px 8px 10px;border-radius:99px;
-    background:rgba(255,255,255,.7);
-    box-shadow:inset 0 0 0 1px rgba(255,255,255,.9), 0 8px 22px -10px rgba(124,107,232,.25);
-    backdrop-filter:blur(10px);
-    font:600 13px/1 'Figtree';color:rgb(14,14,84);letter-spacing:.02em;
-  }
-  .hero-eyebrow .pulse{
-    width:8px;height:8px;border-radius:50%;background:#7C6BE8;
-    box-shadow:0 0 0 4px rgba(124,107,232,.18);
-  }
-
-  .hero h1{
-    margin:0;
-    font:800 56px/1.18 'Sora';color:rgb(14,14,84);letter-spacing:-.01em;
-  }
-  .hero h1 em{
-    font-style:normal;
-    background:linear-gradient(135deg,#7C6BE8 0%, #FF8A47 100%);
-    -webkit-background-clip:text;background-clip:text;color:transparent;
-  }
-  .hero p.lead{
-    margin:0;max-width:600px;
-    font:400 22px/1.42 'Sora';color:#3a3f5f;
-  }
-  .hero .cta{display:flex;gap:24px;margin-top:8px}
-  .hero .cta .btn-primary{padding-left:21px}
-  .hero .cta .btn-link{
-    background:rgba(255,255,255,.7);backdrop-filter:blur(10px);
-    box-shadow:inset 0 0 0 1px rgba(255,255,255,.9), 0 8px 22px -10px rgba(20,16,60,.18);
-  }
-  .hero .cta .btn-link svg{stroke:var(--ink2)}
-
-  /* Hero preview = product screenshot */
-  .hero-preview{
-    position:relative;z-index:2;justify-self:end;
-    width:820px;margin-right:-40px;
-    border-radius:18px;overflow:hidden;
-    box-shadow:
-      0 50px 100px -30px rgba(40,30,120,.32),
-      0 20px 40px -20px rgba(40,30,120,.18),
-      inset 0 0 0 1px rgba(255,255,255,.8);
-    transform:perspective(1600px) rotateY(-6deg) rotateX(2deg);
-    transform-origin:left center;
-  }
-  .hero-preview img{display:block;width:100%;height:auto}
-
-  /* Card 1 — meeting card */
-  .meeting-card{
-    position:absolute;left:28px;top:66px;width:365px;height:146px;
-    background:rgba(255,255,255,.96);border:1px solid rgba(255,255,255,.9);border-radius:14px;
-    box-shadow:0 30px 60px -25px rgba(40,30,120,.28), 0 12px 24px -12px rgba(40,30,120,.15), inset 0 0 0 1px rgba(255,255,255,.6);
-    backdrop-filter:blur(8px);
-    display:flex;flex-direction:column;
-  }
-  .meeting-card .stats-row{
-    display:flex;align-items:center;gap:30px;
-    padding:16px 22px 0 22px;border-bottom:1px solid var(--indigo-50);padding-bottom:14px;
-  }
-  .meeting-card .stat{display:flex;align-items:center;gap:5px;font:400 11px/12px 'Figtree';color:#2d2d2d}
-  .meeting-card .stat svg{width:14px;height:14px}
-  .meeting-card .body{display:flex;align-items:center;gap:10px;padding:14px 18px}
-  .meeting-card .icon-zoom{
-    width:40px;height:40px;border-radius:8px;background:#fff;border:1px solid #DBDBDB;
-    display:grid;place-items:center;flex-shrink:0;position:relative;
-  }
-  .meeting-card .icon-zoom .cam{position:absolute;bottom:6px;right:6px;width:14px;height:14px;border-radius:3px;background:linear-gradient(127deg,#4A8CFF,#23B7EC);display:grid;place-items:center}
-  .meeting-card .info{flex:1;display:flex;flex-direction:column;gap:4px}
-  .meeting-card .info .name{font:700 14px/1.25 'Figtree';color:#2d2d2d;display:flex;align-items:center;gap:4px}
-  .meeting-card .info .lock{width:8px;height:8px;display:inline-block}
-  .meeting-card .info .meta{display:flex;justify-content:space-between;font:400 10px/12px 'Figtree';color:#2d2d2d}
-  .meeting-card .zoom-badge{display:flex;align-items:center;gap:6px;padding:0 0 0 4px}
-  .zoom-icon{width:18px;height:18px;border-radius:50%;background:linear-gradient(127deg,#4A8CFF,#23B7EC);display:grid;place-items:center;flex-shrink:0}
-  .zoom-icon::after{content:'';width:8px;height:8px;background:#fff;border-radius:1.5px;clip-path:polygon(0 20%, 70% 20%, 70% 0, 100% 30%, 100% 70%, 70% 100%, 70% 80%, 0 80%)}
-  .pill-purple{display:inline-flex;align-items:center;justify-content:center;padding:4px 10px;background:#FBF3FE;color:#754A88;border-radius:5px;font:400 10px/12px 'Figtree'}
-
-  /* Card 2 — calendar list */
-  .cal-card{
-    position:absolute;left:352px;top:29px;width:363px;height:485px;
-    background:rgba(255,255,255,.96);border:1px solid rgba(255,255,255,.9);border-radius:14px;
-    box-shadow:0 40px 80px -30px rgba(40,30,120,.30), 0 14px 28px -14px rgba(40,30,120,.18), inset 0 0 0 1px rgba(255,255,255,.6);
-    backdrop-filter:blur(8px);
-    padding:21px 12px 18px 13px;
-    display:flex;flex-direction:column;gap:15px;
-  }
-  .cal-row{
-    height:62px;border:1px solid var(--indigo-50);border-radius:10px;display:grid;
-    grid-template-columns:90px 1fr auto;align-items:center;padding:0 16px;gap:14px;
-  }
-  .cal-row .when{display:flex;flex-direction:column;align-items:flex-start;gap:2px}
-  .cal-row .when .d{font:500 12px/14px 'Figtree';color:#2d2d2d}
-  .cal-row .when .h{font:700 18px/22px 'Figtree';color:#2d2d2d}
-  .cal-row .meet{display:flex;flex-direction:column;gap:2px;min-width:0}
-  .cal-row .meet .t{font:700 14px/17px 'Figtree';color:#2d2d2d;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .cal-row .meet .s{font:500 12px/14px 'Figtree';color:#2d2d2d}
-  .cal-row .right{display:flex;align-items:center;gap:14px}
-  .av-stack{display:flex;align-items:center}
-  .av-stack > *{width:18px;height:18px;border-radius:50%;border:1px solid #fff;background:#d9d9d9;background-size:cover;background-position:center;margin-right:-9px}
-  .av-stack > *:last-child{margin-right:0}
-  .av-stack .more{background:#B4E2D0;color:#0A724A;font:400 9px/16px 'Figtree';display:grid;place-items:center}
-
-  /* STATS BAND under hero */
-  .stats-band{
-    position:relative;width:1381px;height:222px;left:174px;top:-60px;
-    background:rgba(255,255,255,.85);
-    border:1px solid rgba(255,255,255,.9);border-radius:16px;
-    box-shadow:0 30px 70px -30px rgba(40,30,120,.20), inset 0 0 0 1px rgba(255,255,255,.6);
-    backdrop-filter:blur(14px);
-    display:flex;align-items:center;justify-content:space-around;padding:0 60px;
-  }
-  .stats-band .item{flex:1;text-align:center}
-  .stats-band .item .num{font:800 32px/1.2 'Sora';color:var(--ink2);margin-bottom:8px}
-  .stats-band .item .lbl{font:400 18px/1.3 'Sora';color:var(--ink3);max-width:200px;margin:0 auto}
-
-  /* SECTION wrapper with light bg */
-  .sec-light{background:#fff;padding:90px 0 100px}
-  .sec-soft{background:var(--soft-lila);padding:90px 0 100px}
-
-  /* Features 2x3 — static cards with pastel icon (home accordion style) */
-  .features-grid{
-    display:grid;grid-template-columns:repeat(3,1fr);gap:28px;
-    margin:60px auto 0;width:1240px;
-  }
-  .feat{
-    background:#fff;border:1px solid #EAEAFE;border-radius:18px;
-    padding:28px 28px 30px;display:flex;gap:18px;align-items:flex-start;
-    box-shadow:0 4px 18px -10px rgba(40,40,240,.08);
-    transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
-  }
-  .feat:hover{transform:translateY(-3px);box-shadow:0 18px 40px -20px rgba(40,40,240,.18);border-color:#D9D9FB}
-  .feat .feat-ico{
-    flex-shrink:0;width:52px;height:52px;border-radius:14px;
-    display:grid;place-items:center;
-  }
-  .feat .feat-ico svg{width:26px;height:26px}
-  .feat-ico.peach{background:linear-gradient(135deg,#FFE7D9,#FFD4B8);color:#E8814A}
-  .feat-ico.lila{background:linear-gradient(135deg,#E9E4FE,#D4CCFB);color:#6E5CE8}
-  .feat-ico.mint{background:linear-gradient(135deg,#D9F1E5,#BFE8D2);color:#2F9E6D}
-  .feat-body{flex:1;min-width:0}
-  .feat h3{font:700 20px/1.25 'Sora';color:var(--indigo-900);margin-bottom:10px}
-  .feat p{font:400 15.5px/1.55 'Figtree';color:var(--ink3)}
-
-  /* Section "Gardez les clés" */
-  .keys-sec{position:relative;background:#fff;padding:80px 0 120px;width:1728px}
-  .keys-wrap{position:relative;margin:0 auto;width:1380px;display:grid;grid-template-columns:1fr 540px;gap:80px;align-items:center}
-  .keys h2{font:700 38px/1.2 'Sora';color:var(--indigo-900);max-width:560px}
-  .keys p{font:400 18px/1.5 'Figtree';color:var(--ink3);margin-top:18px;max-width:560px}
-  .keys .cta-row{display:flex;gap:16px;margin-top:32px}
-
-  /* Right preview cards stacked */
-  .keys-mock{position:relative;width:540px;height:380px}
-  .keys-mock .floating-card{
-    position:absolute;width:340px;background:#fff;border:1px solid var(--indigo-200);
-    box-shadow:0 18px 50px -16px rgba(40,40,240,.18);
-    border-radius:14px;padding:14px;
-  }
-  .keys-mock .c1{left:0;top:0;transform:rotate(-1.5deg)}
-  .keys-mock .c2{left:160px;top:60px;transform:rotate(1deg)}
-  .keys-mock .c3{left:50px;top:200px;transform:rotate(-.5deg)}
-
-  /* Trois facons de demarrer — Zoom blue pastel gradient cards */
-  .three-ways{position:relative;background:#fff;padding:80px 0 100px;width:1728px;text-align:center}
-  .three-ways .grid{display:grid;grid-template-columns:repeat(3,360px);gap:32px;margin:60px auto 0;width:1180px}
-  .way-card{
-    position:relative;border-radius:20px;padding:34px;
-    text-align:left;display:flex;flex-direction:column;gap:18px;
-    background:
-      linear-gradient(#fff,#fff) padding-box,
-      linear-gradient(135deg,#DCE7FF 0%,#B6CCFF 50%,#8AAEFF 100%) border-box;
-    border:1.5px solid transparent;
-    box-shadow:0 4px 18px -10px rgba(45,140,240,.18);
-    transition:transform .2s ease, box-shadow .2s ease;
-  }
-  .way-card:hover{transform:translateY(-4px);box-shadow:0 22px 44px -18px rgba(45,140,240,.32)}
-  .way-card .ico{
-    width:54px;height:54px;border-radius:14px;display:grid;place-items:center;
-    background:linear-gradient(135deg,#E5EEFF,#C6D8FF);
-    color:#2D8CF0;
-  }
-  .way-card .ico svg{width:26px;height:26px}
-  .way-card h3{font:700 22px/1.25 'Sora';color:var(--indigo-900)}
-  .way-card p{font:400 16.5px/1.55 'Figtree';color:var(--ink3)}
-
-  /* Cinq profils — soft band */
-  .roles-sec{background:#EAEAFE;width:1728px;padding:120px 0;position:relative}
-  .roles-wrap{margin:0 auto;width:1380px;display:grid;grid-template-columns:520px 1fr;gap:120px;align-items:center}
-  .roles-left h2{font:800 44px/1.18 'Sora';color:var(--indigo-900)}
-  .roles-left p{font:400 18px/1.5 'Figtree';color:var(--ink3);margin-top:22px}
-  .roles-left .btn-primary{margin-top:40px}
-  .roles-list{display:flex;flex-direction:column;gap:22px}
-  .role-row{display:flex;gap:18px;align-items:flex-start}
-  .role-row .dot{width:28px;height:28px;border-radius:50%;background:#fff;border:2px solid var(--indigo-500);display:grid;place-items:center;flex-shrink:0;margin-top:3px}
-  .role-row .dot::after{content:'';width:10px;height:10px;background:var(--indigo-500);border-radius:50%}
-  .role-row .info h4{font:700 18px/1.3 'Sora';color:var(--indigo-900);margin-bottom:4px}
-  .role-row .info p{font:400 15px/1.4 'Figtree';color:var(--ink3)}
-
-  /* Conciergerie premium */
-  .concierge-sec{background:#fff;padding:100px 0;width:1728px;text-align:center}
-  .concierge-grid{display:grid;grid-template-columns:repeat(3,360px);gap:36px;margin:60px auto 0;width:1140px}
-  .concierge-card{
-    background:#F1F2FE;border-radius:18px;padding:32px;text-align:left;
-    border:1px solid #E5E5FA;
-  }
-  .concierge-card h3{font:700 20px/1.3 'Sora';color:var(--indigo-900);margin-bottom:12px}
-  .concierge-card p{font:400 15px/1.45 'Figtree';color:var(--ink3)}
-
-  /* CTA gratuitement */
-  .free-sec{background:#fff;padding:60px 0 60px;width:1728px;text-align:center}
-  .free-sec h2{font:800 44px/1.2 'Sora';color:var(--indigo-900)}
-  .free-sec p{font:400 20px/1.4 'Sora';color:var(--ink3);margin-top:18px}
-  .free-sec .btns{display:flex;gap:24px;justify-content:center;margin-top:36px}
-
-  /* Conseiller dark card */
-  .advisor-sec{background:#fff;padding:30px 0 100px;width:1728px}
-  .advisor-card{
-    margin:0 auto;width:1240px;height:240px;border-radius:24px;
-    background:#0E1023;color:#fff;
-    display:grid;grid-template-columns:1fr 360px;align-items:center;gap:40px;padding:40px 56px;
-    overflow:hidden;position:relative;
-  }
-  .advisor-card::before{
-    content:'';position:absolute;inset:0;
-    background:radial-gradient(600px 280px at 90% 50%, rgba(40,40,240,.35), transparent 60%);
-    pointer-events:none;
-  }
-  .advisor-card .l{position:relative;z-index:1}
-  .advisor-card h3{font:700 32px/1.2 'Sora';color:#fff}
-  .advisor-card p{font:400 16px/1.45 'Figtree';color:#c9cce0;margin-top:12px;max-width:560px}
-  .advisor-card .btn-primary{margin-top:24px;background:#2828F0}
-  .advisor-card .r{position:relative;z-index:1;display:grid;place-items:center}
-  .advisor-card .r .photo{width:200px;height:200px;border-radius:50%;background:url('assets/team-avatar.png') center/cover, #c4c8e0;border:4px solid rgba(255,255,255,.1)}
-
-  /* FOOTER (identical to Landing) */
-  .footer{background:#0E1023;color:#cfd2e6;padding:80px 0 30px;width:1728px}
-  .footer .top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:60px;max-width:1380px;margin:0 auto}
-  .footer .brand h3{display:flex;align-items:center;gap:8px;margin-bottom:16px}
-  .footer .brand p{font:400 14px/1.5 'Figtree';color:#9aa0bf;max-width:320px}
-  .footer .brand .socials{display:flex;gap:14px;margin-top:20px}
-  .footer .brand .socials a{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.07);display:grid;place-items:center;color:#fff;cursor:pointer}
-  .footer .col h4{font:700 14px/1 'Figtree';color:#fff;margin-bottom:18px;letter-spacing:.04em;text-transform:uppercase}
-  .footer .col ul{list-style:none}
-  .footer .col li{margin:10px 0;font:400 14px/1.5 'Figtree'}
-  .footer .col a{color:#9aa0bf;text-decoration:none;cursor:pointer}
-  .footer .col a:hover{color:#fff}
-  .footer .div{height:1px;background:rgba(255,255,255,.07);margin:50px auto 30px;max-width:1380px}
-  .footer .row{display:flex;justify-content:space-between;align-items:center;max-width:1380px;margin:0 auto;font:400 13px/1.5 'Figtree';color:#9aa0bf}
-  .footer .row .il{display:flex;gap:48px}
-  .footer .row .il span{display:inline-flex;align-items:center;gap:8px}
-
-  /* Navbar scroll-driven frosted glass intensification */
-  .navbar{transition:background .35s ease, backdrop-filter .35s ease, box-shadow .35s ease, border-color .35s ease;}
-  .navbar.scrolled{
-    background:linear-gradient(120deg,rgba(255,255,255,.78),rgba(248,247,255,.85) 50%,rgba(238,238,255,.82));
-    backdrop-filter:blur(22px) saturate(1.4);-webkit-backdrop-filter:blur(22px) saturate(1.4);
-    border-color:rgba(255,255,255,.85);
-    box-shadow:0 14px 44px -18px rgba(33,52,100,.32);
-  }
-
-</style>
+    /* Floating mock cards (Keys section) — rotations */
+    .keys-c1{transform:rotate(-1.5deg)}
+    .keys-c2{transform:rotate(1deg)}
+    .keys-c3{transform:rotate(-.5deg)}
+  </style>
 </head>
-<body>
+<body class="font-sans text-ink antialiased bg-white">
 
-<div id="nav-fixed">
-  <div class="nav-stage" id="navStage">
-    <!-- nav -->
-      <nav class="navbar">
-        <div class="logo"><a href="Landing Page.html"><img src="assets/meetnoo-logo.png" alt="MeetNoo" loading="eager" fetchpriority="high" decoding="async" /></a></div>
-        <div class="links">
-          <a href="Landing Page.html">Accueil</a>
-          <div class="nav-svc">
-            <a style="color:var(--indigo-500)">Nos services <i class="caret" style="border-top-color:var(--indigo-500)"></i></a>
-            <div class="nav-svc-menu">
-              <a href="Meetnoo Events.html">
-                <span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M16 2v4M8 2v4M3 10h18"/><circle cx="12" cy="15" r="2"/></svg></span>
-                <span class="meta"><span class="t">MeetNoo Events</span><span class="s">Événements hybrides clé en main</span></span>
-              </a><a href="Gestion Salles Zoom.html" class="active">
-                <span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="m16 10 6-3v10l-6-3z"/></svg></span>
-                <span class="meta"><span class="t">Gestion des salles</span><span class="s">Pilotez votre flotte Zoom</span></span>
-              </a><a href="Transcription IA.html">
-                <span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg></span>
-                <span class="meta"><span class="t">Transcription &amp; Intelligence IA</span><span class="s">Audio → livrables exploitables</span></span>
-              </a>
-            </div>
-          </div>
-          <a href="Landing Page.html#blog">Blog</a>
-          <a href="Landing Page.html#pricing">Pricing</a>
-        </div>
-        <div class="right">
-          <a class="links" href="https://beta.meetnoo.com/" target="_blank" rel="noopener" style="cursor:pointer;text-decoration:none">Espaces client</a>
-          <a class="btn-primary" href="Contact.html" style="text-decoration:none;height:36px;padding:0 18px;font:600 14px/36px 'Roboto',sans-serif">Contactez nous</a>
-        </div>
-      </nav>
+<!-- ==================== NAVBAR FIXE ==================== -->
+<header id="topnav" class="navbar-glass fixed top-3 sm:top-4 left-1/2 -translate-x-1/2 w-[calc(100%-1.5rem)] sm:w-[calc(100%-3rem)] max-w-[1265px] h-14 sm:h-[62px] rounded-full border border-white/60 shadow-[0_8px_30px_-16px_rgba(33,52,100,0.25)] flex items-center justify-between px-3 sm:px-4 z-50">
+  <a href="Landing Page.html" class="flex items-center h-10 shrink-0">
+    <img src="assets/meetnoo-logo.png" alt="MeetNoo" loading="eager" fetchpriority="high" decoding="async" class="h-7 sm:h-9 w-auto block" />
+  </a>
+
+  <nav class="hidden lg:flex items-center gap-10 font-[Inter] text-[15px] text-ink-soft">
+    <a href="Landing Page.html" class="hover:text-brand-primary transition-colors">Accueil</a>
+
+    <div class="nav-svc relative">
+      <a class="inline-flex items-center gap-1.5 cursor-pointer text-brand-primary">
+        Nos services
+        <i class="caret inline-block w-0 h-0 border-[5px] border-transparent border-t-brand-primary translate-y-0.5 transition-transform duration-200"></i>
+      </a>
+      <div class="nav-svc-menu absolute left-1/2 top-full mt-4 min-w-[280px] bg-white rounded-2xl p-2.5 shadow-[0_24px_60px_-12px_rgba(20,27,52,0.25),0_0_0_1px_rgba(33,52,100,0.06)] opacity-0 pointer-events-none z-50">
+        <a href="Meetnoo Events.html" class="flex items-center gap-3 p-2.5 rounded-xl text-ink-soft hover:bg-brand-tint hover:text-brand-primary transition-colors">
+          <span class="w-9 h-9 rounded-lg bg-brand-tint text-brand-primary grid place-items-center shrink-0">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M16 2v4M8 2v4M3 10h18"/><circle cx="12" cy="15" r="2"/></svg>
+          </span>
+          <span class="flex flex-col gap-0.5">
+            <span class="font-semibold text-[14px] leading-tight text-ink-soft">MeetNoo Events</span>
+            <span class="text-[12px] leading-tight text-ink-mute">Événements hybrides clé en main</span>
+          </span>
+        </a>
+        <a href="Gestion Salles Zoom.html" class="flex items-center gap-3 p-2.5 rounded-xl bg-brand-tint text-brand-primary transition-colors">
+          <span class="w-9 h-9 rounded-lg bg-brand-primary text-white grid place-items-center shrink-0">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="m16 10 6-3v10l-6-3z"/></svg>
+          </span>
+          <span class="flex flex-col gap-0.5">
+            <span class="font-semibold text-[14px] leading-tight text-brand-primary">Gestion des salles</span>
+            <span class="text-[12px] leading-tight text-ink-mute">Pilotez votre flotte Zoom</span>
+          </span>
+        </a>
+        <a href="Transcription IA.html" class="flex items-center gap-3 p-2.5 rounded-xl text-ink-soft hover:bg-brand-tint hover:text-brand-primary transition-colors">
+          <span class="w-9 h-9 rounded-lg bg-brand-tint text-brand-primary grid place-items-center shrink-0">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg>
+          </span>
+          <span class="flex flex-col gap-0.5">
+            <span class="font-semibold text-[14px] leading-tight text-ink-soft">Transcription &amp; Intelligence IA</span>
+            <span class="text-[12px] leading-tight text-ink-mute">Audio → livrables exploitables</span>
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <a href="Landing Page.html#blog" class="hover:text-brand-primary transition-colors">Blog</a>
+    <a href="Landing Page.html#pricing" class="hover:text-brand-primary transition-colors">Pricing</a>
+  </nav>
+
+  <div class="flex items-center gap-3 sm:gap-5">
+    <a href="https://beta.meetnoo.com/" target="_blank" rel="noopener" class="hidden md:inline text-[15px] font-[Inter] text-ink-soft hover:text-brand-primary transition-colors">Espaces client</a>
+    <a href="Contact.html" class="inline-flex items-center justify-center h-9 px-4 sm:px-5 rounded-full bg-brand-primary text-white text-[13px] sm:text-[14px] font-semibold hover:bg-brand-accent transition-colors shadow-brand-sm">Contactez nous</a>
   </div>
-</div>
-<div id="stage-wrap">
-  <div id="stage" data-screen-label="Gestion Salles Zoom">
+</header>
 
-    <!-- ==================== HERO ==================== -->
-    <section class="hero" data-screen-label="Hero — Gestion Salles Zoom">
+<!-- ==================== HERO ==================== -->
+<section class="hero-bg relative overflow-hidden pt-28 sm:pt-32 lg:pt-36 pb-16 lg:pb-24">
+  <div class="relative z-10 mx-auto max-w-8xl px-4 sm:px-8 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
+    <div class="flex flex-col gap-6 lg:gap-7 max-w-2xl">
+      <div class="inline-flex items-center gap-2.5 self-start pl-2.5 pr-4 py-2 rounded-full bg-white/70 backdrop-blur-md shadow-[inset_0_0_0_1px_rgba(255,255,255,0.9),0_8px_22px_-10px_rgba(124,107,232,0.25)]">
+        <span class="w-2 h-2 rounded-full bg-brand-soft shadow-[0_0_0_4px_rgba(124,107,232,0.18)]"></span>
+        <span class="font-[Figtree] font-semibold text-[13px] text-ink tracking-wide">Gestion centralisée des salles Zoom</span>
+      </div>
 
-      
+      <h1 class="font-display font-extrabold text-ink leading-[1.15] tracking-tight text-4xl sm:text-5xl lg:text-[56px]">
+        Pilotez toutes vos salles Zoom depuis une <em class="not-italic text-gradient-warm">interface unique</em>.
+      </h1>
 
-      <div class="hero-copy">
-        <div class="hero-eyebrow"><span class="pulse"></span>Gestion centralisée des salles Zoom</div>
+      <p class="font-display text-lg sm:text-xl lg:text-[22px] leading-snug text-ink-soft max-w-xl">
+        My MeetNoo centralise la gestion de vos environnements Zoom : salles, utilisateurs, enregistrements et permissions. Finis les jonglages entre consoles — tout est là, en un seul endroit.
+      </p>
 
-        <h1>Pilotez toutes vos salles<br/>Zoom depuis une<br/><em>interface unique</em>.</h1>
+      <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-1">
+        <a href="Contact.html" class="inline-flex items-center justify-center gap-2.5 h-14 px-7 rounded-full bg-brand-primary text-white font-medium text-base hover:bg-brand-accent transition-all shadow-[0_8px_22px_-10px_rgba(40,40,240,0.55)]">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><rect x="3" y="6" width="14" height="12" rx="2"/><path d="M17 10l4-2v8l-4-2"/></svg>
+          Rejoindre une réunion
+        </a>
+        <button class="inline-flex items-center justify-center gap-2.5 h-14 px-7 rounded-full bg-white/70 backdrop-blur-md text-brand-primary border border-brand-primary font-medium text-base hover:bg-white transition-all shadow-[inset_0_0_0_1px_rgba(255,255,255,0.9),0_8px_22px_-10px_rgba(20,16,60,0.18)]">
+          Voir la démo
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+    </div>
 
-        <p class="lead">My MeetNoo centralise la gestion de vos environnements Zoom : salles, utilisateurs, enregistrements et permissions. Finis les jonglages entre consoles — tout est là, en un seul endroit.</p>
+    <div class="relative w-full lg:justify-self-end">
+      <div class="hero-preview-tilt rounded-2xl overflow-hidden">
+        <img src="assets/hero-mymeetnoo-screenshot.png" alt="Tableau de bord My MeetNoo" loading="lazy" decoding="async" width="820" height="540" class="block w-full h-auto" />
+      </div>
+    </div>
+  </div>
+</section>
 
-        <div class="cta">
-          <a class="btn-primary" href="Contact.html" style="text-decoration:none">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><rect x="3" y="6" width="14" height="12" rx="2"/><path d="M17 10l4-2v8l-4-2"/></svg>
-            Rejoindre une réunion
-          </a>
-          <button class="btn-link" style="border-color:var(--indigo-500);color:var(--indigo-500)">
-            Voir la démo
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </button>
+<!-- ==================== STATS BAND ==================== -->
+<section class="relative -mt-12 sm:-mt-16 z-20 px-4 sm:px-8 lg:px-12">
+  <div class="mx-auto max-w-7xl bg-white/85 border border-white/90 rounded-2xl backdrop-blur-md shadow-[0_30px_70px_-30px_rgba(40,30,120,0.20),inset_0_0_0_1px_rgba(255,255,255,0.6)] grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 py-8 px-6 sm:py-10 sm:px-10">
+    <div class="text-center">
+      <div class="font-display font-extrabold text-2xl sm:text-3xl text-ink-soft mb-2">1</div>
+      <div class="font-display text-sm sm:text-base text-ink leading-snug">Clic pour connecter votre Zoom</div>
+    </div>
+    <div class="text-center">
+      <div class="font-display font-extrabold text-2xl sm:text-3xl text-ink-soft mb-2">3</div>
+      <div class="font-display text-sm sm:text-base text-ink leading-snug">Scénarios d'accès possibles</div>
+    </div>
+    <div class="text-center">
+      <div class="font-display font-extrabold text-2xl sm:text-3xl text-ink-soft mb-2">5</div>
+      <div class="font-display text-sm sm:text-base text-ink leading-snug">Niveaux de rôles utilisateurs</div>
+    </div>
+    <div class="text-center">
+      <div class="font-display font-extrabold text-2xl sm:text-3xl text-ink-soft mb-2">100%</div>
+      <div class="font-display text-sm sm:text-base text-ink leading-snug">RGPD · hébergé en France</div>
+    </div>
+    <div class="text-center col-span-2 md:col-span-3 lg:col-span-1">
+      <div class="font-display font-extrabold text-2xl sm:text-3xl text-ink-soft mb-2">0€</div>
+      <div class="font-display text-sm sm:text-base text-ink leading-snug">Pour démarrer (freemium)</div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== INTERACTIF 4 SECTIONS ==================== -->
+<section class="bg-white py-16 sm:py-20 lg:py-28">
+  <div class="mx-auto max-w-7xl px-4 sm:px-8 lg:px-12">
+    <header class="text-center max-w-3xl mx-auto mb-10 lg:mb-14">
+      <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-[44px] leading-tight text-ink tracking-tight">Quatre espaces, un seul tableau de bord.</h2>
+      <p class="mt-4 font-display text-base sm:text-lg text-ink-mute leading-relaxed">Vos salles, vos réunions à venir, vos archives et votre calendrier — tout reste connecté.</p>
+    </header>
+
+    <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,520px)_1fr] gap-10 lg:gap-16 items-start">
+      <div class="flex flex-col gap-3.5">
+        <a class="ts-step ix-lilac is-active flex gap-4 p-5 sm:p-6 rounded-2xl cursor-pointer no-underline text-inherit" data-step="0">
+          <div class="ix shrink-0 w-12 h-12 sm:w-[52px] sm:h-[52px] rounded-2xl grid place-items-center">
+            <svg viewBox="0 0 24 24" class="w-6 h-6 sm:w-[26px] sm:h-[26px] stroke-current fill-none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 4v16"/></svg>
+          </div>
+          <div class="flex-1 min-w-0">
+            <h4 class="font-[Figtree] font-bold text-base sm:text-[18px] text-ink flex items-center gap-2.5">
+              <span class="ts-num font-[Figtree] font-bold text-[11px] tracking-widest px-2 py-1 rounded-full bg-black/5">01</span>
+              Salles
+              <span class="trx-arrow ml-auto text-base">→</span>
+            </h4>
+            <p class="ts-desc font-[Figtree] text-[14.5px] leading-relaxed text-ink-mute">Toutes vos salles Zoom regroupées dans une seule vue. Visualisez en un coup d'œil le code, le propriétaire, le nombre de réunions et la durée moyenne. Ajoutez ou retirez une salle en un clic, sans toucher à la console Zoom.</p>
+          </div>
+          <div class="ts-chev shrink-0 w-8 h-8 rounded-full grid place-items-center text-[#8a8eb0] bg-[rgba(20,16,60,0.04)] self-center">
+            <svg viewBox="0 0 24 24" class="w-3.5 h-3.5 stroke-current fill-none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </div>
+        </a>
+
+        <a class="ts-step ix-peach flex gap-4 p-5 sm:p-6 rounded-2xl cursor-pointer no-underline text-inherit" data-step="1">
+          <div class="ix shrink-0 w-12 h-12 sm:w-[52px] sm:h-[52px] rounded-2xl grid place-items-center">
+            <svg viewBox="0 0 24 24" class="w-6 h-6 sm:w-[26px] sm:h-[26px] stroke-current fill-none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 3v4"/><path d="M16 3v4"/></svg>
+          </div>
+          <div class="flex-1 min-w-0">
+            <h4 class="font-[Figtree] font-bold text-base sm:text-[18px] text-ink flex items-center gap-2.5">
+              <span class="ts-num font-[Figtree] font-bold text-[11px] tracking-widest px-2 py-1 rounded-full bg-black/5">02</span>
+              À venir
+              <span class="trx-arrow ml-auto text-base">→</span>
+            </h4>
+            <p class="ts-desc font-[Figtree] text-[14.5px] leading-relaxed text-ink-mute">Votre planning unifié, fusion temps réel de Google Calendar, Outlook et CalDAV. Chaque réunion affiche l'horaire, la salle, les participants et la plateforme — Zoom ou Meet. Rejoignez sans copier-coller de lien.</p>
+          </div>
+          <div class="ts-chev shrink-0 w-8 h-8 rounded-full grid place-items-center text-[#8a8eb0] bg-[rgba(20,16,60,0.04)] self-center">
+            <svg viewBox="0 0 24 24" class="w-3.5 h-3.5 stroke-current fill-none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </div>
+        </a>
+
+        <a class="ts-step ix-mint flex gap-4 p-5 sm:p-6 rounded-2xl cursor-pointer no-underline text-inherit" data-step="2">
+          <div class="ix shrink-0 w-12 h-12 sm:w-[52px] sm:h-[52px] rounded-2xl grid place-items-center">
+            <svg viewBox="0 0 24 24" class="w-6 h-6 sm:w-[26px] sm:h-[26px] stroke-current fill-none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg>
+          </div>
+          <div class="flex-1 min-w-0">
+            <h4 class="font-[Figtree] font-bold text-base sm:text-[18px] text-ink flex items-center gap-2.5">
+              <span class="ts-num font-[Figtree] font-bold text-[11px] tracking-widest px-2 py-1 rounded-full bg-black/5">03</span>
+              Passées
+              <span class="trx-arrow ml-auto text-base">→</span>
+            </h4>
+            <p class="ts-desc font-[Figtree] text-[14.5px] leading-relaxed text-ink-mute">Toutes vos réunions archivées avec leurs livrables : vidéo, audio, chat, transcription. Relisez, partagez ou lancez une transcription IA a posteriori sur n'importe quelle réunion enregistrée.</p>
+          </div>
+          <div class="ts-chev shrink-0 w-8 h-8 rounded-full grid place-items-center text-[#8a8eb0] bg-[rgba(20,16,60,0.04)] self-center">
+            <svg viewBox="0 0 24 24" class="w-3.5 h-3.5 stroke-current fill-none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </div>
+        </a>
+
+        <a class="ts-step ix-sky flex gap-4 p-5 sm:p-6 rounded-2xl cursor-pointer no-underline text-inherit" data-step="3">
+          <div class="ix shrink-0 w-12 h-12 sm:w-[52px] sm:h-[52px] rounded-2xl grid place-items-center">
+            <svg viewBox="0 0 24 24" class="w-6 h-6 sm:w-[26px] sm:h-[26px] stroke-current fill-none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 11h18"/><path d="M8 3v4"/><path d="M16 3v4"/><rect x="6" y="13" width="6" height="3" rx="1"/></svg>
+          </div>
+          <div class="flex-1 min-w-0">
+            <h4 class="font-[Figtree] font-bold text-base sm:text-[18px] text-ink flex items-center gap-2.5">
+              <span class="ts-num font-[Figtree] font-bold text-[11px] tracking-widest px-2 py-1 rounded-full bg-black/5">04</span>
+              Calendrier
+              <span class="trx-arrow ml-auto text-base">→</span>
+            </h4>
+            <p class="ts-desc font-[Figtree] text-[14.5px] leading-relaxed text-ink-mute">Une vue calendrier complète, mois / semaine / jour, qui agrège toutes vos réunions sur une seule timeline. Code couleur par statut, rejoindre la réunion en un clic, créez ou planifiez une réunion instantanée depuis la grille.</p>
+          </div>
+          <div class="ts-chev shrink-0 w-8 h-8 rounded-full grid place-items-center text-[#8a8eb0] bg-[rgba(20,16,60,0.04)] self-center">
+            <svg viewBox="0 0 24 24" class="w-3.5 h-3.5 stroke-current fill-none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </div>
+        </a>
+      </div>
+
+      <div class="lg:sticky lg:top-32 w-full h-[320px] sm:h-[420px] lg:h-[540px] relative">
+        <div class="ts-visual is-active absolute inset-0 rounded-2xl overflow-hidden shadow-[0_40px_80px_-30px_rgba(40,30,120,0.28),0_16px_32px_-16px_rgba(40,30,120,0.14),inset_0_0_0_1px_rgba(20,16,60,0.05)] bg-gradient-to-br from-[#FBFAFF] to-[#F4F1FF] flex items-center justify-center p-6" data-visual="0">
+          <img src="assets/section-salles.png" alt="Liste des salles Zoom" loading="lazy" decoding="async" class="block max-w-full max-h-full w-auto h-auto rounded-xl" />
+        </div>
+        <div class="ts-visual absolute inset-0 rounded-2xl overflow-hidden shadow-[0_40px_80px_-30px_rgba(40,30,120,0.28),0_16px_32px_-16px_rgba(40,30,120,0.14),inset_0_0_0_1px_rgba(20,16,60,0.05)] bg-gradient-to-br from-[#FBFAFF] to-[#F4F1FF] flex items-center justify-center p-6" data-visual="1">
+          <img src="assets/section-a-venir.png" alt="Réunions à venir" loading="lazy" decoding="async" class="block max-w-full max-h-full w-auto h-auto rounded-xl" />
+        </div>
+        <div class="ts-visual absolute inset-0 rounded-2xl overflow-hidden shadow-[0_40px_80px_-30px_rgba(40,30,120,0.28),0_16px_32px_-16px_rgba(40,30,120,0.14),inset_0_0_0_1px_rgba(20,16,60,0.05)] bg-gradient-to-br from-[#FBFAFF] to-[#F4F1FF] flex items-center justify-center p-6" data-visual="2">
+          <img src="assets/section-passees.png" alt="Réunions passées" loading="lazy" decoding="async" class="block max-w-full max-h-full w-auto h-auto rounded-xl" />
+        </div>
+        <div class="ts-visual absolute inset-0 rounded-2xl overflow-hidden shadow-[0_40px_80px_-30px_rgba(40,30,120,0.28),0_16px_32px_-16px_rgba(40,30,120,0.14),inset_0_0_0_1px_rgba(20,16,60,0.05)] bg-gradient-to-br from-[#FBFAFF] to-[#F4F1FF] flex items-center justify-center p-6" data-visual="3">
+          <img src="assets/section-calendrier.png" alt="Calendrier des réunions" loading="lazy" decoding="async" class="block max-w-full max-h-full w-auto h-auto rounded-xl" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FEATURES 2x3 ==================== -->
+<section class="bg-white py-16 sm:py-20 lg:py-24">
+  <div class="mx-auto max-w-7xl px-4 sm:px-8 lg:px-12">
+    <header class="text-center max-w-3xl mx-auto mb-10 lg:mb-14">
+      <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-[44px] leading-tight text-ink-soft tracking-tight">Tout ce dont vous avez besoin pour piloter vos réunions.</h2>
+      <p class="mt-4 font-display text-base sm:text-lg lg:text-[22px] text-ink leading-snug">Une plateforme pratique et facile à utiliser pour réserver, gérer et analyser toutes vos réunions.</p>
+    </header>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7">
+      <article class="bg-white border border-[#EAEAFE] rounded-2xl p-6 lg:p-7 flex gap-4 items-start shadow-[0_4px_18px_-10px_rgba(40,40,240,0.08)] hover:-translate-y-1 hover:shadow-[0_18px_40px_-20px_rgba(40,40,240,0.18)] hover:border-[#D9D9FB] transition-all">
+        <div class="shrink-0 w-13 h-13 w-[52px] h-[52px] rounded-2xl grid place-items-center bg-gradient-to-br from-[#FFE7D9] to-[#FFD4B8] text-[#E8814A]">
+          <svg viewBox="0 0 24 24" class="w-6 h-6 stroke-current fill-none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        </div>
+        <div class="flex-1 min-w-0">
+          <h3 class="font-display font-bold text-lg sm:text-xl text-ink mb-2.5">Gestion des réunions</h3>
+          <p class="font-[Figtree] text-[15.5px] leading-relaxed text-ink-soft">Planifiez, rejoignez, enregistrez et consultez vos réunions depuis un tableau de bord unifié. Actions rapides : Rejoindre, Partager, Transcrire en un clic.</p>
+        </div>
+      </article>
+
+      <article class="bg-white border border-[#EAEAFE] rounded-2xl p-6 lg:p-7 flex gap-4 items-start shadow-[0_4px_18px_-10px_rgba(40,40,240,0.08)] hover:-translate-y-1 hover:shadow-[0_18px_40px_-20px_rgba(40,40,240,0.18)] hover:border-[#D9D9FB] transition-all">
+        <div class="shrink-0 w-[52px] h-[52px] rounded-2xl grid place-items-center bg-gradient-to-br from-[#E9E4FE] to-[#D4CCFB] text-[#6E5CE8]">
+          <svg viewBox="0 0 24 24" class="w-6 h-6 stroke-current fill-none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M9 15l2 2 4-4"/></svg>
+        </div>
+        <div class="flex-1 min-w-0">
+          <h3 class="font-display font-bold text-lg sm:text-xl text-ink mb-2.5">Émargement &amp; Signature</h3>
+          <p class="font-[Figtree] text-[15.5px] leading-relaxed text-ink-soft">MeetNoo Sign génère des feuilles d'émargement au format PDF. Signature électronique intégrée pour valider la présence de chaque participant, en présentiel comme en distanciel.</p>
+        </div>
+      </article>
+
+      <article class="bg-white border border-[#EAEAFE] rounded-2xl p-6 lg:p-7 flex gap-4 items-start shadow-[0_4px_18px_-10px_rgba(40,40,240,0.08)] hover:-translate-y-1 hover:shadow-[0_18px_40px_-20px_rgba(40,40,240,0.18)] hover:border-[#D9D9FB] transition-all">
+        <div class="shrink-0 w-[52px] h-[52px] rounded-2xl grid place-items-center bg-gradient-to-br from-[#D9F1E5] to-[#BFE8D2] text-[#2F9E6D]">
+          <svg viewBox="0 0 24 24" class="w-6 h-6 stroke-current fill-none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
+        </div>
+        <div class="flex-1 min-w-0">
+          <h3 class="font-display font-bold text-lg sm:text-xl text-ink mb-2.5">Gestion des enregistrements</h3>
+          <p class="font-[Figtree] text-[15.5px] leading-relaxed text-ink-soft">Accédez à tous vos enregistrements cloud Zoom directement depuis My MeetNoo. Lancez la transcription IA sur n'importe quel fichier d'un seul clic.</p>
+        </div>
+      </article>
+
+      <article class="bg-white border border-[#EAEAFE] rounded-2xl p-6 lg:p-7 flex gap-4 items-start shadow-[0_4px_18px_-10px_rgba(40,40,240,0.08)] hover:-translate-y-1 hover:shadow-[0_18px_40px_-20px_rgba(40,40,240,0.18)] hover:border-[#D9D9FB] transition-all">
+        <div class="shrink-0 w-[52px] h-[52px] rounded-2xl grid place-items-center bg-gradient-to-br from-[#E9E4FE] to-[#D4CCFB] text-[#6E5CE8]">
+          <svg viewBox="0 0 24 24" class="w-6 h-6 stroke-current fill-none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg>
+        </div>
+        <div class="flex-1 min-w-0">
+          <h3 class="font-display font-bold text-lg sm:text-xl text-ink mb-2.5">Rapports d'utilisation</h3>
+          <p class="font-[Figtree] text-[15.5px] leading-relaxed text-ink-soft">MeetNoo Analytics vous donne le contrôle de toutes vos données : participation, engagement, temps de connexion. Prenez des décisions basées sur les faits.</p>
+        </div>
+      </article>
+
+      <article class="bg-white border border-[#EAEAFE] rounded-2xl p-6 lg:p-7 flex gap-4 items-start shadow-[0_4px_18px_-10px_rgba(40,40,240,0.08)] hover:-translate-y-1 hover:shadow-[0_18px_40px_-20px_rgba(40,40,240,0.18)] hover:border-[#D9D9FB] transition-all">
+        <div class="shrink-0 w-[52px] h-[52px] rounded-2xl grid place-items-center bg-gradient-to-br from-[#FFE7D9] to-[#FFD4B8] text-[#E8814A]">
+          <svg viewBox="0 0 24 24" class="w-6 h-6 stroke-current fill-none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+        </div>
+        <div class="flex-1 min-w-0">
+          <h3 class="font-display font-bold text-lg sm:text-xl text-ink mb-2.5">Salles éphémères express</h3>
+          <p class="font-[Figtree] text-[15.5px] leading-relaxed text-ink-soft">Créez une salle de réunion en quelques secondes sans configuration préalable. Idéal pour les sessions improvisées ou les réunions urgentes.</p>
+        </div>
+      </article>
+
+      <article class="bg-white border border-[#EAEAFE] rounded-2xl p-6 lg:p-7 flex gap-4 items-start shadow-[0_4px_18px_-10px_rgba(40,40,240,0.08)] hover:-translate-y-1 hover:shadow-[0_18px_40px_-20px_rgba(40,40,240,0.18)] hover:border-[#D9D9FB] transition-all">
+        <div class="shrink-0 w-[52px] h-[52px] rounded-2xl grid place-items-center bg-gradient-to-br from-[#D9F1E5] to-[#BFE8D2] text-[#2F9E6D]">
+          <svg viewBox="0 0 24 24" class="w-6 h-6 stroke-current fill-none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><circle cx="18" cy="6" r="3"/><path d="M6 9v6a3 3 0 0 0 3 3h3"/></svg>
+        </div>
+        <div class="flex-1 min-w-0">
+          <h3 class="font-display font-bold text-lg sm:text-xl text-ink mb-2.5">Intégrations sur mesure</h3>
+          <p class="font-[Figtree] text-[15.5px] leading-relaxed text-ink-soft">Notre API middleware intègre MeetNoo à votre écosystème : Slack, Teams, Google Meet, LMS, SIRH. Notre R&amp;D concrétise vos visions innovantes.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== GARDEZ LES CLÉS ==================== -->
+<section class="bg-white py-16 sm:py-20 lg:py-28">
+  <div class="mx-auto max-w-7xl px-4 sm:px-8 lg:px-12 grid grid-cols-1 lg:grid-cols-[1fr_540px] gap-12 lg:gap-20 items-center">
+    <div>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-[38px] leading-tight text-ink max-w-xl">Gardez les clés de votre compte Zoom.</h2>
+      <p class="mt-5 font-[Figtree] text-base sm:text-lg text-ink-soft leading-relaxed max-w-xl">Connectez votre compte Zoom à My MeetNoo en un clic. Vos données restent les vôtres : permissions granulaires, audit complet, désynchronisation à tout moment. Vos salles, vos règles.</p>
+      <p class="mt-3 font-[Figtree] text-base sm:text-lg text-ink-soft leading-relaxed max-w-xl">Et si vous n'avez pas de compte Zoom ? On vous en fournit un, ou on vous offre une salle éphémère prête à l'emploi.</p>
+      <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-8">
+        <a href="Contact.html" class="inline-flex items-center justify-center gap-2 h-14 px-7 rounded-full bg-brand-primary text-white font-medium text-base hover:bg-brand-accent transition-all shadow-[0_8px_22px_-10px_rgba(40,40,240,0.55)]">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+          Connecter mon Zoom
+        </a>
+        <button class="inline-flex items-center justify-center gap-2 h-14 px-7 rounded-full bg-white text-ink-soft font-medium text-base border border-line hover:bg-brand-ice transition-all">En savoir plus</button>
+      </div>
+    </div>
+
+    <div class="relative w-full max-w-md mx-auto lg:max-w-none h-[380px] sm:h-[420px]">
+      <div class="keys-c1 absolute left-0 top-0 w-72 sm:w-80 bg-white border border-brand-soft rounded-2xl p-4 shadow-[0_18px_50px_-16px_rgba(40,40,240,0.18)]">
+        <div class="flex justify-between items-center mb-3">
+          <span class="font-[Figtree] font-bold text-sm text-ink-soft">Compte connecté</span>
+          <span class="inline-flex items-center gap-1 font-[Figtree] font-medium text-[11px] text-success px-2 py-1 bg-success-tint rounded">● Actif</span>
+        </div>
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-full bg-gradient-to-br from-[#4A8CFF] to-[#23B7EC] shrink-0"></div>
+          <div>
+            <div class="font-[Figtree] font-semibold text-[13px] text-ink-soft leading-tight">Zoom Workplace</div>
+            <div class="font-[Figtree] text-[11px] text-ink-mute leading-tight">3 salles · 12 utilisateurs</div>
+          </div>
         </div>
       </div>
 
-      <!-- Product preview -->
-      <div class="hero-preview">
-        <img src="assets/hero-mymeetnoo-screenshot.png" alt="Tableau de bord My MeetNoo" loading="lazy" decoding="async" />
-      </div>
-    </section>
-
-    <!-- ==================== STATS BAND ==================== -->
-    <section data-screen-label="Stats" style="background:#fff;width:1728px;padding-top:0">
-      <div class="stats-band">
-        <div class="item"><div class="num">1</div><div class="lbl">Clic pour connecter votre Zoom</div></div>
-        <div class="item"><div class="num">3</div><div class="lbl">Scénarios d'accès possibles</div></div>
-        <div class="item"><div class="num">5</div><div class="lbl">Niveaux de rôles utilisateurs</div></div>
-        <div class="item"><div class="num">100%</div><div class="lbl">RGPD · hébergé en France</div></div>
-        <div class="item"><div class="num">0€</div><div class="lbl">Pour démarrer (freemium)</div></div>
-      </div>
-    </section>
-
-    <!-- ==================== 3 SECTIONS SCROLL-DRIVEN ==================== -->
-    <section class="trois-sections" data-screen-label="3 sections produit">
-      <div class="ts-header">
-        <h2>Quatre espaces, un seul tableau de bord.</h2>
-        <p>Vos salles, vos réunions à venir, vos archives et votre calendrier — tout reste connecté.</p>
-      </div>
-
-      <div class="ts-stage">
-        <div class="ts-copy">
-          <a class="ts-step ix-lilac is-active" data-step="0">
-            <div class="ix">
-              <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 4v16"/></svg>
-            </div>
-            <div class="ts-step-body">
-              <h4><span class="ts-num">01</span> Salles <span class="trx-arrow">→</span></h4>
-              <p>Toutes vos salles Zoom regroupées dans une seule vue. Visualisez en un coup d'œil le code, le propriétaire, le nombre de réunions et la durée moyenne. Ajoutez ou retirez une salle en un clic, sans toucher à la console Zoom.</p>
-            </div>
-            <div class="ts-chev"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
-          </a>
-          <a class="ts-step ix-peach" data-step="1">
-            <div class="ix">
-              <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 3v4"/><path d="M16 3v4"/></svg>
-            </div>
-            <div class="ts-step-body">
-              <h4><span class="ts-num">02</span> À venir <span class="trx-arrow">→</span></h4>
-              <p>Votre planning unifié, fusion temps réel de Google Calendar, Outlook et CalDAV. Chaque réunion affiche l'horaire, la salle, les participants et la plateforme — Zoom ou Meet. Rejoignez sans copier-coller de lien.</p>
-            </div>
-            <div class="ts-chev"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
-          </a>
-          <a class="ts-step ix-mint" data-step="2">
-            <div class="ix">
-              <svg viewBox="0 0 24 24"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg>
-            </div>
-            <div class="ts-step-body">
-              <h4><span class="ts-num">03</span> Passées <span class="trx-arrow">→</span></h4>
-              <p>Toutes vos réunions archivées avec leurs livrables : vidéo, audio, chat, transcription. Relisez, partagez ou lancez une transcription IA a posteriori sur n'importe quelle réunion enregistrée.</p>
-            </div>
-            <div class="ts-chev"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
-          </a>
-          <a class="ts-step ix-sky" data-step="3">
-            <div class="ix">
-              <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 11h18"/><path d="M8 3v4"/><path d="M16 3v4"/><rect x="6" y="13" width="6" height="3" rx="1"/></svg>
-            </div>
-            <div class="ts-step-body">
-              <h4><span class="ts-num">04</span> Calendrier <span class="trx-arrow">→</span></h4>
-              <p>Une vue calendrier complète, mois / semaine / jour, qui agrège toutes vos réunions sur une seule timeline. Code couleur par statut, rejoindre la réunion en un clic, créez ou planifiez une réunion instantanée depuis la grille.</p>
-            </div>
-            <div class="ts-chev"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
-          </a>
-        </div>
-
-        <div class="ts-visual-wrap">
-          <div class="ts-visual is-active" data-visual="0">
-            <img src="assets/section-salles.png" alt="Liste des salles Zoom" loading="lazy" decoding="async" />
-          </div>
-          <div class="ts-visual" data-visual="1">
-            <img src="assets/section-a-venir.png" alt="Réunions à venir" loading="lazy" decoding="async" />
-          </div>
-          <div class="ts-visual" data-visual="2">
-            <img src="assets/section-passees.png" alt="Réunions passées" loading="lazy" decoding="async" />
-          </div>
-          <div class="ts-visual" data-visual="3">
-            <img src="assets/section-calendrier.png" alt="Calendrier des réunions" loading="lazy" decoding="async" />
-          </div>
+      <div class="keys-c2 absolute left-32 sm:left-40 top-14 w-72 sm:w-80 bg-white border border-brand-soft rounded-2xl p-4 shadow-[0_18px_50px_-16px_rgba(40,40,240,0.18)]">
+        <div class="font-[Figtree] font-bold text-[13px] text-ink-soft mb-2.5">Permissions actives</div>
+        <div class="flex flex-col gap-1.5">
+          <div class="font-[Figtree] text-xs text-ink-soft">✓ Lire les enregistrements</div>
+          <div class="font-[Figtree] text-xs text-ink-soft">✓ Créer des salles</div>
+          <div class="font-[Figtree] text-xs text-ink-soft">✓ Inviter des participants</div>
+          <div class="font-[Figtree] text-xs text-[#cfcfcf]">✗ Modifier la facturation</div>
         </div>
       </div>
-    </section>
 
-    <script>
-      (function(){
-        const steps = document.querySelectorAll('.trois-sections .ts-step');
-        const visuals = document.querySelectorAll('.trois-sections .ts-visual');
-        if(!steps.length) return;
-        function activate(idx){
-          steps.forEach(s => s.classList.toggle('is-active', s.dataset.step == idx));
-          visuals.forEach(v => v.classList.toggle('is-active', v.dataset.visual == idx));
-        }
-        steps.forEach(s => {
-          s.addEventListener('mouseenter', () => activate(s.dataset.step));
-          s.addEventListener('click', (e) => { e.preventDefault(); activate(s.dataset.step); });
-        });
-      })();
-    </script>
-
-    <style>
-      .trois-sections{
-        position:relative;width:1728px;background:#fff;padding:120px 0 60px;
-      }
-      .trois-sections .ts-header{
-        max-width:1100px;margin:0 auto 60px;padding:0 174px;text-align:center;
-      }
-      .trois-sections .ts-header h2{
-        font:700 44px/1.18 'Sora';color:rgb(14,14,84);letter-spacing:-.01em;margin:0 0 18px;
-      }
-      .trois-sections .ts-header p{
-        font:400 19px/1.5 'Sora';color:#5a607a;margin:0;text-wrap:pretty;
-      }
-
-      .trois-sections .ts-stage{
-        position:relative;max-width:1480px;margin:0 auto;padding:0 60px;
-        display:grid;grid-template-columns:minmax(400px, 520px) 1fr;gap:80px;align-items:flex-start;
-      }
-      .trois-sections .ts-copy{
-        display:flex;flex-direction:column;gap:14px;
-        padding:40px 0;
-      }
-      /* per-step palettes — match homepage trx-feat */
-      .trois-sections .ts-step.ix-lilac{--feat-tint:rgba(201,194,247,.18);--feat-glow:rgba(150,135,240,.55);--feat-border:rgba(150,135,240,.32);--feat-border-on:rgba(124,107,232,.55);--feat-shadow:rgba(124,107,232,.22);--feat-arrow:#5B4BD6}
-      .trois-sections .ts-step.ix-peach{--feat-tint:rgba(255,201,161,.16);--feat-glow:rgba(255,170,110,.55);--feat-border:rgba(255,170,110,.32);--feat-border-on:rgba(255,150,80,.55);--feat-shadow:rgba(255,150,80,.22);--feat-arrow:#B45309}
-      .trois-sections .ts-step.ix-mint{--feat-tint:rgba(166,229,200,.20);--feat-glow:rgba(80,200,140,.50);--feat-border:rgba(80,200,140,.32);--feat-border-on:rgba(52,180,124,.55);--feat-shadow:rgba(52,180,124,.22);--feat-arrow:#0F8A5F}
-      .trois-sections .ts-step.ix-sky{--feat-tint:rgba(181,202,247,.20);--feat-glow:rgba(105,150,235,.55);--feat-border:rgba(105,150,235,.32);--feat-border-on:rgba(60,110,230,.55);--feat-shadow:rgba(60,110,230,.22);--feat-arrow:#1E47C7}
-      .trois-sections .ts-step{
-        display:flex;gap:18px;padding:22px 24px;border-radius:18px;
-        border:1.5px solid var(--feat-border);background:rgba(255,255,255,.55);
-        text-decoration:none;color:inherit;cursor:pointer;
-        transition:all .35s cubic-bezier(.2,.8,.2,1);
-        position:relative;overflow:hidden;isolation:isolate;
-      }
-      .trois-sections .ts-step::after{
-        content:"";position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;
-        background:var(--feat-glow);filter:blur(50px);opacity:0;z-index:-1;pointer-events:none;
-        transition:opacity .35s ease, transform .35s ease;
-      }
-      .trois-sections .ts-step:hover,
-      .trois-sections .ts-step.is-active{
-        background:#fff;border-color:var(--feat-border-on);
-        box-shadow:0 16px 40px -8px var(--feat-shadow), inset 0 0 0 1px var(--feat-border-on);
-        transform:translateX(4px);
-      }
-      .trois-sections .ts-step:hover::after,
-      .trois-sections .ts-step.is-active::after{opacity:.85;transform:scale(1.05)}
-
-      .trois-sections .ts-step .ix{
-        flex-shrink:0;width:52px;height:52px;border-radius:14px;display:grid;place-items:center;
-        position:relative;transition:all .35s;
-        box-shadow:inset 0 1px 0 rgba(255,255,255,.75),0 12px 24px -10px rgba(40,40,240,.25),0 0 0 1px rgba(255,255,255,.6);
-      }
-      .trois-sections .ts-step .ix svg{position:relative;z-index:1;width:26px;height:26px;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;fill:none;stroke:currentColor;transition:transform .35s ease}
-      .trois-sections .ts-step .ix::after{content:"";position:absolute;inset:5px;border-radius:11px;background:linear-gradient(160deg,rgba(255,255,255,.55),rgba(255,255,255,0) 55%);pointer-events:none}
-      .trois-sections .ts-step:hover .ix svg,
-      .trois-sections .ts-step.is-active .ix svg{transform:scale(1.06)}
-      .trois-sections .ts-step.ix-lilac .ix{background:linear-gradient(135deg,#E9E5FF 0%,#C9C2F7 100%);color:#5B4BD6}
-      .trois-sections .ts-step.ix-peach .ix{background:linear-gradient(135deg,#FFE9D6 0%,#FFC9A1 100%);color:#B45309}
-      .trois-sections .ts-step.ix-mint  .ix{background:linear-gradient(135deg,#D9F5E8 0%,#A6E5C8 100%);color:#0E7A52}
-      .trois-sections .ts-step.ix-sky   .ix{background:linear-gradient(135deg,#DCE7FF 0%,#9BB7F2 100%);color:#2A4DBF}
-
-      .trois-sections .ts-step .ts-step-body{flex:1;min-width:0}
-      .trois-sections .ts-step h4{
-        font:700 18px/1.3 'Figtree';color:rgb(14,14,84);margin:0;display:flex;align-items:center;gap:10px;
-      }
-      .trois-sections .ts-step .ts-num{
-        font:700 11px/1 'Figtree';color:var(--feat-arrow);letter-spacing:.14em;
-        padding:5px 9px;border-radius:99px;background:rgba(0,0,0,.04);
-      }
-      .trois-sections .ts-step .trx-arrow{
-        display:inline-block;font-size:16px;color:var(--feat-arrow);opacity:0;transform:translateX(-6px);transition:all .35s;margin-left:auto;
-      }
-      .trois-sections .ts-step:hover .trx-arrow,
-      .trois-sections .ts-step.is-active .trx-arrow{opacity:1;transform:translateX(0)}
-      .trois-sections .ts-step p{
-        font:400 14.5px/1.6 'Figtree';color:#5a607a;margin:0;text-wrap:pretty;
-        max-height:0;opacity:0;overflow:hidden;
-        transition:max-height .35s ease, opacity .25s ease, margin-top .35s ease;
-      }
-      .trois-sections .ts-step:hover p,
-      .trois-sections .ts-step.is-active p{max-height:200px;opacity:1;margin-top:8px}
-      .trois-sections .ts-step .ts-chev{
-        flex-shrink:0;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;
-        color:#8a8eb0;background:rgba(20,16,60,.04);transition:all .35s ease;align-self:center;
-      }
-      .trois-sections .ts-step .ts-chev svg{width:14px;height:14px;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;fill:none;stroke:currentColor}
-      .trois-sections .ts-step:hover .ts-chev,
-      .trois-sections .ts-step.is-active .ts-chev{transform:rotate(180deg);color:rgb(14,14,84);background:rgba(20,16,60,.08)}
-
-      .trois-sections .ts-visual-wrap{
-        position:sticky;top:120px;
-        width:100%;height:540px;
-      }
-      .trois-sections .ts-visual{
-        position:absolute;inset:0;
-        border-radius:18px;overflow:hidden;
-        box-shadow:0 40px 80px -30px rgba(40,30,120,.28), 0 16px 32px -16px rgba(40,30,120,.14), inset 0 0 0 1px rgba(20,16,60,.05);
-        background:linear-gradient(155deg,#FBFAFF 0%,#F4F1FF 100%);
-        opacity:0;transform:translateY(20px) scale(.98);
-        transition:opacity .5s ease, transform .5s cubic-bezier(.2,.8,.2,1);
-        pointer-events:none;
-        display:flex;align-items:center;justify-content:center;padding:24px;
-      }
-      .trois-sections .ts-visual.is-active{
-        opacity:1;transform:translateY(0) scale(1);pointer-events:auto;
-      }
-      .trois-sections .ts-visual img{
-        display:block;max-width:100%;max-height:100%;width:auto;height:auto;border-radius:10px;
-      }
-    </style>
-
-
-
-    <!-- ==================== FEATURES 2x3 ==================== -->
-    <section class="sec-light" data-screen-label="Features 6">
-      <h2 class="section-title">Tout ce dont vous avez besoin pour piloter vos réunions.</h2>
-      <p class="section-sub">Une plateforme pratique et facile à utiliser pour réserver, gérer et analyser toutes vos réunions.</p>
-
-      <div class="features-grid">
-        <div class="feat">
-          <div class="feat-ico peach">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-          </div>
-          <div class="feat-body">
-            <h3>Gestion des réunions</h3>
-            <p>Planifiez, rejoignez, enregistrez et consultez vos réunions depuis un tableau de bord unifié. Actions rapides : Rejoindre, Partager, Transcrire en un clic.</p>
-          </div>
+      <div class="keys-c3 absolute left-10 sm:left-12 top-[220px] sm:top-[240px] w-72 sm:w-80 bg-white border border-brand-soft rounded-2xl p-4 shadow-[0_18px_50px_-16px_rgba(40,40,240,0.18)]">
+        <div class="flex justify-between items-center">
+          <span class="font-[Figtree] font-bold text-[13px] text-ink-soft">Audit log</span>
+          <span class="font-[Figtree] text-[10px] text-ink-mute">Aujourd'hui 14:32</span>
         </div>
-        <div class="feat">
-          <div class="feat-ico lila">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M9 15l2 2 4-4"/></svg>
-          </div>
-          <div class="feat-body">
-            <h3>Émargement &amp; Signature</h3>
-            <p>MeetNoo Sign génère des feuilles d'émargement au format PDF. Signature électronique intégrée pour valider la présence de chaque participant, en présentiel comme en distanciel.</p>
-          </div>
+        <div class="font-[Figtree] text-[11px] text-ink-soft mt-2">Désynchronisation à tout moment, en 1 clic.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 5 PROFILS ==================== -->
+<section class="bg-[#EAEAFE] py-20 sm:py-24 lg:py-32">
+  <div class="mx-auto max-w-7xl px-4 sm:px-8 lg:px-12 grid grid-cols-1 lg:grid-cols-[520px_1fr] gap-12 lg:gap-28 items-center">
+    <div>
+      <h2 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-[44px] leading-tight text-ink tracking-tight">Cinq profils pour un contrôle total de vos accès.</h2>
+      <p class="mt-5 font-[Figtree] text-base sm:text-lg text-ink-soft leading-relaxed">MeetNoo embarque un système de rôles granulaires. Définissez qui voit quoi, qui peut faire quoi, à quel niveau. Idéal pour les organisations à forte exigence de gouvernance.</p>
+      <a href="Contact.html" class="inline-flex items-center justify-center gap-2 h-14 px-7 rounded-full bg-brand-primary text-white font-medium text-base hover:bg-brand-accent transition-all shadow-[0_8px_22px_-10px_rgba(40,40,240,0.55)] mt-8">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+        Voir la grille complète
+      </a>
+    </div>
+
+    <ul class="flex flex-col gap-5">
+      <li class="flex gap-4 items-start">
+        <span class="shrink-0 w-7 h-7 rounded-full bg-white border-2 border-brand-primary grid place-items-center mt-1">
+          <span class="w-2.5 h-2.5 bg-brand-primary rounded-full"></span>
+        </span>
+        <div>
+          <h4 class="font-display font-bold text-base sm:text-lg text-ink leading-snug">Administrateur Système</h4>
+          <p class="font-[Figtree] text-sm text-ink-soft leading-relaxed mt-1">Accès root. Configuration réseau, intégrations, facturation, audit log complet.</p>
         </div>
-        <div class="feat">
-          <div class="feat-ico mint">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
-          </div>
-          <div class="feat-body">
-            <h3>Gestion des enregistrements</h3>
-            <p>Accédez à tous vos enregistrements cloud Zoom directement depuis My MeetNoo. Lancez la transcription IA sur n'importe quel fichier d'un seul clic.</p>
-          </div>
+      </li>
+      <li class="flex gap-4 items-start">
+        <span class="shrink-0 w-7 h-7 rounded-full bg-white border-2 border-brand-primary grid place-items-center mt-1">
+          <span class="w-2.5 h-2.5 bg-brand-primary rounded-full"></span>
+        </span>
+        <div>
+          <h4 class="font-display font-bold text-base sm:text-lg text-ink leading-snug">Administrateur Régional</h4>
+          <p class="font-[Figtree] text-sm text-ink-soft leading-relaxed mt-1">Pilotage d'une entité ou d'un site. Gestion utilisateurs, salles, rapports locaux.</p>
         </div>
-        <div class="feat">
-          <div class="feat-ico lila">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg>
-          </div>
-          <div class="feat-body">
-            <h3>Rapports d'utilisation</h3>
-            <p>MeetNoo Analytics vous donne le contrôle de toutes vos données : participation, engagement, temps de connexion. Prenez des décisions basées sur les faits.</p>
-          </div>
+      </li>
+      <li class="flex gap-4 items-start">
+        <span class="shrink-0 w-7 h-7 rounded-full bg-white border-2 border-brand-primary grid place-items-center mt-1">
+          <span class="w-2.5 h-2.5 bg-brand-primary rounded-full"></span>
+        </span>
+        <div>
+          <h4 class="font-display font-bold text-base sm:text-lg text-ink leading-snug">Responsable de Service</h4>
+          <p class="font-[Figtree] text-sm text-ink-soft leading-relaxed mt-1">Vue d'équipe : participation, présence, transcriptions partagées.</p>
         </div>
-        <div class="feat">
-          <div class="feat-ico peach">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
-          </div>
-          <div class="feat-body">
-            <h3>Salles éphémères express</h3>
-            <p>Créez une salle de réunion en quelques secondes sans configuration préalable. Idéal pour les sessions improvisées ou les réunions urgentes.</p>
-          </div>
+      </li>
+      <li class="flex gap-4 items-start">
+        <span class="shrink-0 w-7 h-7 rounded-full bg-white border-2 border-brand-primary grid place-items-center mt-1">
+          <span class="w-2.5 h-2.5 bg-brand-primary rounded-full"></span>
+        </span>
+        <div>
+          <h4 class="font-display font-bold text-base sm:text-lg text-ink leading-snug">Participant</h4>
+          <p class="font-[Figtree] text-sm text-ink-soft leading-relaxed mt-1">Accès à ses propres réunions, transcriptions et enregistrements.</p>
         </div>
-        <div class="feat">
-          <div class="feat-ico mint">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><circle cx="18" cy="6" r="3"/><path d="M6 9v6a3 3 0 0 0 3 3h3"/></svg>
-          </div>
-          <div class="feat-body">
-            <h3>Intégrations sur mesure</h3>
-            <p>Notre API middleware intègre MeetNoo à votre écosystème : Slack, Teams, Google Meet, LMS, SIRH. Notre R&amp;D concrétise vos visions innovantes.</p>
-          </div>
+      </li>
+      <li class="flex gap-4 items-start">
+        <span class="shrink-0 w-7 h-7 rounded-full bg-white border-2 border-brand-primary grid place-items-center mt-1">
+          <span class="w-2.5 h-2.5 bg-brand-primary rounded-full"></span>
+        </span>
+        <div>
+          <h4 class="font-display font-bold text-base sm:text-lg text-ink leading-snug">Invité Sécurisé</h4>
+          <p class="font-[Figtree] text-sm text-ink-soft leading-relaxed mt-1">Accès temporaire à une réunion ou un projet, avec date d'expiration.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ==================== TROIS FAÇONS DE DÉMARRER ==================== -->
+<section class="bg-white py-16 sm:py-20 lg:py-24">
+  <div class="mx-auto max-w-7xl px-4 sm:px-8 lg:px-12">
+    <header class="text-center max-w-3xl mx-auto mb-10 lg:mb-14">
+      <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-[44px] leading-tight text-ink-soft tracking-tight">Trois façons de démarrer.</h2>
+      <p class="mt-4 font-display text-base sm:text-lg lg:text-[22px] text-ink leading-snug">Quelle que soit votre situation, MeetNoo s'adapte à votre infrastructure existante.</p>
+    </header>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+      <article class="way-card rounded-3xl p-7 lg:p-8 flex flex-col gap-4 text-left shadow-[0_4px_18px_-10px_rgba(45,140,240,0.18)] hover:-translate-y-1 hover:shadow-[0_22px_44px_-18px_rgba(45,140,240,0.32)] transition-all">
+        <div class="w-14 h-14 rounded-2xl grid place-items-center bg-gradient-to-br from-[#E5EEFF] to-[#C6D8FF] text-[#2D8CF0]">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 9h6v6H9z"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-xl sm:text-[22px] text-ink leading-tight">Avec votre compte Zoom</h3>
+        <p class="font-[Figtree] text-[16.5px] leading-relaxed text-ink-soft">Connectez votre compte Zoom Pro / Business / Enterprise existant. MeetNoo se branche dessus en 1 clic : aucune migration, vos salles sont synchronisées immédiatement.</p>
+      </article>
+
+      <article class="way-card rounded-3xl p-7 lg:p-8 flex flex-col gap-4 text-left shadow-[0_4px_18px_-10px_rgba(45,140,240,0.18)] hover:-translate-y-1 hover:shadow-[0_22px_44px_-18px_rgba(45,140,240,0.32)] transition-all">
+        <div class="w-14 h-14 rounded-2xl grid place-items-center bg-gradient-to-br from-[#E5EEFF] to-[#C6D8FF] text-[#2D8CF0]">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-xl sm:text-[22px] text-ink leading-tight">Avec une salle Zoom éphémère</h3>
+        <p class="font-[Figtree] text-[16.5px] leading-relaxed text-ink-soft">Pas de compte Zoom ? MeetNoo génère une salle éphémère à la volée, sans inscription. Idéale pour les visios ponctuelles ou les invités externes.</p>
+      </article>
+
+      <article class="way-card rounded-3xl p-7 lg:p-8 flex flex-col gap-4 text-left shadow-[0_4px_18px_-10px_rgba(45,140,240,0.18)] hover:-translate-y-1 hover:shadow-[0_22px_44px_-18px_rgba(45,140,240,0.32)] transition-all">
+        <div class="w-14 h-14 rounded-2xl grid place-items-center bg-gradient-to-br from-[#E5EEFF] to-[#C6D8FF] text-[#2D8CF0]">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7l9 6 9-6M3 7v10a2 2 0 002 2h14a2 2 0 002-2V7M3 7l9-4 9 4"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-xl sm:text-[22px] text-ink leading-tight">Avec un compte fourni</h3>
+        <p class="font-[Figtree] text-[16.5px] leading-relaxed text-ink-soft">MeetNoo vous met à disposition une licence Zoom incluse dans nos forfaits Pro et Business. Activation en moins de 24h, support inclus.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CTA FINALE ==================== -->
+<section class="bg-white pt-8 pb-20 sm:pb-24 lg:pb-28 px-4 sm:px-8 lg:px-12">
+  <div class="cta-final-bg mx-auto max-w-7xl rounded-[40px] py-16 sm:py-20 lg:py-24 px-6 sm:px-12 text-center relative overflow-hidden shadow-[0_30px_70px_-30px_rgba(40,40,140,0.18),inset_0_0_0_1px_rgba(255,255,255,0.6)]">
+    <div class="absolute inset-0 opacity-55 bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.55),transparent_70%)] pointer-events-none"></div>
+    <h2 class="relative font-display font-bold text-2xl sm:text-3xl lg:text-[36px] leading-tight text-ink mb-4">Prêt à transformer vos réunions<br class="hidden sm:block"/> en actifs stratégiques ?</h2>
+    <p class="relative font-display text-sm sm:text-base lg:text-base text-ink-soft max-w-2xl mx-auto mb-8 leading-relaxed">Démarrez en moins de 5 minutes. Souverain, RGPD, hébergé en France.</p>
+    <div class="relative flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="Contact.html" class="inline-flex items-center justify-center gap-2.5 h-14 px-7 rounded-full bg-brand-primary text-white font-medium text-base hover:bg-brand-accent transition-all shadow-[0_8px_22px_-10px_rgba(40,40,240,0.55)]">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="5" width="18" height="12" rx="2"/></svg>
+        Tester gratuitement
+      </a>
+      <a href="Contact.html" class="inline-flex items-center justify-center gap-2.5 h-14 px-7 rounded-full bg-white/70 text-ink font-medium text-base border border-black/10 backdrop-blur hover:bg-white transition-all">Prendre RDV avec un expert</a>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="bg-[#0E1023] text-[#cfd2e6] pt-20 pb-8 px-4 sm:px-8 lg:px-12">
+  <div class="mx-auto max-w-7xl">
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-[1.5fr_1fr_1fr_1fr] gap-10 lg:gap-16">
+      <div class="col-span-2 md:col-span-3 lg:col-span-1">
+        <h3 class="flex items-center gap-2 mb-4">
+          <img src="assets/meetnoo-logo.png" alt="MeetNoo" loading="lazy" decoding="async" class="h-9 w-auto block brightness-0 invert" />
+        </h3>
+        <p class="font-[Figtree] text-sm text-[#9aa0bf] leading-relaxed max-w-xs">Chaque réunion devient un actif stratégique. Une solution Labnoo Technologies.</p>
+        <div class="flex gap-3.5 mt-5">
+          <a class="w-8 h-8 rounded-full bg-white/10 grid place-items-center text-white cursor-pointer hover:bg-white/20 transition-colors" aria-label="Facebook"><svg width="14" height="14" viewBox="0 0 18 18" fill="currentColor"><path d="M11 18v-7h2.5l.5-3H11V6c0-1 .3-1.5 1.5-1.5H14V2c-.3 0-1.3-.1-2.5-.1C8.7 1.9 7 3.4 7 6v2H4v3h3v7h4z"/></svg></a>
+          <a class="w-8 h-8 rounded-full bg-white/10 grid place-items-center text-white cursor-pointer hover:bg-white/20 transition-colors" aria-label="Twitter"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 4l-2 5 5-2-5 7 5 4h-7l-2 5-2-5H4l5-4-5-7 5 2-2-5h12z"/></svg></a>
+          <a class="w-8 h-8 rounded-full bg-white/10 grid place-items-center text-white cursor-pointer hover:bg-white/20 transition-colors" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1" fill="currentColor"/></svg></a>
+          <a class="w-8 h-8 rounded-full bg-white/10 grid place-items-center text-white cursor-pointer hover:bg-white/20 transition-colors" aria-label="LinkedIn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h4v16H4zM10 9h4v2c.6-1.2 2-2.3 4-2.3 4 0 4 2.7 4 6V20h-4v-5c0-1.4-.5-2.4-2-2.4s-2 1.1-2 2.5V20h-4z"/><circle cx="6" cy="6" r="2"/></svg></a>
+          <a class="w-8 h-8 rounded-full bg-white/10 grid place-items-center text-white cursor-pointer hover:bg-white/20 transition-colors" aria-label="YouTube"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22 8s-.2-1.4-.8-2c-.7-.7-1.5-.7-1.9-.8C16.7 5 12 5 12 5s-4.7 0-7.3.2C4.3 5.3 3.5 5.3 2.8 6 2.2 6.6 2 8 2 8S1.8 9.6 1.8 11.2v1.6C1.8 14.4 2 16 2 16s.2 1.4.8 2c.7.7 1.7.7 2.1.8 1.5.1 6.1.2 7.1.2s4.7 0 7.3-.2c.4-.1 1.2-.1 1.9-.8.6-.6.8-2 .8-2s.2-1.6.2-3.2v-1.6C22.2 9.6 22 8 22 8zM10 14V9l5 2.5-5 2.5z"/></svg></a>
         </div>
       </div>
-    </section>
 
-    <!-- ==================== KEYS / Gardez les clés ==================== -->
-    <section class="keys-sec" data-screen-label="Gardez les clés">
-      <div class="keys-wrap">
-        <div class="keys">
-          <h2>Gardez les clés de votre compte Zoom.</h2>
-          <p>Connectez votre compte Zoom à My MeetNoo en un clic. Vos données restent les vôtres : permissions granulaires, audit complet, désynchronisation à tout moment. Vos salles, vos règles.</p>
-          <p style="margin-top:14px">Et si vous n'avez pas de compte Zoom ? On vous en fournit un, ou on vous offre une salle éphémère prête à l'emploi.</p>
-          <div class="cta-row">
-            <a class="btn-primary" href="Contact.html" style="text-decoration:none">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
-              Connecter mon Zoom
-            </a>
-            <button class="btn-link">En savoir plus</button>
-          </div>
-        </div>
-
-        <div class="keys-mock">
-          <div class="floating-card c1">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
-              <span style="font:700 14px/1 'Figtree';color:#2d2d2d">Compte connecté</span>
-              <span style="display:inline-flex;align-items:center;gap:4px;font:500 11px/1 'Figtree';color:var(--green-700);padding:4px 8px;background:#E7F6F0;border-radius:4px">● Actif</span>
-            </div>
-            <div style="display:flex;align-items:center;gap:10px">
-              <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(127deg,#4A8CFF,#23B7EC);flex-shrink:0"></div>
-              <div>
-                <div style="font:600 13px/1.2 'Figtree';color:#2d2d2d">Zoom Workplace</div>
-                <div style="font:400 11px/1.2 'Figtree';color:#6B6B6B">3 salles · 12 utilisateurs</div>
-              </div>
-            </div>
-          </div>
-          <div class="floating-card c2">
-            <div style="font:700 13px/1 'Figtree';color:#2d2d2d;margin-bottom:10px">Permissions actives</div>
-            <div style="display:flex;flex-direction:column;gap:6px">
-              <div style="font:400 12px/1.4 'Figtree';color:#2d2d2d">✓ Lire les enregistrements</div>
-              <div style="font:400 12px/1.4 'Figtree';color:#2d2d2d">✓ Créer des salles</div>
-              <div style="font:400 12px/1.4 'Figtree';color:#2d2d2d">✓ Inviter des participants</div>
-              <div style="font:400 12px/1.4 'Figtree';color:#cfcfcf">✗ Modifier la facturation</div>
-            </div>
-          </div>
-          <div class="floating-card c3">
-            <div style="display:flex;justify-content:space-between;align-items:center">
-              <span style="font:700 13px/1 'Figtree';color:#2d2d2d">Audit log</span>
-              <span style="font:400 10px/1 'Figtree';color:#6B6B6B">Aujourd'hui 14:32</span>
-            </div>
-            <div style="font:400 11px/1.4 'Figtree';color:#2d2d2d;margin-top:8px">Désynchronisation à tout moment, en 1 clic.</div>
-          </div>
-        </div>
+      <div>
+        <h4 class="font-[Figtree] font-bold text-sm text-white mb-4 uppercase tracking-wider">Produit</h4>
+        <ul class="space-y-2.5 font-[Figtree] text-sm">
+          <li><a class="text-[#9aa0bf] hover:text-white cursor-pointer transition-colors">Fonctionnalités</a></li>
+          <li><a href="Landing Page.html#pricing" class="text-[#9aa0bf] hover:text-white cursor-pointer transition-colors">Pricing</a></li>
+          <li><a class="text-[#9aa0bf] hover:text-white cursor-pointer transition-colors">My MeetNoo</a></li>
+          <li><a class="text-[#9aa0bf] hover:text-white cursor-pointer transition-colors">Palabre Noo</a></li>
+          <li><a class="text-[#9aa0bf] hover:text-white cursor-pointer transition-colors">Intégrations</a></li>
+        </ul>
       </div>
-    </section>
 
-    <!-- ==================== TROIS FACONS DE DEMARRER ==================== -->
-    <!-- ==================== CINQ PROFILS ==================== -->
-    <section class="roles-sec" data-screen-label="Cinq profils">
-      <div class="roles-wrap">
-        <div class="roles-left">
-          <h2>Cinq profils pour un contrôle total de vos accès.</h2>
-          <p>MeetNoo embarque un système de rôles granulaires. Définissez qui voit quoi, qui peut faire quoi, à quel niveau. Idéal pour les organisations à forte exigence de gouvernance.</p>
-          <a class="btn-primary" href="Contact.html" style="text-decoration:none">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
-            Voir la grille complète
-          </a>
-        </div>
-        <div class="roles-list">
-          <div class="role-row">
-            <div class="dot"></div>
-            <div class="info"><h4>Administrateur Système</h4><p>Accès root. Configuration réseau, intégrations, facturation, audit log complet.</p></div>
-          </div>
-          <div class="role-row">
-            <div class="dot"></div>
-            <div class="info"><h4>Administrateur Régional</h4><p>Pilotage d'une entité ou d'un site. Gestion utilisateurs, salles, rapports locaux.</p></div>
-          </div>
-          <div class="role-row">
-            <div class="dot"></div>
-            <div class="info"><h4>Responsable de Service</h4><p>Vue d'équipe : participation, présence, transcriptions partagées.</p></div>
-          </div>
-          <div class="role-row">
-            <div class="dot"></div>
-            <div class="info"><h4>Participant</h4><p>Accès à ses propres réunions, transcriptions et enregistrements.</p></div>
-          </div>
-          <div class="role-row">
-            <div class="dot"></div>
-            <div class="info"><h4>Invité Sécurisé</h4><p>Accès temporaire à une réunion ou un projet, avec date d'expiration.</p></div>
-          </div>
-        </div>
+      <div>
+        <h4 class="font-[Figtree] font-bold text-sm text-white mb-4 uppercase tracking-wider">Entreprise</h4>
+        <ul class="space-y-2.5 font-[Figtree] text-sm">
+          <li><a class="text-[#9aa0bf] hover:text-white cursor-pointer transition-colors">À propos</a></li>
+          <li><a href="Landing Page.html#blog" class="text-[#9aa0bf] hover:text-white cursor-pointer transition-colors">Blog</a></li>
+          <li><a class="text-[#9aa0bf] hover:text-white cursor-pointer transition-colors">Partenaires</a></li>
+          <li><a class="text-[#9aa0bf] hover:text-white cursor-pointer transition-colors">Carrières</a></li>
+          <li><a class="text-[#9aa0bf] hover:text-white cursor-pointer transition-colors">Presse / RGPD</a></li>
+        </ul>
       </div>
-    </section>
 
-    <!-- ==================== TROIS FACONS DE DEMARRER ==================== -->
-    <section class="three-ways" data-screen-label="Trois façons">
-      <h2 class="section-title">Trois façons de démarrer.</h2>
-      <p class="section-sub">Quelle que soit votre situation, MeetNoo s'adapte à votre infrastructure existante.</p>
+      <div>
+        <h4 class="font-[Figtree] font-bold text-sm text-white mb-4 uppercase tracking-wider">Support</h4>
+        <ul class="space-y-2.5 font-[Figtree] text-sm">
+          <li><a class="text-[#9aa0bf] hover:text-white cursor-pointer transition-colors">Démarrer</a></li>
+          <li><a class="text-[#9aa0bf] hover:text-white cursor-pointer transition-colors">Centre d'aide</a></li>
+          <li><a class="text-[#9aa0bf] hover:text-white cursor-pointer transition-colors">Statut des serveurs</a></li>
+          <li><a class="text-[#9aa0bf] hover:text-white cursor-pointer transition-colors">Signaler un bug</a></li>
+          <li><a class="text-[#9aa0bf] hover:text-white cursor-pointer transition-colors">Chat support</a></li>
+        </ul>
+      </div>
+    </div>
 
-      <div class="grid">
-        <div class="way-card">
-          <div class="ico">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 9h6v6H9z"/></svg>
-          </div>
-          <h3>Avec votre compte Zoom</h3>
-          <p>Connectez votre compte Zoom Pro / Business / Enterprise existant. MeetNoo se branche dessus en 1 clic : aucune migration, vos salles sont synchronisées immédiatement.</p>
-        </div>
-        <div class="way-card">
-          <div class="ico">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>
-          </div>
-          <h3>Avec une salle Zoom éphémère</h3>
-          <p>Pas de compte Zoom ? MeetNoo génère une salle éphémère à la volée, sans inscription. Idéale pour les visios ponctuelles ou les invités externes.</p>
-        </div>
-        <div class="way-card">
-          <div class="ico">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7l9 6 9-6M3 7v10a2 2 0 002 2h14a2 2 0 002-2V7M3 7l9-4 9 4"/></svg>
-          </div>
-          <h3>Avec un compte fourni</h3>
-          <p>MeetNoo vous met à disposition une licence Zoom incluse dans nos forfaits Pro et Business. Activation en moins de 24h, support inclus.</p>
-        </div>
-      </div>
-    </section>
+    <div class="h-px bg-white/10 my-10"></div>
 
-    <!-- ==================== FINAL CTA ==================== -->
-    <section style="position:relative;width:1728px;padding:60px 0 120px;background:#fff" data-screen-label="CTA finale">
-      <div style="margin:0 auto;width:1240px;height:483px;border-radius:40px;background:radial-gradient(700px 320px at 88% -10%, rgba(255,170,110,.45), transparent 60%), radial-gradient(640px 280px at 6% 110%, rgba(124,107,232,.42), transparent 60%), linear-gradient(155deg,#FBFAFF 0%, #F4F1FF 100%);color:rgb(14,14,84);position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 40px;box-shadow:0 30px 70px -30px rgba(40,40,140,.18), inset 0 0 0 1px rgba(255,255,255,.6)">
-        <div style="position:absolute;inset:0;opacity:.55;background:radial-gradient(circle at 50% 0%, rgba(255,255,255,.55), transparent 70%);pointer-events:none"></div>
-        <h2 style="position:relative;font:700 36px/1.15 'Sora';color:rgb(14,14,84);margin-bottom:14px">Prêt à transformer vos réunions<br/>en actifs stratégiques ?</h2>
-        <p style="position:relative;font:400 16px/1.5 'Sora';color:#5a607a;max-width:760px;margin-bottom:30px">Démarrez en moins de 5 minutes. Souverain, RGPD, hébergé en France.</p>
-        <div style="position:relative;display:flex;gap:18px">
-          <a class="btn-primary" href="Contact.html" style="text-decoration:none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="5" width="18" height="12" rx="2"/></svg>Tester gratuitement</a>
-          <a href="Contact.html" style="height:54px;padding:0 28px;border-radius:9999px;background:rgba(255,255,255,.7);color:rgb(14,14,84);font:500 16px/54px 'Roboto';border:1px solid rgba(20,16,60,.12);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:10px;backdrop-filter:blur(6px)">Prendre RDV avec un expert</a>
-        </div>
+    <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-6 font-[Figtree] text-[13px] text-[#9aa0bf]">
+      <div class="flex flex-col sm:flex-row gap-4 sm:gap-10">
+        <span class="inline-flex items-center gap-2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg> contact@meetnoo.com</span>
+        <span class="inline-flex items-center gap-2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 4h4l2 5-3 1c1 3 4 6 7 7l1-3 5 2v4c0 1-1 2-2 2C9 22 2 15 2 6c0-1 1-2 2-2z"/></svg> Prendre un RDV</span>
+        <span class="inline-flex items-center gap-2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2C7 2 4 5.5 4 10c0 6 8 12 8 12s8-6 8-12c0-4.5-3-8-8-8z"/><circle cx="12" cy="10" r="3"/></svg> Station F, Paris — Martinique, France</span>
       </div>
-    </section>
+    </div>
 
-    <!-- ==================== FOOTER ==================== -->
-    <footer class="footer" data-screen-label="Footer">
-      <div class="top">
-        <div class="brand">
-          <h3 style="display:block"><img src="assets/meetnoo-logo.png" alt="MeetNoo" loading="lazy" decoding="async" style="height:36px;width:auto;display:block;filter:brightness(0) invert(1)"/></h3>
-          <p>Chaque réunion devient un actif stratégique. Une solution Labnoo Technologies.</p>
-          <div class="socials">
-            <a><svg width="14" height="14" viewBox="0 0 18 18" fill="currentColor"><path d="M11 18v-7h2.5l.5-3H11V6c0-1 .3-1.5 1.5-1.5H14V2c-.3 0-1.3-.1-2.5-.1C8.7 1.9 7 3.4 7 6v2H4v3h3v7h4z"/></svg></a>
-            <a><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 4l-2 5 5-2-5 7 5 4h-7l-2 5-2-5H4l5-4-5-7 5 2-2-5h12z"/></svg></a>
-            <a><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1" fill="currentColor"/></svg></a>
-            <a><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h4v16H4zM10 9h4v2c.6-1.2 2-2.3 4-2.3 4 0 4 2.7 4 6V20h-4v-5c0-1.4-.5-2.4-2-2.4s-2 1.1-2 2.5V20h-4z"/><circle cx="6" cy="6" r="2"/></svg></a>
-            <a><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22 8s-.2-1.4-.8-2c-.7-.7-1.5-.7-1.9-.8C16.7 5 12 5 12 5s-4.7 0-7.3.2C4.3 5.3 3.5 5.3 2.8 6 2.2 6.6 2 8 2 8S1.8 9.6 1.8 11.2v1.6C1.8 14.4 2 16 2 16s.2 1.4.8 2c.7.7 1.7.7 2.1.8 1.5.1 6.1.2 7.1.2s4.7 0 7.3-.2c.4-.1 1.2-.1 1.9-.8.6-.6.8-2 .8-2s.2-1.6.2-3.2v-1.6C22.2 9.6 22 8 22 8zM10 14V9l5 2.5-5 2.5z"/></svg></a>
-          </div>
-        </div>
-        <div class="col">
-          <h4>Produit</h4>
-          <ul>
-            <li><a>Fonctionnalités</a></li>
-            <li><a href="Landing Page.html#pricing">Pricing</a></li>
-            <li><a>My MeetNoo</a></li>
-            <li><a>Palabre Noo</a></li>
-            <li><a>Intégrations</a></li>
-          </ul>
-        </div>
-        <div class="col">
-          <h4>Entreprise</h4>
-          <ul>
-            <li><a>À propos</a></li>
-            <li><a href="Landing Page.html#blog">Blog</a></li>
-            <li><a>Partenaires</a></li>
-            <li><a>Carrières</a></li>
-            <li><a>Presse / RGPD</a></li>
-          </ul>
-        </div>
-        <div class="col">
-          <h4>Support</h4>
-          <ul>
-            <li><a>Démarrer</a></li>
-            <li><a>Centre d'aide</a></li>
-            <li><a>Statut des serveurs</a></li>
-            <li><a>Signaler un bug</a></li>
-            <li><a>Chat support</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="div"></div>
-      <div class="row">
-        <div class="il">
-          <span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg> contact@meetnoo.com</span>
-          <span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 4h4l2 5-3 1c1 3 4 6 7 7l1-3 5 2v4c0 1-1 2-2 2C9 22 2 15 2 6c0-1 1-2 2-2z"/></svg> Prendre un RDV</span>
-          <span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2C7 2 4 5.5 4 10c0 6 8 12 8 12s8-6 8-12c0-4.5-3-8-8-8z"/><circle cx="12" cy="10" r="3"/></svg> Station F, Paris — Martinique, France</span>
-        </div>
-      </div>
-      <div class="div" style="margin:30px auto 16px"></div>
-      <div class="row">
-        <span>© 2026 Labnoo Technologies — Tous droits réservés | CGU | Confidentialité | Mentions légales | RGPD</span>
-        <span style="color:#a3a6c4">Conçu avec soin à Station F, Paris — Ancré en Martinique</span>
-      </div>
-    </footer>
+    <div class="h-px bg-white/10 my-6"></div>
 
-  </div><!-- /#stage -->
-</div><!-- /#stage-wrap -->
+    <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-2 font-[Figtree] text-[13px] text-[#9aa0bf]">
+      <span>© 2026 Labnoo Technologies — Tous droits réservés | CGU | Confidentialité | Mentions légales | RGPD</span>
+      <span class="text-[#a3a6c4]">Conçu avec soin à Station F, Paris — Ancré en Martinique</span>
+    </div>
+  </div>
+</footer>
 
 <script>
-  // Scale stage to viewport so 1728px design fits any screen
+  /* Interactive 4 sections — hover/click switches active step + visual */
   (function(){
-    const stage = document.getElementById('stage');
-    const wrap = document.getElementById('stage-wrap');
-    const DESIGN_W = 1728;
-    function fit(){
-      const vw = window.innerWidth;
-      const s = vw / DESIGN_W;
-      stage.style.transform = 'scale(' + s + ')';
-    const __navStage = document.getElementById('navStage');
-    const __navFix = document.getElementById('nav-fixed');
-    if (__navStage){ __navStage.style.transform = 'translateX(-50%) scale(' + s + ')'; __navFix.style.height = (140 * s) + 'px'; }
-      const dh = stage.scrollHeight;
-      wrap.style.height = (dh * s) + 'px';
+    const steps = document.querySelectorAll('.ts-step');
+    const visuals = document.querySelectorAll('.ts-visual');
+    if(!steps.length) return;
+    function activate(idx){
+      steps.forEach(s => s.classList.toggle('is-active', s.dataset.step == idx));
+      visuals.forEach(v => v.classList.toggle('is-active', v.dataset.visual == idx));
     }
-    window.addEventListener('resize', fit);
-    window.addEventListener('load', () => { fit(); setTimeout(fit, 100); setTimeout(fit, 500); });
-    fit();
+    steps.forEach(s => {
+      s.addEventListener('mouseenter', () => activate(s.dataset.step));
+      s.addEventListener('click', (e) => { e.preventDefault(); activate(s.dataset.step); });
+    });
   })();
 </script>
 <script>
-  /* navbar scroll effect */
+  /* Navbar frosted glass intensification on scroll */
   (function(){
-    const nav = document.querySelector('.navbar');
+    const nav = document.getElementById('topnav');
     if (!nav) return;
     const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 30);
     window.addEventListener('scroll', onScroll, {passive:true});
     onScroll();
   })();
 </script>
+
 </body>
 </html>

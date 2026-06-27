@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Styles de base custom (réinitialisations + smooth scroll) */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply font-sans antialiased text-ink bg-white;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight;
+  }
+}
+
+/* Composants réutilisables MeetNoo */
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-brand-primary text-white font-semibold hover:bg-brand-accent transition-colors shadow-brand-sm hover:shadow-brand;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg border border-line text-ink font-semibold hover:bg-brand-ice hover:border-brand-soft transition-colors;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg text-ink font-semibold hover:bg-brand-ice transition-colors;
+  }
+  .container-narrow {
+    @apply mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl;
+  }
+  .container-wide {
+    @apply mx-auto px-4 sm:px-6 lg:px-8 max-w-8xl;
+  }
+  .section {
+    @apply py-16 sm:py-20 lg:py-24;
+  }
+  .eyebrow {
+    @apply inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-tint text-brand-primary text-xs font-semibold uppercase tracking-wider;
+  }
+}

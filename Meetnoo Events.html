@@ -1,8 +1,9 @@
 <!doctype html>
 <html lang="fr">
 <head>
-    <link rel="icon" type="image/png" href="/favicon.png" />
+<link rel="icon" type="image/png" href="/favicon.png" />
 <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="description" content="Organisez vos événements professionnels avec MeetNoo. Comptes-rendus auto, livrables structurés.">
 <meta name="theme-color" content="#2828F0">
 
@@ -27,938 +28,503 @@
 <link rel="canonical" href="https://meetnoo-landing-hd38.vercel.app/Meetnoo%20Events.html">
 
 <title>MeetNoo Events — Vos événements hybrides en livrables</title>
-<meta name="viewport" content="width=1728" />
+
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Figtree:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
-<style>
-  :root{
-    --ink:        rgb(20,27,52);
-    --ink2:       rgb(33,52,100);
-    --ink3:       rgb(14,14,84);
-    --ink-soft:   rgb(58,58,58);
-    --ink-mute:   rgb(107,107,107);
-    --indigo-50:  rgb(234,234,254);
-    --indigo-100: rgb(238,242,255);
-    --indigo-200: rgb(188,188,250);
-    --indigo-500: rgb(40,40,240);
-    --indigo-600: rgb(36,36,218);
-    --indigo-900: rgb(17,17,101);
-    --line:       rgb(233,235,241);
-    --line-2:     rgb(222,229,237);
-    --line-3:     rgb(234,234,254);
-    --gray-100:   rgb(241,241,241);
-    --gray-300:   rgb(217,217,217);
-    --gray-500:   rgb(149,158,173);
-    --green:      rgb(13,146,95);
-    --orange:     rgb(255,162,0);
-    --red:        rgb(216,0,39);
-    --yellow:     rgb(255,218,68);
-    --bg:         #ffffff;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html,body{background:#0b0e1a;}
-  body{font-family:'Sora',system-ui,sans-serif;color:var(--ink);}
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Figtree:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
 
-  /* Stage: 1728 design width, scaled to viewport while preserving height */
-  #stage-wrap{
-    width:100vw;
-    overflow-x:hidden;
-    background:#0b0e1a;
-    display:flex;
-    justify-content:flex-start;
-  }
-  #stage{
-    width:1728px;
-    transform-origin:top left;
-    background:var(--bg);
-  }
-
-  /* Generic helpers */
-  .abs{position:absolute}
-  .rel{position:relative}
-  .figtree{font-family:'Figtree',sans-serif}
-  .sora{font-family:'Sora',sans-serif}
-  .center{text-align:center}
-  .pre{white-space:pre-line}
-  .clip{overflow:hidden}
-
-  /* Common buttons */
-  .btn-primary{height:54px;padding:0 28px;border-radius:9999px;background:var(--indigo-500);color:#fff;font:500 16px/54px 'Roboto',sans-serif;
-    display:inline-flex;align-items:center;justify-content:center;gap:12px;border:0;cursor:pointer;text-decoration:none;
-    box-shadow:0 14px 30px -12px rgba(40,40,240,.55);
-    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
-  }
-  .btn-primary:hover{transform:translateY(-1px);background:#1d1dd6}
-  .btn-primary.sm{height:44px;padding:0 22px;font-size:14px;line-height:44px;box-shadow:0 8px 22px -10px rgba(40,40,240,.55)}
-  .btn-link{height:54px;padding:0 26px;border-radius:9999px;background:#fff;color:var(--ink2);font:500 16px/54px 'Roboto',sans-serif;
-    display:inline-flex;align-items:center;justify-content:center;gap:10px;border:1px solid var(--line-2);cursor:pointer;text-decoration:none;
-    transition:background .15s ease;
-  }
-  .btn-link:hover{background:#f6f7fb}
-  .btn-dark{height:36px;padding:0 16px;border-radius:9999px;background:var(--ink2);color:#fff;font:500 14px/36px 'Roboto',sans-serif;border:0;cursor:pointer;
-  }
-  .btn-dark:hover{background:var(--indigo-900)}
-
-  /* Eyebrow tag */
-  .eyebrow{
-    display:inline-flex;align-items:center;gap:8px;
-    padding:6px 14px;border-radius:999px;
-    background:var(--indigo-50);color:var(--indigo-500);
-    font:600 13px/1 'Figtree';letter-spacing:.02em;
-    border:1px solid var(--indigo-200);
-  }
-
-  /* Section titles */
-  h2.section-title{font:700 38px/1.2 'Sora';color:var(--ink2);text-align:center;letter-spacing:-.01em;}
-  p.section-sub{font:400 18px/1.45 'Sora';color:var(--ink3);text-align:center;max-width:880px;margin:18px auto 0;opacity:.85}
-
-  /* ===== Fixed nav ===== */
-  #nav-fixed{position:fixed;left:0;top:0;width:100vw;height:140px;z-index:1000;pointer-events:none;}
-  #nav-fixed .nav-stage{position:absolute;left:50%;top:0;width:1728px;height:140px;transform-origin:top center;pointer-events:none;}
-  #nav-fixed .navbar{pointer-events:auto}
-  .navbar{
-    position:absolute;left:231px;top:55px;width:1265px;height:62px;
-    border-radius:80px;
-    background:linear-gradient(120deg,rgba(163,166,250,.35),rgba(255,255,255,.4) 30%,rgba(246,246,246,.35) 55%,rgba(221,227,250,.45));
-    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-    display:flex;align-items:center;justify-content:space-between;padding:10px 18px;
-    border:1px solid rgba(255,255,255,.6);
-    box-shadow:0 8px 30px -16px rgba(33,52,100,.25);
-    z-index:50;
-  }
-  .navbar .logo{display:flex;align-items:center;height:40px}
-  .navbar .logo img{height:36px;width:auto;display:block}
-  .navbar .links{display:flex;gap:40px;align-items:center;font:400 16px/1.2 'Inter';color:var(--ink2)}
-  .navbar .links a{color:var(--ink2);text-decoration:none;cursor:pointer}
-  .navbar .links a:hover{color:var(--indigo-500)}
-  .navbar .links a.active{color:var(--indigo-500);font-weight:500}
-  .navbar .right{display:flex;align-items:center;gap:24px}
-  .caret{display:inline-block;width:0;height:0;border:5px solid transparent;border-top-color:var(--ink2);transform:translateY(2px);transition:transform .2s}
-  .nav-svc{position:relative}
-  .nav-svc::after{content:"";position:absolute;left:0;right:0;top:100%;height:18px;pointer-events:auto}
-  .nav-svc > a{display:inline-flex;align-items:center;gap:6px;cursor:pointer}
-  .nav-svc > a.active{color:var(--indigo-500);font-weight:500}
-  .nav-svc > a.active .caret{border-top-color:var(--indigo-500)}
-  .nav-svc-menu{
-    position:absolute;left:50%;top:calc(100% + 14px);transform:translateX(-50%) translateY(-6px);
-    min-width:300px;background:#fff;border-radius:14px;
-    box-shadow:0 24px 60px -12px rgba(20,27,52,.25), 0 0 0 1px rgba(33,52,100,.06);
-    padding:10px;opacity:0;pointer-events:none;transition:opacity .18s ease, transform .18s ease;z-index:60;
-  }
-  .nav-svc-menu::before{content:"";position:absolute;left:50%;top:-6px;width:12px;height:12px;background:#fff;transform:translateX(-50%) rotate(45deg);box-shadow:-1px -1px 0 rgba(33,52,100,.06);}
-  .nav-svc:hover .nav-svc-menu, .nav-svc:focus-within .nav-svc-menu{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0);}
-  .nav-svc:hover .caret{transform:translateY(2px) rotate(180deg)}
-  .nav-svc-menu a{display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:10px;color:var(--ink2);text-decoration:none;font:500 15px/1.3 'Inter';transition:background .15s ease,color .15s ease;}
-  .nav-svc-menu a:hover{background:var(--indigo-100);color:var(--indigo-500)}
-  .nav-svc-menu a.active{background:var(--indigo-100);color:var(--indigo-500)}
-  .nav-svc-menu a .ico{width:34px;height:34px;border-radius:8px;background:var(--indigo-100);color:var(--indigo-500);display:grid;place-items:center;flex-shrink:0;}
-  .nav-svc-menu a .meta{display:flex;flex-direction:column;gap:2px}
-  .nav-svc-menu a .meta .t{font:600 14px/1.2 'Inter';color:var(--ink2)}
-  .nav-svc-menu a:hover .meta .t,.nav-svc-menu a.active .meta .t{color:var(--indigo-500)}
-  .nav-svc-menu a .meta .s{font:400 12px/1.2 'Inter';color:var(--ink-mute)}
-
-  /* =================== HERO =================== */
-  .hero{position:relative;width:1728px;height:880px;background:#fff;overflow:hidden;padding-top:200px}
-  .hero .deco{position:absolute;left:0;top:0;width:1728px;height:880px;opacity:1;overflow:hidden;pointer-events:none;z-index:0}
-  .hero .deco .b1{position:absolute;left:-60px;top:60px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle at 30% 30%, rgba(137,188,255,.9), rgba(137,188,255,.15) 60%, transparent 78%);filter:blur(36px);opacity:.7}
-  .hero .deco .b2{position:absolute;left:-40px;top:680px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle at 40% 40%, rgba(255,134,225,.8), rgba(255,134,225,.12) 60%, transparent 78%);filter:blur(46px);opacity:.55}
-  .hero .left{position:absolute;left:235px;top:267px;width:600px;z-index:2}
-  .hero .eyebrow{margin-bottom:24px}
-  .hero h1{font:700 46px/1.18 'Sora';color:var(--indigo-900);letter-spacing:-.015em;}
-  .hero h1 em{font-style:normal;background:linear-gradient(90deg,var(--indigo-500),#7d7df9);-webkit-background-clip:text;background-clip:text;color:transparent;}
-  .hero .lead{margin-top:24px;font:400 18px/1.5 'Sora';color:var(--ink2);max-width:580px;opacity:.88}
-  .hero .lead b{font-weight:600;color:var(--indigo-500)}
-  .hero .cta{margin-top:36px;display:flex;gap:18px;align-items:center;justify-content:center;flex-wrap:wrap}
-  .hero .cta .btn-primary,.hero .cta .btn-link{font-size:14px;padding:0 20px;height:48px;line-height:48px}
-  .hero .cta .btn-primary svg,.hero .cta .btn-link svg{width:16px;height:16px}
-
-  /* === Calendar dashboard preview (right) === */
-  .cal-img{position:absolute;right:120px;top:280px;width:820px;height:auto;display:block;
-    filter:drop-shadow(0 30px 80px rgba(20,27,52,.22)) drop-shadow(0 0 0 rgba(33,52,100,.06));
-    border-radius:14px}
-  .cal{position:absolute;right:155px;top:250px;width:740px;height:480px;border-radius:18px;background:#fff;
-    box-shadow:0 30px 80px -30px rgba(20,27,52,.25), 0 0 0 1px rgba(33,52,100,.06);overflow:hidden}
-  .cal .cal-hd{height:64px;display:flex;align-items:center;gap:18px;padding:0 22px;border-bottom:1px solid var(--line);background:#fff}
-  .cal .nav-pill{display:inline-flex;align-items:center;gap:10px;height:34px;padding:0 12px;border-radius:8px;border:1px solid var(--line-2);font:500 13px/1 'Figtree';color:var(--ink2)}
-  .cal .nav-pill svg{stroke:currentColor}
-  .cal .today{height:34px;padding:0 14px;border-radius:8px;border:1px solid var(--line-2);font:600 13px/34px 'Figtree';color:var(--ink2);background:#fff}
-  .cal .range{font:600 14px/1 'Figtree';color:var(--ink2);margin-left:6px}
-  .cal .seg{margin-left:auto;display:inline-flex;background:var(--gray-100);border-radius:8px;padding:4px;gap:4px}
-  .cal .seg span{padding:6px 12px;border-radius:6px;font:500 12px/1 'Figtree';color:var(--ink-mute)}
-  .cal .seg span.on{background:#fff;color:var(--ink2);box-shadow:0 1px 2px rgba(0,0,0,.06)}
-  .cal .grid{display:grid;grid-template-columns:60px repeat(5,1fr);height:calc(100% - 64px)}
-  .cal .timecol{border-right:1px solid var(--line);padding-top:54px;background:#fff}
-  .cal .timecol .h{height:50px;font:400 11px/1 'Figtree';color:var(--ink-mute);padding:6px 8px;text-align:right}
-  .cal .col{border-right:1px solid var(--line);position:relative}
-  .cal .col:last-child{border-right:0}
-  .cal .col .head{height:54px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;background:#fff}
-  .cal .col .head .d{font:500 11px/1 'Figtree';color:var(--ink-mute);text-transform:uppercase;letter-spacing:.05em}
-  .cal .col .head .n{font:600 18px/1 'Figtree';color:var(--ink2)}
-  .cal .col.today .head .n{width:32px;height:32px;border-radius:50%;background:var(--indigo-500);color:#fff;display:grid;place-items:center;font:600 14px/1 'Figtree'}
-  .cal .col .body{position:relative;height:calc(100% - 54px)}
-  .cal .ev{position:absolute;left:6px;right:6px;border-radius:6px;padding:6px 8px;font:500 10px/1.2 'Figtree';overflow:hidden;border-left:3px solid currentColor;background:#fff}
-  .cal .ev .t{font:600 11px/1.2 'Figtree';color:var(--ink2);margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .cal .ev .s{font:400 10px/1.2 'Figtree';color:var(--ink-mute)}
-  .cal .ev.indigo{color:var(--indigo-500);background:#eef2ff}
-  .cal .ev.green{color:var(--green);background:#dcfce7}
-  .cal .ev.orange{color:var(--orange);background:#fff7ed}
-  .cal .ev.pink{color:#d946ef;background:#fdf4ff}
-  .cal .ev.violet{color:#7c3aed;background:#f3e8ff}
-  .cal .ev.cyan{color:#0891b2;background:#ecfeff}
-  .cal .ev .live{display:inline-flex;align-items:center;gap:4px;font:600 9px/1 'Figtree';color:#dc2626;margin-top:3px}
-  .cal .ev .live::before{content:"";width:6px;height:6px;border-radius:50%;background:#dc2626;animation:pulse 1.4s ease-in-out infinite}
-  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
-  .cal .now-line{position:absolute;left:60px;right:0;height:2px;background:#dc2626;z-index:5;pointer-events:none}
-  .cal .now-line::before{content:"";position:absolute;left:-4px;top:-4px;width:10px;height:10px;border-radius:50%;background:#dc2626}
-  .cal .footer-info{position:absolute;left:0;bottom:0;right:0;height:28px;background:#f8f9fc;border-top:1px solid var(--line);display:flex;align-items:center;padding:0 18px;font:500 11px/1 'Figtree';color:var(--ink-mute);justify-content:space-between}
-
-  /* =================== TYPES D'ÉVÉNEMENTS =================== */
-  .types{position:relative;width:1728px;background:#fff;padding:120px 0 100px}
-  .types .hd{text-align:center;margin-bottom:60px}
-  .types .grid{width:1340px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
-  .type-card{
-    position:relative;height:380px;border-radius:18px;background:#fff;
-    border:2px solid var(--line-3);padding:28px;overflow:hidden;
-    transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
-  }
-  .type-card:hover{transform:translateY(-4px);box-shadow:0 24px 50px -20px rgba(33,52,100,.18);border-color:transparent}
-  .type-card .glow{position:absolute;left:14px;right:14px;top:80px;bottom:14px;border-radius:14px;z-index:0;}
-  .type-card.peach .glow{background:linear-gradient(180deg,rgb(255,235,224) 0%,rgba(255,242,234,.4) 100%)}
-  .type-card.lilac .glow{background:linear-gradient(180deg,rgb(240,216,255) 0%,rgba(248,233,254,.4) 100%)}
-  .type-card.sky   .glow{background:linear-gradient(180deg,rgb(219,226,255) 0%,rgba(231,236,255,.4) 100%)}
-  .type-card.mint  .glow{background:linear-gradient(180deg,rgb(228,255,224) 0%,rgba(241,255,239,.4) 100%)}
-  .type-card .ico{position:relative;z-index:1;width:48px;height:48px;border-radius:12px;display:grid;place-items:center;background:#fff;box-shadow:0 4px 14px -4px rgba(33,52,100,.18)}
-  .type-card.peach .ico{color:#ea580c}
-  .type-card.lilac .ico{color:#9333ea}
-  .type-card.sky   .ico{color:var(--indigo-500)}
-  .type-card.mint  .ico{color:var(--green)}
-  .type-card h3{position:relative;z-index:1;font:700 22px/1.25 'Sora';color:var(--indigo-900);margin-top:78px;letter-spacing:-.005em}
-  .type-card p{position:relative;z-index:1;font:400 15px/1.5 'Figtree';color:var(--ink2);margin-top:14px;opacity:.82}
-  .type-card .more{position:absolute;left:28px;bottom:28px;z-index:1;display:inline-flex;align-items:center;gap:8px;font:600 13px/1 'Figtree';color:var(--indigo-500);text-decoration:none;
-    transition:gap .2s ease}
-  .type-card:hover .more{gap:14px}
-
-  /* =================== ÉTAPES (scroll-pinned timeline) =================== */
-  /* Track is tall (4 viewports of design height) to give scrub room.
-     Pin is JS-positioned via top: in design px; it stays at the top of the visible viewport while user scrolls through the track. */
-  .steps-track{position:relative;width:1728px;background:#F5F7FF}
-  /* height set by JS in design px = pinH + scrubH */
-  .steps-pin{position:absolute;top:0;left:0;width:1728px;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:60px 0;overflow:hidden;will-change:top}
-  /* pin height set by JS in design px = realViewportH/scale */
-  .steps-pin .hd{text-align:center;margin-bottom:90px}
-  .steps-pin .hd .section-title{color:#1A1F4D}
-  .steps-pin .hd .section-sub{color:#1A1F4D;opacity:.7}
-  .steps-row{width:1340px;display:flex;justify-content:space-between;align-items:flex-start;position:relative}
-  .conn-track{position:absolute;top:46px;left:170px;right:170px;height:3px;border-radius:2px;background:#C4C9E8;background-image:repeating-linear-gradient(90deg,#C4C9E8 0 8px,transparent 8px 16px);z-index:0}
-  .conn-fill{position:absolute;top:46px;left:170px;height:3px;border-radius:2px;background:linear-gradient(90deg,#10B981,#34d399);z-index:1;width:0;box-shadow:0 0 16px rgba(16,185,129,.5);transition:width .15s linear}
-  .step{width:260px;text-align:center;position:relative;z-index:2}
-  .step .num-wrap{display:inline-block;position:relative;margin-bottom:24px;transform-origin:center center;will-change:transform}
-  .step .num{width:92px;height:92px;border-radius:20px;background:#fff;display:grid;place-items:center;color:#1A1F4D;
-    box-shadow:0 18px 36px -16px rgba(33,52,100,.18);
-    transition:background .35s ease, color .35s ease, box-shadow .35s ease, border-color .35s ease;
-    border:1px solid rgba(196,201,232,.5);
-  }
-  .step .num svg{width:42px;height:42px;stroke:currentColor;transition:opacity .25s ease, transform .25s ease}
-  .step .badge{position:absolute;top:-8px;right:-8px;width:34px;height:34px;border-radius:50%;background:#4F5AE5;color:#fff;
-    font:700 15px/1 'Sora';display:grid;place-items:center;
-    box-shadow:0 10px 20px -6px rgba(79,90,229,.5);
-    transition:background .35s ease, box-shadow .35s ease, transform .35s ease;
-  }
-  .step .badge .num-text,.step .badge .check{position:absolute;inset:0;display:grid;place-items:center;transition:opacity .25s ease, transform .25s ease}
-  .step .badge .check{opacity:0;transform:scale(.5)}
-  .step .badge .check svg{width:16px;height:16px;stroke:#fff;stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round}
-  .step h4{font:600 17px/1.35 'Sora';color:#1A1F4D;max-width:220px;margin:0 auto;letter-spacing:-.005em;transition:color .3s ease}
-
-  /* active state */
-  .step.is-active .num{
-    background:#fff;color:#10B981;
-    border-color:rgba(16,185,129,.4);
-    box-shadow:0 0 0 1px rgba(16,185,129,.2), 0 0 30px rgba(16,185,129,.4), 0 18px 36px -16px rgba(16,185,129,.3);
-  }
-  .step.is-active .badge{background:#10B981;box-shadow:0 10px 24px -6px rgba(16,185,129,.6)}
-  .step.is-active .badge .num-text{opacity:0;transform:scale(.5)}
-  .step.is-active .badge .check{opacity:1;transform:scale(1)}
-  .step.is-active h4{color:#10B981}
-
-  /* current (the one being focused, applies pop+tilt) */
-  .step.is-current .num-wrap{animation:stepPop .55s cubic-bezier(.34,1.56,.64,1) forwards}
-  .step[data-tilt="-4"].is-current .num-wrap{--tilt:-4deg}
-  .step[data-tilt="4"].is-current  .num-wrap{--tilt:4deg}
-  @keyframes stepPop{
-    0%  {transform:scale(1) rotate(0deg)}
-    45% {transform:scale(1.15) rotate(var(--tilt,0deg))}
-    100%{transform:scale(1.08) rotate(calc(var(--tilt,0deg) * .5))}
-  }
-
-  @media (prefers-reduced-motion: reduce){
-    .steps-pin{position:relative !important;top:0 !important;height:auto !important;padding:110px 0}
-    .steps-track{height:auto !important}
-    .step.is-current .num-wrap{animation:none}
-    .step{opacity:1 !important}
-    .conn-fill{width:100% !important;left:170px !important;right:170px !important}
-  }
-
-  /* =================== BENTO =================== */
-  .bento{position:relative;width:1728px;background:#fff;padding:110px 0 110px}
-  .bento .hd{text-align:center;margin-bottom:60px}
-  .bento .grid{width:1340px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:24px;}
-  .bento-card{position:relative;border-radius:22px;background:#fff;overflow:hidden;padding:40px;height:380px;
-    transition:transform .25s ease, box-shadow .25s ease;
-  }
-  .bento-card:hover{transform:translateY(-4px);box-shadow:0 32px 70px -28px rgba(33,52,100,.22)}
-  .bento-card h3{font:700 26px/1.2 'Sora';color:var(--indigo-900);max-width:380px;letter-spacing:-.01em}
-  .bento-card p{margin-top:14px;font:400 16px/1.5 'Figtree';color:var(--ink2);max-width:380px;opacity:.85}
-  .bento-card .glyph{position:absolute;right:40px;bottom:30px;width:200px;height:200px;display:grid;place-items:center;opacity:.45;pointer-events:none;}
-  .bento-card .hex{position:relative;width:200px;height:200px}
-  .bento-card .hex .h-outer,.bento-card .hex .h-inner{position:absolute;inset:0;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);}
-  .bento-card .hex .h-outer{transform:rotate(-12deg)}
-  .bento-card .hex .h-inner{inset:14px;background:#fff;box-shadow:0 4px 30px rgba(0,0,0,.12);clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);transform:rotate(-12deg);display:grid;place-items:center}
-  .bento-card .hex .h-inner svg{width:90px;height:90px}
-  .bento-card .glow{position:absolute;right:30px;top:30px;width:340px;height:340px;border-radius:50%;filter:blur(40px);opacity:.5;pointer-events:none;z-index:0}
-
-  /* Bento color variants */
-  .bento-card.b-orange{border:1px solid rgb(255,162,0);background:linear-gradient(180deg,#fffbf2 0%, #fff 60%)}
-  .bento-card.b-orange .glow{background:radial-gradient(rgba(250,156,0,.65),transparent 65%)}
-  .bento-card.b-orange .hex .h-outer{background:rgb(255,246,230)}
-  .bento-card.b-orange .hex .h-inner svg{color:var(--indigo-500)}
-
-  .bento-card.b-pdf{border:1px solid #93c5fd;background:linear-gradient(180deg,#f5f8ff 0%, #fff 60%)}
-  .bento-card.b-pdf .glow{background:radial-gradient(rgba(147,197,253,.65),transparent 65%)}
-  .bento-card.b-pdf .hex .h-outer{background:#dbeafe}
-  .bento-card.b-pdf .hex .h-inner svg{color:#dc2626}
-
-  .bento-card.b-purple{border:1px solid rgb(212,135,247);background:linear-gradient(180deg,#fbf5ff 0%, #fff 60%)}
-  .bento-card.b-purple .glow{background:radial-gradient(rgba(151,96,175,.55),transparent 65%)}
-  .bento-card.b-purple .hex .h-outer{background:rgb(242,218,253)}
-  .bento-card.b-purple .hex .h-inner svg{color:#9333ea}
-
-  .bento-card.b-green{border:1px solid #86efac;background:linear-gradient(180deg,#f3fff6 0%, #fff 60%)}
-  .bento-card.b-green .glow{background:radial-gradient(rgba(34,197,94,.55),transparent 65%)}
-  .bento-card.b-green .hex .h-outer{background:#dcfce7}
-  .bento-card.b-green .hex .h-inner svg{color:var(--green)}
-
-  .bento-card.b-blue{border:1px solid #93c5fd;background:linear-gradient(180deg,#f5faff 0%, #fff 60%)}
-  .bento-card.b-blue .glow{background:radial-gradient(rgba(59,130,246,.55),transparent 65%)}
-  .bento-card.b-blue .hex .h-outer{background:#dbeafe}
-  .bento-card.b-blue .hex .h-inner svg{color:#2563eb}
-
-  /* Bento layout: row 1 = 2 wide cards, row 2 = 3 cards */
-  .bento .grid{grid-template-columns:1.55fr 1fr;}
-  .bento .row2{grid-column:1 / -1;display:grid;grid-template-columns:1.05fr 1fr 1fr;gap:24px;}
-  .bento .row2 .bento-card{height:340px}
-  .bento .row2 .bento-card .glyph{width:170px;height:170px;right:30px;bottom:24px}
-  .bento .row2 .bento-card .hex{width:150px;height:150px}
-  .bento .row2 .bento-card .hex .h-inner svg{width:65px;height:65px}
-
-  /* =================== FAQ =================== */
-  .faq-sec{position:relative;width:1728px;background:#fafbff;padding:110px 0 100px}
-  .faq-sec .hd{text-align:center;margin-bottom:54px}
-  .faq{width:920px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
-  .faq details{background:#fff;border-radius:14px;border:1px solid var(--line-3);overflow:hidden;transition:border-color .2s ease, box-shadow .2s ease}
-  .faq details[open]{border-color:var(--indigo-200);box-shadow:0 14px 36px -16px rgba(33,52,100,.14)}
-  .faq summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:22px 26px;font:500 16px/1.4 'Figtree';color:var(--ink2);}
-  .faq summary::-webkit-details-marker{display:none}
-  .faq summary .chev{width:22px;height:22px;border-radius:50%;background:var(--indigo-50);color:var(--indigo-500);display:grid;place-items:center;flex-shrink:0;transition:transform .2s ease}
-  .faq details[open] summary .chev{transform:rotate(180deg)}
-  .faq .ans{padding:0 26px 22px;font:400 15px/1.55 'Figtree';color:var(--ink-soft);max-width:760px;}
-
-  /* =================== CTA + ADVISOR =================== */
-  .cta-sec{position:relative;width:1728px;background:#fff;padding:80px 0 30px;text-align:center}
-  .cta-sec h2{font:700 36px/1.25 'Sora';color:var(--indigo-900);max-width:760px;margin:0 auto;letter-spacing:-.01em}
-  .cta-sec p{margin-top:20px;font:400 18px/1.55 'Sora';color:var(--ink2);max-width:680px;margin-left:auto;margin-right:auto;opacity:.85}
-  .cta-sec p b{font-weight:600;color:var(--indigo-500)}
-
-  .advisor-sec{background:#fff;padding:30px 0 100px;width:1728px}
-  .advisor-card{margin:0 auto;width:1340px;border-radius:24px;background:#0E1023;color:#fff;display:grid;grid-template-columns:1fr 280px;align-items:center;gap:40px;padding:50px 60px;overflow:hidden;position:relative}
-  .advisor-card::before{content:'';position:absolute;inset:0;background:radial-gradient(600px 280px at 90% 50%, rgba(40,40,240,.35), transparent 60%);pointer-events:none}
-  .advisor-card::after{content:'';position:absolute;left:-80px;bottom:-80px;width:240px;height:240px;border-radius:50%;background:radial-gradient(rgba(255,134,225,.5),transparent 70%);pointer-events:none}
-  .advisor-card .deco-circle{position:absolute;right:300px;top:-40px;width:140px;height:140px;border-radius:50%;background:rgba(40,40,240,.6);filter:blur(2px);}
-  .advisor-card .l{position:relative;z-index:1}
-  .advisor-card h3{font:700 28px/1.2 'Sora';color:#fff}
-  .advisor-card p{font:400 16px/1.5 'Figtree';color:#c9cce0;margin-top:14px;max-width:520px}
-  .advisor-card .btn-primary{margin-top:24px;background:var(--indigo-500)}
-  .advisor-card .r{position:relative;z-index:1;display:grid;place-items:center}
-  .advisor-card .r .photo{width:200px;height:240px;border-radius:24px;background:linear-gradient(135deg,#FFD3A5,#FD6585);border:4px solid rgba(255,255,255,.08);display:grid;place-items:end center;overflow:hidden;position:relative}
-  .advisor-card .r .photo::before{content:"";position:absolute;left:50%;top:30%;transform:translateX(-50%);width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,.55)}
-  .advisor-card .r .photo::after{content:"";position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:160px;height:130px;border-radius:80px 80px 0 0;background:rgba(255,255,255,.6)}
-
-  /* =================== FOOTER =================== */
-  .footer{position:relative;width:1728px;background:var(--indigo-900);color:#eaeafe;padding:60px 0 26px;overflow:hidden}
-  .footer .top{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:340px 1fr 1fr 1fr;gap:80px}
-  .footer .brand h3{font:800 28px/1 'Sora';color:#fff;margin-bottom:18px;display:flex;align-items:center;gap:10px}
-  .footer .brand p{font:400 17px/1.55 'DM Sans';margin-bottom:22px}
-  .footer .brand .socials{display:flex;gap:18px}
-  .footer .brand .socials a{width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,.05);display:grid;place-items:center;color:#eaeafe;cursor:pointer}
-  .footer .col h4{font:700 16px/1 'DM Sans';color:#fff;margin-bottom:18px}
-  .footer .col ul{list-style:none;display:flex;flex-direction:column;gap:12px}
-  .footer .col a{color:#cdd0e6;text-decoration:none;font:400 16px/1.4 'DM Sans';cursor:pointer}
-  .footer .col a:hover{color:#fff}
-  .footer .div{height:1px;background:rgba(217,219,233,.2);margin:60px auto 28px;max-width:1450px}
-  .footer .row{max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;font:400 16px/1.4 'DM Sans'}
-  .footer .row .il{display:flex;gap:60px}
-  .footer .row .il span{display:inline-flex;gap:8px;align-items:center}
-
-  /* Navbar scroll-driven frosted glass intensification */
-  .navbar{transition:background .35s ease, backdrop-filter .35s ease, box-shadow .35s ease, border-color .35s ease;}
-  .navbar.scrolled{
-    background:linear-gradient(120deg,rgba(255,255,255,.78),rgba(248,247,255,.85) 50%,rgba(238,238,255,.82));
-    backdrop-filter:blur(22px) saturate(1.4);-webkit-backdrop-filter:blur(22px) saturate(1.4);
-    border-color:rgba(255,255,255,.85);
-    box-shadow:0 14px 44px -18px rgba(33,52,100,.32);
-  }
-
-</style>
+<link rel="stylesheet" href="assets/tailwind.css" />
 </head>
-<body>
 
-<!-- Fixed nav -->
-<div id="nav-fixed">
-  <div class="nav-stage" id="navStage">
-    <nav class="navbar">
-      <div class="logo"><a href="Landing Page.html"><img src="assets/meetnoo-logo.png" alt="MeetNoo" loading="eager" fetchpriority="high" decoding="async" /></a></div>
-      <div class="links">
-        <a href="Landing Page.html">Accueil</a>
-        <div class="nav-svc">
-          <a class="active">Nos services <i class="caret"></i></a>
-          <div class="nav-svc-menu">
-            <a href="Meetnoo Events.html" class="active">
-              <span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M16 2v4M8 2v4M3 10h18"/><circle cx="12" cy="15" r="2"/></svg></span>
-              <span class="meta"><span class="t">MeetNoo Events</span><span class="s">Événements hybrides clé en main</span></span>
-            </a><a href="Gestion Salles Zoom.html">
-              <span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="m16 10 6-3v10l-6-3z"/></svg></span>
-              <span class="meta"><span class="t">Gestion des salles</span><span class="s">Pilotez votre flotte Zoom</span></span>
-            </a><a href="Transcription IA.html">
-              <span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg></span>
-              <span class="meta"><span class="t">Transcription &amp; Intelligence IA</span><span class="s">Audio → livrables exploitables</span></span>
-            </a>
+<body class="font-sans text-ink bg-white antialiased">
+
+<!-- ============ NAV ============ -->
+<header class="fixed inset-x-0 top-0 z-50">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-4">
+    <nav class="navbar flex items-center justify-between gap-4 rounded-full border border-white/60 bg-white/70 backdrop-blur-lg shadow-brand-sm px-4 sm:px-5 py-2.5 transition-all">
+      <a href="Landing Page.html" class="flex items-center shrink-0">
+        <img src="assets/meetnoo-logo.png" alt="MeetNoo" loading="eager" fetchpriority="high" decoding="async" class="h-8 sm:h-9 w-auto" width="120" height="36" />
+      </a>
+
+      <div class="hidden lg:flex items-center gap-8 text-[15px] text-ink">
+        <a href="Landing Page.html" class="hover:text-brand-primary transition-colors">Accueil</a>
+        <div class="relative group">
+          <button type="button" class="inline-flex items-center gap-1.5 text-brand-primary font-medium cursor-pointer">
+            Nos services
+            <svg class="w-3 h-3 transition-transform group-hover:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all absolute left-1/2 -translate-x-1/2 top-full pt-3 w-80">
+            <div class="bg-white rounded-2xl shadow-brand-lg ring-1 ring-line p-2">
+              <a href="Meetnoo Events.html" class="flex items-start gap-3 p-3 rounded-xl bg-brand-tint">
+                <span class="grid place-items-center w-9 h-9 rounded-lg bg-white text-brand-primary shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M16 2v4M8 2v4M3 10h18"/><circle cx="12" cy="15" r="2"/></svg></span>
+                <span class="flex flex-col">
+                  <span class="text-sm font-semibold text-brand-primary">MeetNoo Events</span>
+                  <span class="text-xs text-ink-mute">Événements hybrides clé en main</span>
+                </span>
+              </a>
+              <a href="Gestion Salles Zoom.html" class="flex items-start gap-3 p-3 rounded-xl hover:bg-brand-tint transition-colors">
+                <span class="grid place-items-center w-9 h-9 rounded-lg bg-brand-tint text-brand-primary shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="m16 10 6-3v10l-6-3z"/></svg></span>
+                <span class="flex flex-col">
+                  <span class="text-sm font-semibold text-ink">Gestion des salles</span>
+                  <span class="text-xs text-ink-mute">Pilotez votre flotte Zoom</span>
+                </span>
+              </a>
+              <a href="Transcription IA.html" class="flex items-start gap-3 p-3 rounded-xl hover:bg-brand-tint transition-colors">
+                <span class="grid place-items-center w-9 h-9 rounded-lg bg-brand-tint text-brand-primary shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg></span>
+                <span class="flex flex-col">
+                  <span class="text-sm font-semibold text-ink">Transcription &amp; Intelligence IA</span>
+                  <span class="text-xs text-ink-mute">Audio → livrables exploitables</span>
+                </span>
+              </a>
+            </div>
           </div>
         </div>
-        <a href="Landing Page.html#blog">Blog</a>
-        <a href="Landing Page.html#pricing">Pricing</a>
+        <a href="Landing Page.html#blog" class="hover:text-brand-primary transition-colors">Blog</a>
+        <a href="Landing Page.html#pricing" class="hover:text-brand-primary transition-colors">Pricing</a>
       </div>
-      <div class="right">
-        <a class="links" href="https://beta.meetnoo.com/" target="_blank" rel="noopener" style="cursor:pointer;text-decoration:none">Espaces client</a>
-        <a class="btn-primary" href="Contact.html" style="text-decoration:none;height:36px;padding:0 18px;font:600 14px/36px 'Roboto',sans-serif">Contactez nous</a>
+
+      <div class="flex items-center gap-2 sm:gap-3">
+        <a href="https://beta.meetnoo.com/" target="_blank" rel="noopener" class="hidden md:inline-block text-sm text-ink hover:text-brand-primary transition-colors">Espaces client</a>
+        <a href="Contact.html" class="inline-flex items-center justify-center rounded-full bg-brand-primary text-white text-sm font-semibold px-4 py-2 sm:px-5 sm:py-2.5 shadow-brand-sm hover:bg-brand-accent transition-colors">Contactez nous</a>
       </div>
     </nav>
   </div>
-</div>
+</header>
 
-<div id="stage-wrap">
-  <div id="stage" data-screen-label="Meetnoo Events">
+<main>
+  <!-- ============ HERO ============ -->
+  <section class="relative overflow-hidden pt-32 sm:pt-36 lg:pt-44 pb-16 sm:pb-20 lg:pb-24 bg-white">
+    <!-- decorative blobs -->
+    <div class="pointer-events-none absolute -left-16 top-16 w-72 h-72 rounded-full bg-sky-300/40 blur-3xl"></div>
+    <div class="pointer-events-none absolute -left-10 bottom-0 w-80 h-80 rounded-full bg-pink-300/30 blur-3xl"></div>
 
-    <!-- ===== HERO ===== -->
-    <section class="hero" data-screen-label="Hero — Events">
-      <div class="deco"><div class="b1"></div><div class="b2"></div></div>
-
-      <div class="left">
-        <div class="eyebrow">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
+      <div class="relative z-10">
+        <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-tint text-brand-primary text-xs font-semibold ring-1 ring-brand-soft/30">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 2v4M12 18v4M2 12h4M18 12h4M5 5l3 3M16 16l3 3M5 19l3-3M16 8l3-3"/></svg>
           MeetNoo Events
-        </div>
-        <h1>Organisez votre événement <em>hybride</em> avec succès.</h1>
-        <p class="lead">L'organisation d'un événement hybride nécessite expertise technologique et organisation. <b>MeetNoo Events</b> vous accompagne à chaque étape — de la planification à l'analyse post-événement.</p>
-        <div class="cta">
-          <a class="btn-primary" href="Contact.html">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15a4 4 0 0 1-4 4H8l-5 4V6a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/></svg>
+        </span>
+        <h1 class="mt-6 font-display font-bold text-3xl sm:text-4xl lg:text-5xl xl:text-6xl tracking-tight text-ink leading-tight">
+          Organisez votre événement
+          <span class="bg-gradient-to-r from-brand-primary to-brand-soft bg-clip-text text-transparent">hybride</span>
+          avec succès.
+        </h1>
+        <p class="mt-5 text-base sm:text-lg text-ink-soft leading-relaxed max-w-xl">
+          L'organisation d'un événement hybride nécessite expertise technologique et organisation.
+          <strong class="font-semibold text-brand-primary">MeetNoo Events</strong> vous accompagne à chaque étape — de la planification à l'analyse post-événement.
+        </p>
+        <div class="mt-8 flex flex-wrap items-center gap-3 sm:gap-4">
+          <a href="Contact.html" class="inline-flex items-center justify-center gap-2 rounded-full bg-brand-primary text-white text-sm font-semibold px-5 py-3 sm:px-6 sm:py-3.5 shadow-brand hover:bg-brand-accent transition-colors">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15a4 4 0 0 1-4 4H8l-5 4V6a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/></svg>
             Réserver un entretien avec un Expert
           </a>
-          <a class="btn-link" href="#types">
+          <a href="#types" class="inline-flex items-center justify-center gap-2 rounded-full bg-white border border-line text-ink text-sm font-semibold px-5 py-3 sm:px-6 sm:py-3.5 hover:bg-brand-ice transition-colors">
             Découvrir nos services
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
         </div>
       </div>
 
-      <!-- Calendar dashboard image -->
-      <img class="cal-img" src="events-hero-cal.png" alt="Calendrier MeetNoo Events — vue 5 jours avec événements" loading="lazy" decoding="async"/>
-    </section>
+      <div class="relative">
+        <img src="events-hero-cal.png" alt="Calendrier MeetNoo Events — vue 5 jours avec événements" loading="lazy" decoding="async" width="820" height="540" class="w-full max-w-xl lg:max-w-2xl mx-auto rounded-xl shadow-brand-lg" />
+      </div>
+    </div>
+  </section>
 
-    <!-- ===== TYPES D'ÉVÉNEMENTS ===== -->
-    <section class="types" id="types" data-screen-label="Types d'événements">
-      <div class="hd">
-        <h2 class="section-title">Une solution conçue pour tous<br/>les types d'événements.</h2>
+  <!-- ============ TYPES D'ÉVÉNEMENTS ============ -->
+  <section id="types" class="bg-white py-16 sm:py-20 lg:py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 sm:mb-16">
+        <h2 class="font-display font-bold text-2xl sm:text-3xl lg:text-4xl text-ink tracking-tight">
+          Une solution conçue pour tous<br class="hidden sm:inline"/> les types d'événements.
+        </h2>
       </div>
 
-      <div class="grid">
-        <article class="type-card peach">
-          <div class="glow"></div>
-          <div class="ico">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+        <!-- card peach -->
+        <article class="group relative overflow-hidden rounded-2xl border-2 border-brand-tint bg-white p-6 sm:p-7 transition-all hover:-translate-y-1 hover:shadow-brand-lg hover:border-transparent">
+          <div class="absolute left-3.5 right-3.5 top-20 bottom-3.5 rounded-xl bg-gradient-to-b from-orange-100 to-orange-50/40 -z-0"></div>
+          <div class="relative z-10 grid place-items-center w-12 h-12 rounded-xl bg-white shadow-brand-sm text-orange-600">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
           </div>
-          <h3>Assemblées<br/>Générales</h3>
-          <p>Organisation complète de vos AG : billetterie, votes, émargement, streaming. En présentiel, distanciel ou hybride.</p>
-          <a class="more">En savoir plus →</a>
+          <h3 class="relative z-10 mt-16 font-display font-bold text-xl text-ink tracking-tight leading-tight">Assemblées<br/>Générales</h3>
+          <p class="relative z-10 mt-3 text-sm text-ink-soft leading-relaxed">Organisation complète de vos AG : billetterie, votes, émargement, streaming. En présentiel, distanciel ou hybride.</p>
+          <a class="relative z-10 mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-primary transition-all group-hover:gap-3">En savoir plus →</a>
         </article>
 
-        <article class="type-card lilac">
-          <div class="glow"></div>
-          <div class="ico">
+        <!-- card lilac -->
+        <article class="group relative overflow-hidden rounded-2xl border-2 border-brand-tint bg-white p-6 sm:p-7 transition-all hover:-translate-y-1 hover:shadow-brand-lg hover:border-transparent">
+          <div class="absolute left-3.5 right-3.5 top-20 bottom-3.5 rounded-xl bg-gradient-to-b from-purple-100 to-purple-50/40 -z-0"></div>
+          <div class="relative z-10 grid place-items-center w-12 h-12 rounded-xl bg-white shadow-brand-sm text-purple-600">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h6M9 9h2"/></svg>
           </div>
-          <h3>Conseils<br/>d'Administration</h3>
-          <p>Transcription et génération de PV conformes pour vos CA. Gestion des participants, registre de décisions intégré.</p>
-          <a class="more">En savoir plus →</a>
+          <h3 class="relative z-10 mt-16 font-display font-bold text-xl text-ink tracking-tight leading-tight">Conseils<br/>d'Administration</h3>
+          <p class="relative z-10 mt-3 text-sm text-ink-soft leading-relaxed">Transcription et génération de PV conformes pour vos CA. Gestion des participants, registre de décisions intégré.</p>
+          <a class="relative z-10 mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-primary transition-all group-hover:gap-3">En savoir plus →</a>
         </article>
 
-        <article class="type-card sky">
-          <div class="glow"></div>
-          <div class="ico">
+        <!-- card sky -->
+        <article class="group relative overflow-hidden rounded-2xl border-2 border-brand-tint bg-white p-6 sm:p-7 transition-all hover:-translate-y-1 hover:shadow-brand-lg hover:border-transparent">
+          <div class="absolute left-3.5 right-3.5 top-20 bottom-3.5 rounded-xl bg-gradient-to-b from-indigo-100 to-indigo-50/40 -z-0"></div>
+          <div class="relative z-10 grid place-items-center w-12 h-12 rounded-xl bg-white shadow-brand-sm text-brand-primary">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
           </div>
-          <h3>Sessions de<br/>formations</h3>
-          <p>Retranscription de vos sessions, génération de récaps pédagogiques. Transformez vos contenus oraux en ressources indexées et réutilisables.</p>
-          <a class="more">En savoir plus →</a>
+          <h3 class="relative z-10 mt-16 font-display font-bold text-xl text-ink tracking-tight leading-tight">Sessions de<br/>formations</h3>
+          <p class="relative z-10 mt-3 text-sm text-ink-soft leading-relaxed">Retranscription de vos sessions, génération de récaps pédagogiques. Transformez vos contenus oraux en ressources indexées et réutilisables.</p>
+          <a class="relative z-10 mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-primary transition-all group-hover:gap-3">En savoir plus →</a>
         </article>
 
-        <article class="type-card mint">
-          <div class="glow"></div>
-          <div class="ico">
+        <!-- card mint -->
+        <article class="group relative overflow-hidden rounded-2xl border-2 border-brand-tint bg-white p-6 sm:p-7 transition-all hover:-translate-y-1 hover:shadow-brand-lg hover:border-transparent">
+          <div class="absolute left-3.5 right-3.5 top-20 bottom-3.5 rounded-xl bg-gradient-to-b from-emerald-100 to-emerald-50/40 -z-0"></div>
+          <div class="relative z-10 grid place-items-center w-12 h-12 rounded-xl bg-white shadow-brand-sm text-success">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/><path d="m16 11 1.5 1.5L20 10"/></svg>
           </div>
-          <h3>Ateliers &amp; RDV<br/>individuels</h3>
-          <p>Gestion des rendez-vous individuels ou d'experts lors de vos événements. Planification, accès sécurisé, compte-rendu automatique.</p>
-          <a class="more">En savoir plus →</a>
+          <h3 class="relative z-10 mt-16 font-display font-bold text-xl text-ink tracking-tight leading-tight">Ateliers &amp; RDV<br/>individuels</h3>
+          <p class="relative z-10 mt-3 text-sm text-ink-soft leading-relaxed">Gestion des rendez-vous individuels ou d'experts lors de vos événements. Planification, accès sécurisé, compte-rendu automatique.</p>
+          <a class="relative z-10 mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-primary transition-all group-hover:gap-3">En savoir plus →</a>
         </article>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ===== ÉTAPES (scroll-pinned timeline) ===== -->
-    <section class="steps-track" id="stepsTrack" data-screen-label="Étapes clés">
-      <div class="steps-pin" id="stepsPin">
-        <div class="hd">
-          <h2 class="section-title">Les étapes clés de notre<br/>accompagnement.</h2>
-          <p class="section-sub">D'une idée à l'analyse post-événement, nous vous accompagnons à chaque étape.</p>
-        </div>
-
-        <div class="steps-row">
-          <div class="conn-track"></div>
-          <div class="conn-fill" id="connFill"></div>
-
-          <div class="step" data-step="1" data-tilt="-4">
-            <div class="num-wrap">
-              <div class="num">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><circle cx="9" cy="15" r="1.5"/><path d="M13 14h5M13 17h3"/></svg>
-              </div>
-              <span class="badge">
-                <span class="num-text">1</span>
-                <span class="check"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span>
-              </span>
-            </div>
-            <h4>Planification et gestion<br/>des inscriptions</h4>
-          </div>
-
-          <div class="step" data-step="2" data-tilt="4">
-            <div class="num-wrap">
-              <div class="num">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="m10 13 2 2 4-4"/></svg>
-              </div>
-              <span class="badge">
-                <span class="num-text">2</span>
-                <span class="check"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span>
-              </span>
-            </div>
-            <h4>Configuration des<br/>technologies audio et vidéo</h4>
-          </div>
-
-          <div class="step" data-step="3" data-tilt="-4">
-            <div class="num-wrap">
-              <div class="num">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 18 0v6a3 3 0 0 1-3 3h-2v-7h5"/><path d="M3 18v-6h5v7H6a3 3 0 0 1-3-3z"/></svg>
-              </div>
-              <span class="badge">
-                <span class="num-text">3</span>
-                <span class="check"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span>
-              </span>
-            </div>
-            <h4>Assistance technique<br/>aux participants</h4>
-          </div>
-
-          <div class="step" data-step="4" data-tilt="4">
-            <div class="num-wrap">
-              <div class="num">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h6M8 9h2"/></svg>
-              </div>
-              <span class="badge">
-                <span class="num-text">4</span>
-                <span class="check"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span>
-              </span>
-            </div>
-            <h4>Transcription et documentation<br/>officielle de votre visioconférence</h4>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== BENTO ===== -->
-    <section class="bento" data-screen-label="Bento — Tout pour votre événement">
-      <div class="hd">
-        <h2 class="section-title">Tout ce dont votre événement a besoin.</h2>
-        <p class="section-sub">Une plateforme complète qui réunit infrastructure, captation, émargement, votes et analyse — en un seul endroit.</p>
+  <!-- ============ ÉTAPES (timeline) ============ -->
+  <section class="bg-brand-ice py-16 sm:py-20 lg:py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 sm:mb-16">
+        <h2 class="font-display font-bold text-2xl sm:text-3xl lg:text-4xl text-ink tracking-tight">
+          Les étapes clés de notre<br class="hidden sm:inline"/> accompagnement.
+        </h2>
+        <p class="mt-4 text-base sm:text-lg text-ink-soft max-w-2xl mx-auto opacity-80">D'une idée à l'analyse post-événement, nous vous accompagnons à chaque étape.</p>
       </div>
 
-      <div class="grid">
-        <article class="bento-card b-orange">
-          <div class="glow"></div>
-          <h3>Réseau &amp; Bande passante</h3>
-          <p>Infrastructure réseau dimensionnée pour votre événement. Garantie de qualité de connexion pour tous les participants.</p>
-          <div class="glyph">
-            <div class="hex">
-              <div class="h-outer"></div>
-              <div class="h-inner">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>
-              </div>
+      <div class="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-6">
+        <!-- connecting line (desktop) -->
+        <div class="hidden lg:block absolute top-12 left-[12.5%] right-[12.5%] h-0.5 border-t-2 border-dashed border-brand-soft/40 -z-0"></div>
+
+        <!-- step 1 -->
+        <div class="relative z-10 text-center">
+          <div class="relative inline-block mb-5">
+            <div class="grid place-items-center w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-white border border-line shadow-brand-sm text-ink">
+              <svg class="w-10 h-10 sm:w-11 sm:h-11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><circle cx="9" cy="15" r="1.5"/><path d="M13 14h5M13 17h3"/></svg>
+            </div>
+            <span class="absolute -top-2 -right-2 grid place-items-center w-8 h-8 rounded-full bg-brand-accent text-white text-sm font-bold shadow-brand-sm">1</span>
+          </div>
+          <h4 class="font-display font-semibold text-base sm:text-lg text-ink leading-snug max-w-[220px] mx-auto">Planification et gestion<br/>des inscriptions</h4>
+        </div>
+
+        <!-- step 2 -->
+        <div class="relative z-10 text-center">
+          <div class="relative inline-block mb-5">
+            <div class="grid place-items-center w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-white border border-line shadow-brand-sm text-ink">
+              <svg class="w-10 h-10 sm:w-11 sm:h-11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="m10 13 2 2 4-4"/></svg>
+            </div>
+            <span class="absolute -top-2 -right-2 grid place-items-center w-8 h-8 rounded-full bg-brand-accent text-white text-sm font-bold shadow-brand-sm">2</span>
+          </div>
+          <h4 class="font-display font-semibold text-base sm:text-lg text-ink leading-snug max-w-[220px] mx-auto">Configuration des<br/>technologies audio et vidéo</h4>
+        </div>
+
+        <!-- step 3 -->
+        <div class="relative z-10 text-center">
+          <div class="relative inline-block mb-5">
+            <div class="grid place-items-center w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-white border border-line shadow-brand-sm text-ink">
+              <svg class="w-10 h-10 sm:w-11 sm:h-11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 18 0v6a3 3 0 0 1-3 3h-2v-7h5"/><path d="M3 18v-6h5v7H6a3 3 0 0 1-3-3z"/></svg>
+            </div>
+            <span class="absolute -top-2 -right-2 grid place-items-center w-8 h-8 rounded-full bg-brand-accent text-white text-sm font-bold shadow-brand-sm">3</span>
+          </div>
+          <h4 class="font-display font-semibold text-base sm:text-lg text-ink leading-snug max-w-[220px] mx-auto">Assistance technique<br/>aux participants</h4>
+        </div>
+
+        <!-- step 4 -->
+        <div class="relative z-10 text-center">
+          <div class="relative inline-block mb-5">
+            <div class="grid place-items-center w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-white border border-line shadow-brand-sm text-ink">
+              <svg class="w-10 h-10 sm:w-11 sm:h-11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h6M8 9h2"/></svg>
+            </div>
+            <span class="absolute -top-2 -right-2 grid place-items-center w-8 h-8 rounded-full bg-brand-accent text-white text-sm font-bold shadow-brand-sm">4</span>
+          </div>
+          <h4 class="font-display font-semibold text-base sm:text-lg text-ink leading-snug max-w-[240px] mx-auto">Transcription et documentation<br/>officielle de votre visioconférence</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BENTO ============ -->
+  <section class="bg-white py-16 sm:py-20 lg:py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 sm:mb-16">
+        <h2 class="font-display font-bold text-2xl sm:text-3xl lg:text-4xl text-ink tracking-tight">Tout ce dont votre événement a besoin.</h2>
+        <p class="mt-4 text-base sm:text-lg text-ink-soft max-w-2xl mx-auto opacity-80">Une plateforme complète qui réunit infrastructure, captation, émargement, votes et analyse — en un seul endroit.</p>
+      </div>
+
+      <!-- Row 1 : 2 large cards -->
+      <div class="grid grid-cols-1 lg:grid-cols-[1.55fr_1fr] gap-5 sm:gap-6 mb-5 sm:mb-6">
+        <article class="relative overflow-hidden rounded-3xl border border-warning bg-gradient-to-b from-orange-50 to-white p-7 sm:p-9 lg:p-10 min-h-[280px] sm:min-h-[340px] transition-all hover:-translate-y-1 hover:shadow-brand-lg">
+          <div class="absolute right-6 top-6 w-56 h-56 rounded-full bg-orange-300/50 blur-3xl pointer-events-none"></div>
+          <h3 class="relative font-display font-bold text-xl sm:text-2xl text-ink leading-tight tracking-tight max-w-md">Réseau &amp; Bande passante</h3>
+          <p class="relative mt-3 text-sm sm:text-base text-ink-soft leading-relaxed max-w-md">Infrastructure réseau dimensionnée pour votre événement. Garantie de qualité de connexion pour tous les participants.</p>
+          <div class="absolute right-6 bottom-6 w-32 sm:w-40 h-32 sm:h-40 grid place-items-center opacity-50 pointer-events-none">
+            <div class="grid place-items-center w-full h-full bg-orange-100 text-brand-primary" style="clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);transform:rotate(-12deg)">
+              <svg class="w-12 h-12 sm:w-16 sm:h-16" style="transform:rotate(12deg)" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>
             </div>
           </div>
         </article>
 
-        <article class="bento-card b-pdf">
-          <div class="glow"></div>
-          <h3>Émargement &amp; Signatures</h3>
-          <p>Meetnoo Sign : feuilles d'émargement PDF et signature électronique intégrées. Gestion facile et efficace de la participation.</p>
-          <div class="glyph">
-            <div class="hex">
-              <div class="h-outer"></div>
-              <div class="h-inner">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h4" stroke="#dc2626"/><text x="12" y="14" font-family="Arial" font-size="4" font-weight="700" fill="#dc2626" text-anchor="middle">PDF</text></svg>
-              </div>
+        <article class="relative overflow-hidden rounded-3xl border border-blue-300 bg-gradient-to-b from-blue-50 to-white p-7 sm:p-9 lg:p-10 min-h-[280px] sm:min-h-[340px] transition-all hover:-translate-y-1 hover:shadow-brand-lg">
+          <div class="absolute right-6 top-6 w-56 h-56 rounded-full bg-blue-300/50 blur-3xl pointer-events-none"></div>
+          <h3 class="relative font-display font-bold text-xl sm:text-2xl text-ink leading-tight tracking-tight max-w-md">Émargement &amp; Signatures</h3>
+          <p class="relative mt-3 text-sm sm:text-base text-ink-soft leading-relaxed max-w-md">Meetnoo Sign : feuilles d'émargement PDF et signature électronique intégrées. Gestion facile et efficace de la participation.</p>
+          <div class="absolute right-6 bottom-6 w-32 sm:w-40 h-32 sm:h-40 grid place-items-center opacity-50 pointer-events-none">
+            <div class="grid place-items-center w-full h-full bg-blue-100 text-red-600" style="clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);transform:rotate(-12deg)">
+              <svg class="w-12 h-12 sm:w-16 sm:h-16" style="transform:rotate(12deg)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><text x="12" y="16" font-family="Arial" font-size="5" font-weight="700" fill="currentColor" text-anchor="middle">PDF</text></svg>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Row 2 : 3 cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.05fr_1fr_1fr] gap-5 sm:gap-6">
+        <article class="relative overflow-hidden rounded-3xl border border-purple-300 bg-gradient-to-b from-purple-50 to-white p-7 sm:p-8 min-h-[260px] sm:min-h-[300px] transition-all hover:-translate-y-1 hover:shadow-brand-lg">
+          <div class="absolute right-6 top-6 w-48 h-48 rounded-full bg-purple-300/50 blur-3xl pointer-events-none"></div>
+          <h3 class="relative font-display font-bold text-lg sm:text-xl text-ink leading-tight tracking-tight">Streaming &amp;<br/>Enregistrements</h3>
+          <p class="relative mt-3 text-sm text-ink-soft leading-relaxed">Diffusion en direct sur Facebook, Youtube ou via minisite dédié. Enregistrement automatique disponible après l'événement.</p>
+          <div class="absolute right-5 bottom-5 w-24 sm:w-32 h-24 sm:h-32 grid place-items-center opacity-50 pointer-events-none">
+            <div class="grid place-items-center w-full h-full bg-purple-100 text-purple-600" style="clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);transform:rotate(-12deg)">
+              <svg class="w-10 h-10 sm:w-12 sm:h-12" style="transform:rotate(12deg)" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3"/><path d="M5.5 5.5a9 9 0 0 0 0 13M2 2a14 14 0 0 0 0 20M18.5 5.5a9 9 0 0 1 0 13M22 2a14 14 0 0 1 0 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
             </div>
           </div>
         </article>
 
-        <div class="row2">
-          <article class="bento-card b-purple">
-            <div class="glow"></div>
-            <h3>Streaming &amp;<br/>Enregistrements</h3>
-            <p>Diffusion en direct sur Facebook, Youtube ou via minisite dédié. Enregistrement automatique disponible après l'événement.</p>
-            <div class="glyph">
-              <div class="hex">
-                <div class="h-outer"></div>
-                <div class="h-inner">
-                  <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3"/><path d="M5.5 5.5a9 9 0 0 0 0 13M2 2a14 14 0 0 0 0 20M18.5 5.5a9 9 0 0 1 0 13M22 2a14 14 0 0 1 0 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-                </div>
-              </div>
+        <article class="relative overflow-hidden rounded-3xl border border-emerald-300 bg-gradient-to-b from-emerald-50 to-white p-7 sm:p-8 min-h-[260px] sm:min-h-[300px] transition-all hover:-translate-y-1 hover:shadow-brand-lg">
+          <div class="absolute right-6 top-6 w-48 h-48 rounded-full bg-emerald-300/50 blur-3xl pointer-events-none"></div>
+          <h3 class="relative font-display font-bold text-lg sm:text-xl text-ink leading-tight tracking-tight">Sondages &amp; Système<br/>de votes</h3>
+          <p class="relative mt-3 text-sm text-ink-soft leading-relaxed">Interactivité en temps réel avec vos participants. Sondages instantanés, votes à main levée électronique.</p>
+          <div class="absolute right-5 bottom-5 w-24 sm:w-32 h-24 sm:h-32 grid place-items-center opacity-50 pointer-events-none">
+            <div class="grid place-items-center w-full h-full bg-emerald-100 text-success" style="clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);transform:rotate(-12deg)">
+              <svg class="w-10 h-10 sm:w-12 sm:h-12" style="transform:rotate(12deg)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="m9 12 2 2 4-4"/><path d="M3 9h18"/></svg>
             </div>
-          </article>
+          </div>
+        </article>
 
-          <article class="bento-card b-green">
-            <div class="glow"></div>
-            <h3>Sondages &amp; Système<br/>de votes</h3>
-            <p>Interactivité en temps réel avec vos participants. Sondages instantanés, votes à main levée électronique.</p>
-            <div class="glyph">
-              <div class="hex">
-                <div class="h-outer"></div>
-                <div class="h-inner">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="m9 12 2 2 4-4"/><path d="M3 9h18"/></svg>
-                </div>
-              </div>
+        <article class="relative overflow-hidden rounded-3xl border border-blue-300 bg-gradient-to-b from-blue-50 to-white p-7 sm:p-8 min-h-[260px] sm:min-h-[300px] transition-all hover:-translate-y-1 hover:shadow-brand-lg md:col-span-2 lg:col-span-1">
+          <div class="absolute right-6 top-6 w-48 h-48 rounded-full bg-blue-300/50 blur-3xl pointer-events-none"></div>
+          <h3 class="relative font-display font-bold text-lg sm:text-xl text-ink leading-tight tracking-tight">Rapports<br/>détaillés</h3>
+          <p class="relative mt-3 text-sm text-ink-soft leading-relaxed">Meetnoo Analytics : indicateurs précis de participation et d'engagement. Évaluez rapidement le succès de votre événement.</p>
+          <div class="absolute right-5 bottom-5 w-24 sm:w-32 h-24 sm:h-32 grid place-items-center opacity-50 pointer-events-none">
+            <div class="grid place-items-center w-full h-full bg-blue-100 text-blue-600" style="clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);transform:rotate(-12deg)">
+              <svg class="w-10 h-10 sm:w-12 sm:h-12" style="transform:rotate(12deg)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 14 4-4 3 3 5-6"/></svg>
             </div>
-          </article>
-
-          <article class="bento-card b-blue">
-            <div class="glow"></div>
-            <h3>Rapports<br/>détaillés</h3>
-            <p>Meetnoo Analytics : indicateurs précis de participation et d'engagement. Évaluez rapidement le succès de votre événement.</p>
-            <div class="glyph">
-              <div class="hex">
-                <div class="h-outer"></div>
-                <div class="h-inner">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 14 4-4 3 3 5-6"/></svg>
-                </div>
-              </div>
-            </div>
-          </article>
-        </div>
+          </div>
+        </article>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ===== FAQ ===== -->
-    <section class="faq-sec" data-screen-label="FAQ Events">
-      <div class="hd">
-        <h2 class="section-title">Questions / réponses autour de<br/>l'organisation des événements.</h2>
+  <!-- ============ FAQ ============ -->
+  <section class="bg-slate-50 py-16 sm:py-20 lg:py-24">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 sm:mb-14">
+        <h2 class="font-display font-bold text-2xl sm:text-3xl lg:text-4xl text-ink tracking-tight">
+          Questions / réponses autour de<br class="hidden sm:inline"/> l'organisation des événements.
+        </h2>
       </div>
-      <div class="faq">
-        <details open>
-          <summary>
+
+      <div class="flex flex-col gap-3 sm:gap-3.5">
+        <details open class="group bg-white rounded-2xl border border-brand-tint open:border-brand-soft/40 open:shadow-brand-sm transition-all">
+          <summary class="cursor-pointer list-none flex items-center justify-between gap-4 px-5 sm:px-6 py-5 text-base font-medium text-ink">
             <span>Quels types d'événements pouvez-vous organiser ?</span>
-            <span class="chev"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></span>
+            <span class="grid place-items-center w-6 h-6 rounded-full bg-brand-tint text-brand-primary shrink-0 transition-transform group-open:rotate-180">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
           </summary>
-          <div class="ans">Tous types d'événements hybrides : assemblées générales, conseils d'administration, sessions de formations, ateliers avec RDV individuels ou d'experts.</div>
+          <div class="px-5 sm:px-6 pb-5 text-sm sm:text-base text-ink-soft leading-relaxed">Tous types d'événements hybrides : assemblées générales, conseils d'administration, sessions de formations, ateliers avec RDV individuels ou d'experts.</div>
         </details>
-        <details>
-          <summary>
+
+        <details class="group bg-white rounded-2xl border border-brand-tint open:border-brand-soft/40 open:shadow-brand-sm transition-all">
+          <summary class="cursor-pointer list-none flex items-center justify-between gap-4 px-5 sm:px-6 py-5 text-base font-medium text-ink">
             <span>Comment gérez-vous les participants qui rencontrent des problèmes techniques ?</span>
-            <span class="chev"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></span>
+            <span class="grid place-items-center w-6 h-6 rounded-full bg-brand-tint text-brand-primary shrink-0 transition-transform group-open:rotate-180">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
           </summary>
-          <div class="ans">Une équipe technique dédiée assiste vos participants en direct, par chat, par téléphone ou en présentiel selon le format de l'événement.</div>
+          <div class="px-5 sm:px-6 pb-5 text-sm sm:text-base text-ink-soft leading-relaxed">Une équipe technique dédiée assiste vos participants en direct, par chat, par téléphone ou en présentiel selon le format de l'événement.</div>
         </details>
-        <details>
-          <summary>
+
+        <details class="group bg-white rounded-2xl border border-brand-tint open:border-brand-soft/40 open:shadow-brand-sm transition-all">
+          <summary class="cursor-pointer list-none flex items-center justify-between gap-4 px-5 sm:px-6 py-5 text-base font-medium text-ink">
             <span>Est-il possible de diffuser sur plusieurs plateformes simultanément ?</span>
-            <span class="chev"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></span>
+            <span class="grid place-items-center w-6 h-6 rounded-full bg-brand-tint text-brand-primary shrink-0 transition-transform group-open:rotate-180">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
           </summary>
-          <div class="ans">Oui — diffusion simultanée vers Facebook Live, YouTube, LinkedIn, Twitch et un minisite dédié à votre marque, avec lecteur incorporable sur votre site.</div>
+          <div class="px-5 sm:px-6 pb-5 text-sm sm:text-base text-ink-soft leading-relaxed">Oui — diffusion simultanée vers Facebook Live, YouTube, LinkedIn, Twitch et un minisite dédié à votre marque, avec lecteur incorporable sur votre site.</div>
         </details>
-        <details>
-          <summary>
+
+        <details class="group bg-white rounded-2xl border border-brand-tint open:border-brand-soft/40 open:shadow-brand-sm transition-all">
+          <summary class="cursor-pointer list-none flex items-center justify-between gap-4 px-5 sm:px-6 py-5 text-base font-medium text-ink">
             <span>Comment choisissez-vous l'équipement audio et vidéo ?</span>
-            <span class="chev"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></span>
+            <span class="grid place-items-center w-6 h-6 rounded-full bg-brand-tint text-brand-primary shrink-0 transition-transform group-open:rotate-180">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
           </summary>
-          <div class="ans">Notre régie technique dimensionne le matériel selon la salle, le nombre d'intervenants et le rendu attendu : caméras 4K, micros directionnels, mixage broadcast.</div>
+          <div class="px-5 sm:px-6 pb-5 text-sm sm:text-base text-ink-soft leading-relaxed">Notre régie technique dimensionne le matériel selon la salle, le nombre d'intervenants et le rendu attendu : caméras 4K, micros directionnels, mixage broadcast.</div>
         </details>
-        <details>
-          <summary>
+
+        <details class="group bg-white rounded-2xl border border-brand-tint open:border-brand-soft/40 open:shadow-brand-sm transition-all">
+          <summary class="cursor-pointer list-none flex items-center justify-between gap-4 px-5 sm:px-6 py-5 text-base font-medium text-ink">
             <span>Comment garantissez-vous la qualité des prises de vue ?</span>
-            <span class="chev"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></span>
+            <span class="grid place-items-center w-6 h-6 rounded-full bg-brand-tint text-brand-primary shrink-0 transition-transform group-open:rotate-180">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
           </summary>
-          <div class="ans">Multi-caméras avec réalisation en direct par un opérateur dédié, repérage en amont et plan de captation validé avec vous avant l'événement.</div>
+          <div class="px-5 sm:px-6 pb-5 text-sm sm:text-base text-ink-soft leading-relaxed">Multi-caméras avec réalisation en direct par un opérateur dédié, repérage en amont et plan de captation validé avec vous avant l'événement.</div>
         </details>
-        <details>
-          <summary>
+
+        <details class="group bg-white rounded-2xl border border-brand-tint open:border-brand-soft/40 open:shadow-brand-sm transition-all">
+          <summary class="cursor-pointer list-none flex items-center justify-between gap-4 px-5 sm:px-6 py-5 text-base font-medium text-ink">
             <span>Comment fonctionne la signature et les feuilles d'émargement ?</span>
-            <span class="chev"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></span>
+            <span class="grid place-items-center w-6 h-6 rounded-full bg-brand-tint text-brand-primary shrink-0 transition-transform group-open:rotate-180">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
           </summary>
-          <div class="ans">Émargement digital depuis tout appareil — QR code à l'entrée ou lien sécurisé. Signature électronique conforme eIDAS et export PDF horodaté.</div>
+          <div class="px-5 sm:px-6 pb-5 text-sm sm:text-base text-ink-soft leading-relaxed">Émargement digital depuis tout appareil — QR code à l'entrée ou lien sécurisé. Signature électronique conforme eIDAS et export PDF horodaté.</div>
         </details>
-        <details>
-          <summary>
+
+        <details class="group bg-white rounded-2xl border border-brand-tint open:border-brand-soft/40 open:shadow-brand-sm transition-all">
+          <summary class="cursor-pointer list-none flex items-center justify-between gap-4 px-5 sm:px-6 py-5 text-base font-medium text-ink">
             <span>Quels sont les tarifs ?</span>
-            <span class="chev"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></span>
+            <span class="grid place-items-center w-6 h-6 rounded-full bg-brand-tint text-brand-primary shrink-0 transition-transform group-open:rotate-180">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
           </summary>
-          <div class="ans">Tarifs sur devis selon ampleur de l'événement, durée et options. Réservez un entretien — un expert revient vers vous sous 24 h avec une proposition.</div>
+          <div class="px-5 sm:px-6 pb-5 text-sm sm:text-base text-ink-soft leading-relaxed">Tarifs sur devis selon ampleur de l'événement, durée et options. Réservez un entretien — un expert revient vers vous sous 24 h avec une proposition.</div>
         </details>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ===== CTA ===== -->
-    <section class="cta-sec" data-screen-label="CTA Events">
-      <h2>Confiez l'organisation de votre<br/>événement à MeetNoo.</h2>
-      <p>Un expert <b>MeetNoo Events</b> vous répond et vous accompagne dans toutes les étapes de la planification et de l'exécution.</p>
-    </section>
+  <!-- ============ CTA ============ -->
+  <section class="bg-white pt-16 sm:pt-20 lg:pt-24 pb-8 sm:pb-10">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="font-display font-bold text-2xl sm:text-3xl lg:text-4xl text-ink tracking-tight">
+        Confiez l'organisation de votre<br class="hidden sm:inline"/> événement à MeetNoo.
+      </h2>
+      <p class="mt-5 text-base sm:text-lg text-ink-soft max-w-2xl mx-auto opacity-85">
+        Un expert <strong class="font-semibold text-brand-primary">MeetNoo Events</strong> vous répond et vous accompagne dans toutes les étapes de la planification et de l'exécution.
+      </p>
+    </div>
+  </section>
 
-    <!-- ===== ADVISOR ===== -->
-    <section class="advisor-sec" data-screen-label="Conseiller">
-      <div class="advisor-card">
-        <div class="deco-circle"></div>
-        <div class="l">
-          <h3>Un conseiller Meetnoo<br/>vous répond.</h3>
-          <p>Obtenez des réponses rapides et un accompagnement personnalisé en temps réel.</p>
-          <a class="btn-primary" href="Contact.html">
+  <!-- ============ ADVISOR ============ -->
+  <section class="bg-white pb-16 sm:pb-20 lg:pb-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="relative overflow-hidden rounded-3xl bg-[#0E1023] text-white p-8 sm:p-10 lg:p-14 grid grid-cols-1 md:grid-cols-[1fr_240px] items-center gap-8 sm:gap-10">
+        <div class="pointer-events-none absolute right-0 top-0 w-[600px] h-[280px] bg-gradient-radial bg-brand-primary/40 blur-3xl" style="background:radial-gradient(circle at 90% 50%, rgba(40,40,240,.35), transparent 60%)"></div>
+        <div class="pointer-events-none absolute -left-20 -bottom-20 w-60 h-60 rounded-full bg-pink-400/40 blur-3xl"></div>
+
+        <div class="relative z-10">
+          <h3 class="font-display font-bold text-2xl sm:text-3xl text-white leading-tight">Un conseiller Meetnoo<br/>vous répond.</h3>
+          <p class="mt-4 text-sm sm:text-base text-slate-300 leading-relaxed max-w-lg">Obtenez des réponses rapides et un accompagnement personnalisé en temps réel.</p>
+          <a href="Contact.html" class="mt-6 inline-flex items-center gap-2 rounded-full bg-brand-primary hover:bg-brand-accent transition-colors text-white text-sm font-semibold px-5 py-3 shadow-brand">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14v-2a9 9 0 0 1 18 0v2"/><path d="M21 14v3a3 3 0 0 1-3 3h-1v-7h4z"/><path d="M3 14v3a3 3 0 0 0 3 3h1v-7H3z"/><path d="M12 21h2"/></svg>
             Contacter un Expert Meetnoo
           </a>
         </div>
-        <div class="r">
-          <div class="photo"></div>
-        </div>
-      </div>
-    </section>
 
-    <!-- ===== FOOTER ===== -->
-    <footer class="footer">
-      <div class="top">
-        <div class="brand">
-          <h3 style="display:block"><img src="assets/meetnoo-logo.png" alt="MeetNoo" loading="lazy" decoding="async" style="height:36px;width:auto;display:block;filter:brightness(0) invert(1)"/></h3>
-          <p>Chaque réunion devient un actif stratégique. Une solution Labnoo Technologies.</p>
-          <div class="socials">
-            <a><svg width="14" height="14" viewBox="0 0 18 18" fill="currentColor"><path d="M11 18v-7h2.5l.5-3H11V6c0-1 .3-1.5 1.5-1.5H14V2c-.3 0-1.3-.1-2.5-.1C8.7 1.9 7 3.4 7 6v2H4v3h3v7h4z"/></svg></a>
-            <a><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 4l-2 5 5-2-5 7 5 4h-7l-2 5-2-5H4l5-4-5-7 5 2-2-5h12z"/></svg></a>
-            <a><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1" fill="currentColor"/></svg></a>
-            <a><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h4v16H4zM10 9h4v2c.6-1.2 2-2.3 4-2.3 4 0 4 2.7 4 6V20h-4v-5c0-1.4-.5-2.4-2-2.4s-2 1.1-2 2.5V20h-4z"/><circle cx="6" cy="6" r="2"/></svg></a>
-            <a><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22 8s-.2-1.4-.8-2c-.7-.7-1.5-.7-1.9-.8C16.7 5 12 5 12 5s-4.7 0-7.3.2C4.3 5.3 3.5 5.3 2.8 6 2.2 6.6 2 8 2 8S1.8 9.6 1.8 11.2v1.6C1.8 14.4 2 16 2 16s.2 1.4.8 2c.7.7 1.7.7 2.1.8 1.5.1 6.1.2 7.1.2s4.7 0 7.3-.2c.4-.1 1.2-.1 1.9-.8.6-.6.8-2 .8-2s.2-1.6.2-3.2v-1.6C22.2 9.6 22 8 22 8zM10 14V9l5 2.5-5 2.5z"/></svg></a>
+        <div class="relative z-10 grid place-items-center">
+          <div class="relative w-44 h-52 sm:w-52 sm:h-60 rounded-3xl overflow-hidden border-4 border-white/10" style="background:linear-gradient(135deg,#FFD3A5,#FD6585)">
+            <span class="absolute left-1/2 top-[30%] -translate-x-1/2 w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white/55"></span>
+            <span class="absolute left-1/2 bottom-0 -translate-x-1/2 w-36 sm:w-40 h-28 sm:h-32 rounded-t-[80px] bg-white/60"></span>
           </div>
         </div>
-        <div class="col">
-          <h4>Produit</h4>
-          <ul>
-            <li><a>Fonctionnalités</a></li>
-            <li><a href="Landing Page.html#pricing">Pricing</a></li>
-            <li><a>My MeetNoo</a></li>
-            <li><a>Palabre Noo</a></li>
-            <li><a>Intégrations</a></li>
-          </ul>
-        </div>
-        <div class="col">
-          <h4>Entreprise</h4>
-          <ul>
-            <li><a>À propos</a></li>
-            <li><a href="Landing Page.html#blog">Blog</a></li>
-            <li><a>Partenaires</a></li>
-            <li><a>Carrières</a></li>
-            <li><a>Presse / RGPD</a></li>
-          </ul>
-        </div>
-        <div class="col">
-          <h4>Support</h4>
-          <ul>
-            <li><a>Démarrer</a></li>
-            <li><a>Centre d'aide</a></li>
-            <li><a>Statut des serveurs</a></li>
-            <li><a>Signaler un bug</a></li>
-            <li><a>Chat support</a></li>
-          </ul>
-        </div>
       </div>
-      <div class="div"></div>
-      <div class="row">
-        <div class="il">
-          <span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg> contact@meetnoo.com</span>
-          <span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 4h4l2 5-3 1c1 3 4 6 7 7l1-3 5 2v4c0 1-1 2-2 2C9 22 2 15 2 6c0-1 1-2 2-2z"/></svg> Prendre un RDV</span>
-          <span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2C7 2 4 5.5 4 10c0 6 8 12 8 12s8-6 8-12c0-4.5-3-8-8-8z"/><circle cx="12" cy="10" r="3"/></svg> Station F, Paris — Martinique, France</span>
-        </div>
-      </div>
-      <div class="div" style="margin:30px auto 16px"></div>
-      <div class="row">
-        <span>© 2026 Labnoo Technologies — Tous droits réservés | CGU | Confidentialité | Mentions légales | RGPD</span>
-        <span style="color:#a3a6c4">Conçu avec soin à Station F, Paris — Ancré en Martinique</span>
-      </div>
-    </footer>
+    </div>
+  </section>
+</main>
 
-  </div><!-- /#stage -->
-</div><!-- /#stage-wrap -->
+<!-- ============ FOOTER ============ -->
+<footer class="bg-[#111165] text-slate-100">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-14 sm:pt-16 pb-8">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-16">
+      <div>
+        <img src="assets/meetnoo-logo.png" alt="MeetNoo" loading="lazy" decoding="async" width="120" height="36" class="h-9 w-auto mb-5 brightness-0 invert" />
+        <p class="text-base text-slate-300 leading-relaxed mb-5 font-mono">Chaque réunion devient un actif stratégique. Une solution Labnoo Technologies.</p>
+        <div class="flex gap-3">
+          <a class="grid place-items-center w-9 h-9 rounded-lg bg-white/5 hover:bg-white/10 text-slate-100 transition-colors cursor-pointer"><svg width="14" height="14" viewBox="0 0 18 18" fill="currentColor"><path d="M11 18v-7h2.5l.5-3H11V6c0-1 .3-1.5 1.5-1.5H14V2c-.3 0-1.3-.1-2.5-.1C8.7 1.9 7 3.4 7 6v2H4v3h3v7h4z"/></svg></a>
+          <a class="grid place-items-center w-9 h-9 rounded-lg bg-white/5 hover:bg-white/10 text-slate-100 transition-colors cursor-pointer"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 4l-2 5 5-2-5 7 5 4h-7l-2 5-2-5H4l5-4-5-7 5 2-2-5h12z"/></svg></a>
+          <a class="grid place-items-center w-9 h-9 rounded-lg bg-white/5 hover:bg-white/10 text-slate-100 transition-colors cursor-pointer"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1" fill="currentColor"/></svg></a>
+          <a class="grid place-items-center w-9 h-9 rounded-lg bg-white/5 hover:bg-white/10 text-slate-100 transition-colors cursor-pointer"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h4v16H4zM10 9h4v2c.6-1.2 2-2.3 4-2.3 4 0 4 2.7 4 6V20h-4v-5c0-1.4-.5-2.4-2-2.4s-2 1.1-2 2.5V20h-4z"/><circle cx="6" cy="6" r="2"/></svg></a>
+          <a class="grid place-items-center w-9 h-9 rounded-lg bg-white/5 hover:bg-white/10 text-slate-100 transition-colors cursor-pointer"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22 8s-.2-1.4-.8-2c-.7-.7-1.5-.7-1.9-.8C16.7 5 12 5 12 5s-4.7 0-7.3.2C4.3 5.3 3.5 5.3 2.8 6 2.2 6.6 2 8 2 8S1.8 9.6 1.8 11.2v1.6C1.8 14.4 2 16 2 16s.2 1.4.8 2c.7.7 1.7.7 2.1.8 1.5.1 6.1.2 7.1.2s4.7 0 7.3-.2c.4-.1 1.2-.1 1.9-.8.6-.6.8-2 .8-2s.2-1.6.2-3.2v-1.6C22.2 9.6 22 8 22 8zM10 14V9l5 2.5-5 2.5z"/></svg></a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="font-mono font-bold text-base text-white mb-4">Produit</h4>
+        <ul class="flex flex-col gap-3 text-slate-300 text-base font-mono">
+          <li><a class="hover:text-white cursor-pointer transition-colors">Fonctionnalités</a></li>
+          <li><a href="Landing Page.html#pricing" class="hover:text-white cursor-pointer transition-colors">Pricing</a></li>
+          <li><a class="hover:text-white cursor-pointer transition-colors">My MeetNoo</a></li>
+          <li><a class="hover:text-white cursor-pointer transition-colors">Palabre Noo</a></li>
+          <li><a class="hover:text-white cursor-pointer transition-colors">Intégrations</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-mono font-bold text-base text-white mb-4">Entreprise</h4>
+        <ul class="flex flex-col gap-3 text-slate-300 text-base font-mono">
+          <li><a class="hover:text-white cursor-pointer transition-colors">À propos</a></li>
+          <li><a href="Landing Page.html#blog" class="hover:text-white cursor-pointer transition-colors">Blog</a></li>
+          <li><a class="hover:text-white cursor-pointer transition-colors">Partenaires</a></li>
+          <li><a class="hover:text-white cursor-pointer transition-colors">Carrières</a></li>
+          <li><a class="hover:text-white cursor-pointer transition-colors">Presse / RGPD</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-mono font-bold text-base text-white mb-4">Support</h4>
+        <ul class="flex flex-col gap-3 text-slate-300 text-base font-mono">
+          <li><a class="hover:text-white cursor-pointer transition-colors">Démarrer</a></li>
+          <li><a class="hover:text-white cursor-pointer transition-colors">Centre d'aide</a></li>
+          <li><a class="hover:text-white cursor-pointer transition-colors">Statut des serveurs</a></li>
+          <li><a class="hover:text-white cursor-pointer transition-colors">Signaler un bug</a></li>
+          <li><a class="hover:text-white cursor-pointer transition-colors">Chat support</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <hr class="border-white/20 my-10 sm:my-12" />
+
+    <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 font-mono text-sm sm:text-base text-slate-300">
+      <div class="flex flex-col sm:flex-row gap-4 sm:gap-10">
+        <span class="inline-flex items-center gap-2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg> contact@meetnoo.com</span>
+        <span class="inline-flex items-center gap-2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 4h4l2 5-3 1c1 3 4 6 7 7l1-3 5 2v4c0 1-1 2-2 2C9 22 2 15 2 6c0-1 1-2 2-2z"/></svg> Prendre un RDV</span>
+        <span class="inline-flex items-center gap-2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2C7 2 4 5.5 4 10c0 6 8 12 8 12s8-6 8-12c0-4.5-3-8-8-8z"/><circle cx="12" cy="10" r="3"/></svg> Station F, Paris — Martinique, France</span>
+      </div>
+    </div>
+
+    <hr class="border-white/20 mt-8 mb-5" />
+
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 font-mono text-sm">
+      <span class="text-slate-300">© 2026 Labnoo Technologies — Tous droits réservés | CGU | Confidentialité | Mentions légales | RGPD</span>
+      <span class="text-slate-400">Conçu avec soin à Station F, Paris — Ancré en Martinique</span>
+    </div>
+  </div>
+</footer>
 
 <script>
-  // Scale 1728px design to viewport, mirror nav, drive pinned timeline.
-  (function(){
-    const stage = document.getElementById('stage');
-    const wrap = document.getElementById('stage-wrap');
-    const DESIGN_W = 1728;
-
-    const stepsTrack = document.getElementById('stepsTrack');
-    const stepsPin   = document.getElementById('stepsPin');
-    const connFill   = document.getElementById('connFill');
-    const steps      = stepsTrack ? stepsTrack.querySelectorAll('.step') : [];
-    const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    let scale = 1;
-    let pinHDesign = 0;     // design-px height of pin (= realViewportH / scale)
-    let scrubDesign = 0;    // design-px length of scrub zone
-    // Connector geometry in design px (matches CSS: left:170px, right:170px in 1340-wide row)
-    // The track sits in a 1340 row offset from the row's left:170; we compute fill end px on first step's center to last step's center.
-
-    function fit(){
-      const vw = window.innerWidth;
-      const vh = window.innerHeight;
-      const s = vw / DESIGN_W;
-      scale = s;
-      stage.style.transform = 'scale(' + s + ')';
-
-      // ----- Configure pinned timeline BEFORE measuring stage height -----
-      if (stepsTrack && stepsPin && !reducedMotion){
-        // One real viewport in design pixels
-        pinHDesign = Math.round(vh / s);
-        // Scrub length: shorter scroll distance = faster step progression
-        scrubDesign = Math.round(pinHDesign * 1.6);
-        stepsPin.style.height = pinHDesign + 'px';
-        stepsTrack.style.height = (pinHDesign + scrubDesign) + 'px';
-      }
-
-      // Now measure full stage height
-      const dh = stage.scrollHeight;
-      wrap.style.height = (dh * s) + 'px';
-
-      const navStage = document.getElementById('navStage');
-      const navFix = document.getElementById('nav-fixed');
-      if (navStage){
-        navStage.style.transform = 'translateX(-50%) scale(' + s + ')';
-        navFix.style.height = (140 * s) + 'px';
-      }
-
-      onScroll(); // re-evaluate timeline state after layout
-    }
-
-    // ----- Timeline scroll handler -----
-    let ticking = false;
-    let lastCurrent = -1;
-    function onScroll(){
-      if (!stepsTrack || reducedMotion) return;
-      // Track position in real (scaled) document coordinates
-      const rect = stepsTrack.getBoundingClientRect();
-      // Track top in document = current scroll + rect.top
-      const trackTopDoc = window.scrollY + rect.top;
-      const trackHeightReal = rect.height; // already scaled
-
-      // Real-pixel scrub length = scrubDesign * scale
-      const scrubReal = scrubDesign * scale;
-      const enter = trackTopDoc;                  // start pinning when track top hits viewport top
-      const leave = trackTopDoc + scrubReal;      // unpin when scrubbed to end
-      const y = window.scrollY;
-
-      let progress;
-      if (y < enter){
-        // Before: pin sits at top of track
-        stepsPin.style.top = '0px';
-        progress = 0;
-      } else if (y >= leave){
-        // After: pin parked at bottom of track
-        stepsPin.style.top = scrubDesign + 'px';
-        progress = 1;
-      } else {
-        // Pinning phase: pin's top in design px = (y - enter) / scale
-        const tDesign = (y - enter) / scale;
-        stepsPin.style.top = tDesign + 'px';
-        progress = (y - enter) / scrubReal;
-      }
-
-      // ----- Drive step states & connector fill -----
-      // Map progress 0..1 to a 0..N "active index" with a small lead-in
-      const N = steps.length; // 4
-      // We want step 1 active almost immediately, step 4 active near the end.
-      // Use thresholds at 0.05, 0.30, 0.55, 0.80 for activation.
-      const activations = [0.05, 0.30, 0.55, 0.80];
-      let currentIdx = -1;
-      steps.forEach((el, i) => {
-        const on = progress >= activations[i];
-        el.classList.toggle('is-active', on);
-        if (on) currentIdx = i;
-      });
-      // is-current fires only on transition into a new step (for the pop animation)
-      if (currentIdx !== lastCurrent){
-        steps.forEach(el => el.classList.remove('is-current'));
-        if (currentIdx >= 0){
-          const el = steps[currentIdx];
-          // restart animation
-          el.classList.remove('is-current');
-          // force reflow
-          void el.offsetWidth;
-          el.classList.add('is-current');
-        }
-        lastCurrent = currentIdx;
-      }
-
-      // Connector fill: from first step center to last step center (in design px = 1000px between centers)
-      // CSS: track row is 1340 wide; conn-fill starts at left:170; first step center sits at ~170+46=216,
-      // last step center at 1340-170-46 = 1124. Distance = 908. We want fill width to grow with progress
-      // through activations[0]..activations[3].
-      if (connFill){
-        // Normalize progress between first and last activation thresholds
-        const p0 = activations[0], pN = activations[N - 1];
-        const fp = Math.max(0, Math.min(1, (progress - p0) / (pN - p0)));
-        const fillMaxPx = 1000; // design px between first and last circle centers (approx)
-        connFill.style.width = (fp * fillMaxPx) + 'px';
-      }
-    }
-
-    function rafScroll(){
-      if (!ticking){
-        ticking = true;
-        requestAnimationFrame(() => { onScroll(); ticking = false; });
-      }
-    }
-
-    window.addEventListener('resize', fit);
-    window.addEventListener('scroll', rafScroll, { passive: true });
-    window.addEventListener('load', () => { fit(); setTimeout(fit, 100); setTimeout(fit, 500); });
-    fit();
-  })();
-</script>
-<script>
-  /* navbar scroll effect */
+  /* Navbar scroll effect */
   (function(){
     const nav = document.querySelector('.navbar');
     if (!nav) return;
-    const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 30);
+    const onScroll = () => {
+      if (window.scrollY > 30) {
+        nav.classList.add('bg-white/85', 'shadow-brand');
+        nav.classList.remove('bg-white/70');
+      } else {
+        nav.classList.remove('bg-white/85', 'shadow-brand');
+        nav.classList.add('bg-white/70');
+      }
+    };
     window.addEventListener('scroll', onScroll, {passive:true});
     onScroll();
   })();
